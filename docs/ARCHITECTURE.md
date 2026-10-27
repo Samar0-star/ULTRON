@@ -1,96 +1,205 @@
-# ULTRON System Architecture & Mathematical Verification Cage
+# ULTRON System Architecture: 8-Tier Autonomous AI Scientist
 
-ULTRON is an autonomous AI scientist system engineered to conduct 12–24 hour closed-loop scientific discovery campaigns without human intervention. 
+ULTRON is an 82,000-line autonomous AI scientist system built across 219 Python files, engineered to run continuous 12 to 24-hour closed-loop discovery campaigns without human intervention.
 
-Unlike standard "AI for science" implementations—which wrap frontier Large Language Models in conversational loops that hallucinate non-existent chemistry, fake math, and irreproducible data—ULTRON encloses neural models inside a **deterministic verification cage**.
+Rather than acting as a standard conversational wrapper around Large Language Models, ULTRON encloses neural models inside a multi-tier **deterministic verification cage** where hypotheses are proposed, checked against hard physics and math rules, attacked by adversarial red-team agents, and grounded in a persistent graph memory.
+
+---
+
+## 1. Master System Flowchart
+
+```mermaid
+flowchart TD
+    subgraph S1["1. ORCHESTRATION & TASK DECOMPOSITION"]
+        A1["Scientific Research Objective"] --> A2["Global Scheduler (Dynamic Traffic Backoff)"]
+        A2 --> A3["Task Decomposer (Atomic Subtasks)"]
+        A3 --> A4["Temperature Scheduler (Exploration to Precision)"]
+        A4 --> A5["Anti-Rot Context Compactor"]
+    end
+
+    subgraph S2["2. CAUSAL WORLD MODEL & GNN ORACLE"]
+        B1[("SQLite WAL Knowledge Graph\n(15,000+ Grounded Facts & Entities)")]
+        B2["Causal Graph Engine\n(Downstream Effect Simulator)"]
+        B3["GNN Intuition Oracle (PyTorch Geometric)\n(Link Prediction Over Distant Papers)"]
+        B1 <--> B2
+        B1 --> B3
+    end
+
+    subgraph S3["3. COGNITIVE DUAL-STREAM SWARM"]
+        C1["Literature Scholar Agent\n(arXiv, PubMed, PDB, Materials Project)"]
+        C2["Hypothesis Generator\n(Formal Testable Hypotheses)"]
+        C1 --> C2
+    end
+
+    subgraph S4["4. DETERMINISTIC VERIFICATION CAGE (Pure Python)"]
+        D1{"Deterministic Physical Gates"}
+        D1_1["Stoichiometry & Charge Balance Checks"]
+        D1_2["Thermodynamic Stability & Decomposition Checks"]
+        D1_3["Crystal Space-Group Symmetry Checks"]
+        D1_4["Physical Dimensional & Unit Consistency"]
+        D1_5["Molecular 3D Conformer & PAINS Filters"]
+        D1 --- D1_1 & D1_2 & D1_3 & D1_4 & D1_5
+    end
+
+    subgraph S5["5. ADVERSARIAL RED-TEAM SWARM & THE MORGUE"]
+        E1["Prosecutor Agent (Hostile Challenger)"]
+        E2["Parameter Perturbation Attacks"]
+        E3["Statistical Placebo & Permutation Tests"]
+        E4["Confounder & False Correlation Checks"]
+        E5[("THE MORGUE\nSemantic Graveyard of Dead Hypotheses\n(Prevents Repeating Failures)")]
+        E1 --> E2 & E3 & E4
+        E2 & E3 & E4 -- "FALSIFIED" --> E5
+    end
+
+    subgraph S6["6. CLEANROOM EXPERIMENT SANDBOX"]
+        F1["AST Code Syntax & Security Sanitizer"]
+        F2["Weight Hashing Proof-of-Work (Detects Fake Training)"]
+        F3["Automated ML & Simulation Runner"]
+        F4["Outlier-Resistant Loss Filter"]
+        F1 --> F2 --> F3 --> F4
+    end
+
+    subgraph S7["7. EPISTEMIC REGULATOR & TRIBUNAL"]
+        G1["Epistemic Regulator (Confidence Tracking)"]
+        G2["Literature Contradiction Detector"]
+        G3["Multi-Agent Consensus Tribunal (Skeptic, Physicist, Stats)"]
+        G4["10-Dimensional Discovery Evaluation"]
+        G1 --> G2 --> G3 --> G4
+    end
+
+    subgraph S8["8. AUTONOMOUS PROVENANCE & DOSSIER EXPORT"]
+        H1["1-to-1 Code Cell Hyperlink Trace"]
+        H2["Verified Discovery Dossier (Markdown & PDF)"]
+        H1 --> H2
+    end
+
+    %% Dataflow Connections
+    A5 --> C1
+    B3 -- "Suggested Novel Links" --> C2
+    C2 --> D1
+    D1 -- "PASS: Valid Physics" --> E1
+    D1 -- "FAIL: Impossible Physics" --> E5
+    E2 & E3 & E4 -- "SURVIVES: Strong Hypothesis" --> F1
+    F4 --> G1
+    G4 -- "Verified Discovery" --> H1
+    G4 -- "Rejected by Tribunal" --> E5
+    H2 --> B1
+```
+
+---
+
+## 2. System Architecture Schematic
 
 ```
-                     ┌───────────────────────────────────────────────┐
-                     │            SCIENTIFIC OBJECTIVE               │
-                     └───────────────────────┬───────────────────────┘
-                                             │
-                                             ▼
-                     ┌───────────────────────────────────────────────┐
-                     │         HYPOTHESIS GENERATION ENGINE          │
-                     │  - Frontier LLM (Hypothesis Proposer)         │
-                     │  - Literature Context & GNN Intuition Oracle  │
-                     └───────────────────────┬───────────────────────┘
-                                             │
-                                             ▼
-                     ┌───────────────────────────────────────────────┐
-                     │        DETERMINISTIC VERIFICATION CAGE        │
-                     │  - Stoichiometry & Charge Balance Engines     │
-                     │  - Crystal Symmetry & Space Group Checks      │
-                     │  - Dimensional Analysis & Boundary Gates      │
-                     │  - AST Syntax & Sandbox Sanitization          │
-                     └───────┬───────────────────────────────┬───────┘
-                             │ PASS                          │ FAIL
-                             ▼                               ▼
-     ┌───────────────────────────────────────────┐    ┌──────────────────────┐
-     │           RED-TEAM FALSIFICATION          │    │      THE MORGUE      │
-     │  - Adversarial Challenger Swarm           │    │  - Semantic Kill-    │
-     │  - Permutation & Placebo Stress Tests     │    │    Chain Memory      │
-     │  - Out-of-Family Generalization           │    │  - Prevents Cyclic   │
-     └───────┬───────────────────────────┬───────┘    │    Rediscovery       │
-             │ SURVIVES                  │ FALSIFIED  └──────────────────────┘
-             ▼                           └───────────────────▲
-     ┌───────────────────────────────────────────┐           │
-     │        CLEANROOM EXPERIMENT EXECUTION     │           │
-     │  - Sandboxed Python / Metal Simulation    │           │
-     │  - Inferential Statistics & Power Checks  │           │
-     │  - Cohen's d & Welch-Z Significance       │───────────┘
-     └───────────────────────┬───────────────────┘
-                             │ VERIFIED DISCOVERY
-                             ▼
-     ┌───────────────────────────────────────────┐
-     │            CAUSAL WORLD MODEL             │
-     │  - SQLite WAL Grounded Knowledge Graph    │
-     │  - GNN Link Prediction Embedding Space    │
-     │  - Autonomous Discovery Dossier Export    │
-     └───────────────────────────────────────────┘
+========================================================================================================
+                                      ULTRON ARCHITECTURAL SCHEMATIC
+========================================================================================================
+
+ [ SCIENTIFIC RESEARCH OBJECTIVE ]
+                 │
+                 ▼
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ 1. ORCHESTRATION & TASK DECOMPOSITION                                                              │
+ │  ├── Global Scheduler: Manages API limits with automatic traffic backoff to prevent timeouts       │
+ │  ├── Task Decomposer: Splits big research questions into small atomic subtasks                     │
+ │  ├── Temperature Scheduler: Starts with high creative exploration, cools to precise execution      │
+ │  └── Anti-Rot Context Compactor: Purges terminal noise and error logs, keeping memory sharp       │
+ └───────────────────────────────────┬────────────────────────────────────────────────────────────────┘
+                                     │
+                                     ▼
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ 2. CAUSAL WORLD MODEL & GNN INTUITION ORACLE                                                       │
+ │  ├── SQLite WAL Knowledge Graph: Stores 15,000+ grounded facts, paper citations, and molecules      │
+ │  ├── Causal Engine: Tracks cause-and-effect relationships between variables                        │
+ │  └── GNN Intuition Oracle: Neural network trained on the graph to link distant, disconnected papers│
+ └───────────────────┬────────────────────────────────────────────────────────────▲───────────────────┘
+                     │ High-Novelty Candidate Links                               │ Verified Discoveries
+                     ▼                                                            │
+ ┌────────────────────────────────────────────────────────────────────────┐       │
+ │ 3. COGNITIVE DUAL-STREAM SWARM                                         │       │
+ │  ├── Literature Scholar Agent: Reads papers from arXiv, PubMed, PDB    │       │
+ │  └── Hypothesis Generator: Formulates testable, formal hypotheses      │       │
+ └───────────────────┬────────────────────────────────────────────────────┘       │
+                     │ Candidate Hypotheses                                       │
+                     ▼                                                            │
+ ┌────────────────────────────────────────────────────────────────────────┐       │
+ │ 4. DETERMINISTIC VERIFICATION CAGE (Pure Python, Zero LLM)             │       │
+ │  ├── Stoichiometry & Valence Balance: Kills impossible chemical bonds  │       │
+ │  ├── Thermodynamic Stability: Checks if materials decompose into rust  │       │
+ │  ├── Space-Group Symmetry: Ensures 3D crystals obey Euclidean geometry │       │
+ │  ├── Physical Units Checker: Enforces dimensional consistency          │       │
+ │  └── Molecular Structure Filters: Eliminates false-positive assay data │       │
+ └─────────┬────────────────────────────────────────────────────┬─────────┘       │
+           │ PASS (Valid Physics)                               │ FAIL (Fake Physics)
+           ▼                                                    ▼                 │
+ ┌──────────────────────────────────────────────────┐   ┌───────────────────────┐ │
+ │ 5. ADVERSARIAL RED-TEAM SWARM & THE MORGUE       │   │ THE MORGUE            │ │
+ │  ├── Prosecutor Agent: Actively attacks the claim│   │ (Semantic Graveyard)  │ │
+ │  ├── Parameter Stress Tests: Finds edge-case bugs│   │ ├── Stored in vector  │ │
+ │  ├── Placebo Permutations: Tests vs random data  ├──►│ │   and graph memory  │ │
+ │  └── Confounder Checks: Catches fake correlations│   │ └── Stops system from │ │
+ └─────────┬────────────────────────────────────────┘   │     repeating failures│ │
+           │ SURVIVES (Passed All Attacks)              └───────────────▲───────┘ │
+           ▼                                                            │         │
+ ┌──────────────────────────────────────────────────────────────────┐   │         │
+ │ 6. CLEANROOM EXPERIMENT SANDBOX                                  │   │         │
+ │  ├── AST Code Sanitizer: Analyzes code structure before running  │   │         │
+ │  ├── Weight Hashing Proof-of-Work: Catches faked training loops  │   │         │
+ │  ├── Automated ML & Simulation: Runs real Python experiment code │   │         │
+ │  └── Outlier-Resistant Loss: Drops bad data points automatically │   │         │
+ └─────────┬────────────────────────────────────────────────────────┘   │         │
+           │ Real Experiment Results & Telemetry                        │         │
+           ▼                                                            │         │
+ ┌──────────────────────────────────────────────────────────────────┐   │         │
+ │ 7. EPISTEMIC REGULATION & CONSENSUS TRIBUNAL                     │   │         │
+ │  ├── Confidence Tracker: Demands more evidence as certainty rises│   │         │
+ │  ├── Contradiction Detector: Catches conflicts with past papers  ├───┘ (Reject)│
+ │  ├── 5-Judge Tribunal: Consensus vote by specialized reviewers   │             │
+ │  └── 10-Dimensional Scorer: Grades novelty, rigor, and impact    │             │
+ └─────────┬────────────────────────────────────────────────────────┘             │
+           │ VERIFIED DISCOVERY                                                   │
+           ▼                                                                      │
+ ┌────────────────────────────────────────────────────────────────────────────────┴───────────────────┐
+ │ 8. AUTONOMOUS PROVENANCE & DISCOVERY DOSSIER EXPORT                                                │
+ │  ├── Code-to-Claim Traceability: Every conclusion hyperlinks directly to the notebook code cell   │
+ │  ├── Full Automated Dossier: Compiles clean Markdown, Jupyter notebook, and PDF reports           │
+ │  └── Persistent Commit: Saves new verified facts back into the World Model for the next campaign   │
+ └────────────────────────────────────────────────────────────────────────────────────────────────────┘
+========================================================================================================
 ```
 
 ---
 
-## 1. The 4-Tier Swarm Architecture
+## 3. How the 8 Subsystems Work (In Plain English)
 
-ULTRON distributes cognitive and verification labor across four specialized agent tiers:
+### 1. Orchestration & Task Decomposition
+Takes a large, open-ended scientific problem (e.g., *"Find stabilizing mutations at the viral spike interface"*) and breaks it down into small, atomic subtasks. A global scheduler manages worker agents, automatically backing off traffic if API rate limits hit, and smoothly transitions from creative brainstorming at the start to strict precision during experiment runs.
 
-### Tier 1: Executive Orchestrator (`Ultron-Core`)
-* Manages the global scientific state machine and campaign timeline.
-* Regulates context window allocation and enforces **Anti-Rot Context Compaction** to eliminate hydration drift and memory saturation during 16+ hour campaigns.
-* Schedules parallel worker tasks using an isolated concurrency queue.
+### 2. Causal World Model & GNN Intuition Oracle
+All facts, paper summaries, chemical formulas, and test results are stored in an SQLite graph database. A Graph Neural Network (GNN) continuously learns from this knowledge graph to spot non-obvious connections between papers in completely different fields. This allows ULTRON to propose hypotheses that humans wouldn't think to connect.
 
-### Tier 2: Scholar-Prosecutor Dual Stream
-* **The Scholar**: Ingests scientific literature (arXiv, PubMed, PDB, Materials Project), extracts empirical facts, and proposes formal mathematical hypotheses.
-* **The Prosecutor (Red Team)**: Aggressively designs counter-experiments, searches for confounders, and attempts to mathematically destroy the Scholar's hypothesis.
+### 3. Cognitive Dual-Stream Swarm
+Two opposing agent streams work in parallel:
+* **The Scholar**: Gathers literature, extracts real experimental data, and writes formal hypotheses.
+* **The Prosecutor (Red Team)**: A hostile adversarial agent whose sole job is to prove the Scholar's hypothesis wrong.
 
-### Tier 3: CodeEngineer & Simulation Runner
-* Synthesizes isolated execution code in Python / C++ for molecular dynamics, biophysical calculations, and crystal graph evaluations.
-* All generated code passes through an **Abstract Syntax Tree (AST) Security Sanitizer** before executing inside a locked-down Metal / Apple Silicon sandbox.
+### 4. Deterministic Verification Cage
+Before any experiment code is generated, the candidate hypothesis must pass through hardcoded Python math and physics checks. If a formula violates charge balance, proposes an unstable crystal structure, or breaks conservation laws, it is killed instantly. Zero tokens and zero compute are wasted on impossible science.
 
-### Tier 4: Epistemic Scorer & Dossier Compiler
-* Computes rigorous inferential statistics (Permutation tests, Welch-Z scores, Cohen's $d$, 95% BCa bootstrap confidence intervals).
-* Generates publication-ready discovery dossiers with full cryptographic provenance.
+### 5. Adversarial Red-Team Swarm & The Morgue
+Hypotheses that pass basic physics are aggressively stress-tested:
+* **Perturbation attacks**: Tests whether small changes in parameters break the entire result.
+* **Placebo tests**: Shuffles dataset labels 1,000+ times to make sure the result isn't just random luck.
+* **The Morgue**: Any idea that fails is permanently logged into a semantic graveyard so the system never wastes time re-testing dead ends in future cycles.
 
----
+### 6. Cleanroom Experiment Sandbox
+When simulation or machine learning code is written:
+* **AST Security Check**: Inspects the code syntax tree to prevent system errors or memory leaks before execution.
+* **Weight Hashing Proof-of-Work**: Checks the internal weights of ML models before and after training. If the weights didn't change, the model faked the training loop, and the run is rejected.
+* **Outlier Filtering**: Drops corrupt data points so noise doesn't ruin the experiment.
 
-## 2. Deterministic Verification Engines
+### 7. Epistemic Regulation & Consensus Tribunal
+Evaluates the final experimental results through a 5-judge panel of simulated peer reviewers (including a Statistician, Physicist, and Domain Skeptic). Contradictions with established literature are flagged immediately, and the hypothesis must win a consensus vote to pass.
 
-Before any hypothesis reaches an experiment or simulation, it must pass through hard mathematical gates implemented in pure Python:
-
-1. **Stoichiometric & Valence Balance**: Checks charge neutrality, oxidation states, and coordination numbers.
-2. **Thermodynamic Boundary Checker**: Evaluates decomposition energies, convex hulls, and entropy penalties.
-3. **Dimensional Consistency Gate**: Validates that physical units cancel cleanly across all proposed equations.
-4. **Symmetry & Space-Group Validator**: Ensures proposed crystal structures satisfy 3D Euclidean space group symmetries without atomic clashes.
-5. **AST Cleanroom Gate**: Analyzes code syntax before execution to block dangerous syscalls, file system corruption, and memory leaks.
-
----
-
-## 3. Hardware Footprint & Scalability
-
-ULTRON was specifically engineered to run efficiently on resource-constrained local hardware before scaling to cloud GPU clusters:
-
-* **Baseline Development & Stress Testing**: Apple Silicon M-series Mac mini (16GB Unified Memory).
-* **Continuous Campaign Record**: **16.2 hours** uninterrupted autonomous execution on 16GB local memory.
-* **Cloud Target**: RunPod / NVIDIA H100 GPU clusters for large-scale multi-day discovery campaigns.
+### 8. Provenance & Discovery Dossier Export
+Once a hypothesis survives the entire gauntlet, ULTRON automatically compiles a complete Epistemic Discovery Dossier. Every claim is linked directly to the exact Jupyter notebook code cell that proved it, accompanied by full execution logs and verifiable data files.
