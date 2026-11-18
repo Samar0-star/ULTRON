@@ -1,0 +1,1 @@
+{"question": "Produce 5-10 representative datasets with complete metadata conforming to the schema, including synthetic or anonymized data and per-dataset metadata records (title, description, license, provenance, dates, spatial/temporal coverage, units, and checksums).", "domain": "general", "max_cycles": 24}

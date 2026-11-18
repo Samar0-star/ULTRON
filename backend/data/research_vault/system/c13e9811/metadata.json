@@ -1,0 +1,1 @@
+{"question": "Define a formal dataset package schema (schema.json) including required metadata fields, data types, versioning rules, and a companion packaging guide detailing directory layout, file naming, checksums, and transfer formats.", "domain": "general", "max_cycles": 24}

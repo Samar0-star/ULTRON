@@ -1,11 +1,22 @@
-# ULTRON Formal Hypothesis Pipeline
-from .generator import HypothesisGenerator
-from .novelty_checker import NoveltyChecker
-from .prioritizer import HypothesisPrioritizer
-from .tracker import HypothesisTracker
-from .models import Hypothesis
+"""
+Hypothesis Package for Avon-2 Deep Mode
+=========================================
+
+Provides hypothesis lifecycle management, novelty checking, and prioritization.
+"""
+
+from backend.core.hypothesis.models import (
+    Hypothesis,
+    HypothesisState,
+    NoveltyReport,
+    TestabilityReport,
+    PriorityRanking
+)
 
 __all__ = [
-    'HypothesisGenerator', 'NoveltyChecker',
-    'HypothesisPrioritizer', 'HypothesisTracker', 'Hypothesis'
+    "Hypothesis",
+    "HypothesisState",
+    "NoveltyReport",
+    "TestabilityReport",
+    "PriorityRanking"
 ]

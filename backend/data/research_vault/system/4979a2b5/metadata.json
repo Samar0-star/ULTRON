@@ -1,0 +1,1 @@
+{"question": "Curate 5-10 representative datasets (synthetic or open-access) and produce a packaged artifact per dataset: data file, metadata.json, provenance, license, and a manifest; include a dataset-level package spec.", "domain": "general", "max_cycles": 24}

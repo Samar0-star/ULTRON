@@ -1,0 +1,1 @@
+{"question": "Curate a representative set of 5-10 datasets (synthetic or open sources) with metadata; define dataset package format; establish representative test cases; create mapping templates to reference ontologies and units.", "domain": "general", "max_cycles": 24}

@@ -1,0 +1,1 @@
+{"question": "Design a synthetic data generation workflow and initial phase-boundary estimation plan; specify parameter ranges, data schemas, metrics (e.g., boundary uncertainty), and deliver a high-level pseudo-code or notebook skeleton.", "domain": "general", "max_cycles": 24}

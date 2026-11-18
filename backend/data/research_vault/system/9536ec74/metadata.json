@@ -1,0 +1,1 @@
+{"question": "Develop a suite of test cases and lightweight validation scripts to verify packaging completeness (required files and checksums), metadata conformance to the schema, and accuracy of ontology/unit mappings; provide an automated test runner.", "domain": "general", "max_cycles": 24}

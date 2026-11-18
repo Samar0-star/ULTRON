@@ -1,0 +1,1 @@
+{"question": "Annotate each study with the extracted fields; perform data cleaning, ensure MECE coverage, and flag missing or conflicting annotations.", "domain": "general", "max_cycles": 24}

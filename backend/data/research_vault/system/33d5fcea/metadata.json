@@ -1,0 +1,1 @@
+{"question": "Run doc_reader_agent to extract structured data from the 50 papers: claimed Tc (including upper bounds), synthesis methods, sample form (powder, bulk, ceramic), experimental conditions, and replication status.", "domain": "general", "max_cycles": 24}

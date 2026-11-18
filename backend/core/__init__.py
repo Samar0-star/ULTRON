@@ -1,14 +1,38 @@
-# ULTRON Core Reasoning & Models
-from .world_model import WorldModel, Fact, Conflict, HyperEdge, TemporalFact, CausalLink, get_world_model
-from .meta_reasoning import MetaReasoningLayer, CognitiveMode, StrategyState
-from .context_compressor import ContextCompressor
-from .convergence_engine import EpistemicConvergenceEngine, ConvergenceMetrics, StoppingDecision
-from .discovery_rigor import CorrelationChecker
-from .epistemic_dossier import EpistemicDossierGenerator, generate_discovery_dossier
+"""
+ULTRON BEAST Core Components
+=============================
+
+Core infrastructure for GODZILLA-tier autonomous research:
+- Message bus for agent communication
+- Task decomposition
+- World model for shared knowledge (CHROMADB + HYPERGRAPH!)
+- Result merging
+- Fallback management
+- Context compression (20:1 ratio for token efficiency)
+"""
+
+from .message_bus import MessageBus, Message, MessageType, get_message_bus
+from .task_decomposer import NeuralFractalizer, SubTask
+from backend.core.world_model import WorldModel, Fact, Conflict
+from .result_merger import ResultMerger, MergeResult
+from .fallback_manager import FallbackManager, get_fallback_manager, ProviderStatus
+from .context_compressor import (
+    ContextCompressor,
+    CompressedContext,
+    get_context_compressor,
+    compress_task,
+    compress_cycle,
+    compress_mission
+)
 
 __all__ = [
-    'WorldModel', 'Fact', 'Conflict', 'HyperEdge', 'TemporalFact', 'CausalLink', 'get_world_model',
-    'MetaReasoningLayer', 'CognitiveMode', 'StrategyState',
-    'ContextCompressor', 'EpistemicConvergenceEngine', 'ConvergenceMetrics', 'StoppingDecision',
-    'CorrelationChecker', 'EpistemicDossierGenerator', 'generate_discovery_dossier'
+    'MessageBus', 'Message', 'MessageType', 'get_message_bus',
+    'NeuralFractalizer', 'SubTask',
+    'WorldModel', 'Fact', 'Conflict',
+    'ResultMerger', 'MergeResult',
+    'FallbackManager', 'get_fallback_manager', 'ProviderStatus',
+    # Ultra-Upgrade: Context Compression
+    'ContextCompressor', 'CompressedContext', 'get_context_compressor',
+    'compress_task', 'compress_cycle', 'compress_mission'
 ]
+

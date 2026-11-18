@@ -1,0 +1,17 @@
+**/.env*
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/*.db
+**/*.sqlite3
+**/*.log
+.git
+.gitignore
+.vscode
+.idea
+results/
+data/users/*/sessions/*/
+backend/logs/
+*.bak
+*.tmp
