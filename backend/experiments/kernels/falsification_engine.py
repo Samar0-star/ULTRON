@@ -43,7 +43,11 @@ from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, List, Optional, Tuple
 from enum import Enum
 from abc import ABC, abstractmethod
-from backend.llm_manager import run_llm_async, HYPOTHESIS_VALIDATION_MODEL
+try:
+    from backend.llm_manager import run_llm_async, HYPOTHESIS_VALIDATION_MODEL
+except ImportError:
+    run_llm_async = None
+    HYPOTHESIS_VALIDATION_MODEL = "default"
 
 logger = logging.getLogger("svel.falsification")
 

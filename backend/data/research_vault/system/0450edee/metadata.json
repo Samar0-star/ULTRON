@@ -1,1 +1,0 @@
-{"question": "Draft a minimal skeleton reconciliation workflow: include data mapping to reference ontologies, unit and scale harmonization rules, semantic alignment, missing data handling, and basic QA checks; define provenance, version-control schemas, and conflict-resolution policies; specify artifact schemas and directory structure.", "domain": "general", "max_cycles": 24}

@@ -1,8 +1,7 @@
 """
-Execution Module for Avon-2 Deep Mode
+Execution & Statistical Analysis Module
 =======================================
-
-Provides code execution, statistical analysis, and experiment management.
+Provides statistical validation and empirical hypothesis testing.
 """
 
 from backend.core.execution.statistics import (
@@ -10,15 +9,9 @@ from backend.core.execution.statistics import (
     run_statistical_test,
     summarize_results
 )
-from backend.execution.sandbox import (
-    GodModeSandbox,
-    SandboxProvider
-)
 
 __all__ = [
     "StatisticalValidator",
     "run_statistical_test",
-    "summarize_results",
-    "GodModeSandbox",
-    "SandboxProvider"
+    "summarize_results"
 ]

@@ -1,1 +1,0 @@
-{"question": "Define dataset curation scope: identify dataset categories (synthetic/open-source), target domains, required metadata fields, units, licensing, provenance, and a MECE packaging standard; produce a minimal metadata schema.", "domain": "general", "max_cycles": 24}

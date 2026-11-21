@@ -1,1 +1,0 @@
-{"question": "Apply deep_paper_reader to the literature corpus to extract per-study metadata (synthesis_approach, sample_form, measurement_technique, claimed_replication_status, provenance) and append it to the dataset.", "domain": "general", "max_cycles": 24}

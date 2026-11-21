@@ -1,1 +1,0 @@
-{"question": "Outline a skeleton reconciliation workflow for cross-study inconsistencies, detailing data harmonization steps, provenance capture at each stage, version control, conflict-resolution rules, and artifacts to be produced (harmonized datasets, provenance logs, reconciliation decisions).", "domain": "general", "max_cycles": 24}

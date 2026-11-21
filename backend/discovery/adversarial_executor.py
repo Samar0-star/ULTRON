@@ -22,8 +22,12 @@ import time
 import traceback
 import re
 
-from backend.experiments.templates import find_applicable_templates
-from backend.experiments.templates.base import TemplateCustomizationParams
+try:
+    from backend.experiments.templates import find_applicable_templates
+    from backend.experiments.templates.base import TemplateCustomizationParams
+except ImportError:
+    find_applicable_templates = None
+    TemplateCustomizationParams = None
 
 # Import Tools
 try:

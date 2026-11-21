@@ -1,1 +1,0 @@
-{"question": "Prototype: implement a lightweight Python script to generate small synthetic datasets and compute initial phase-boundary estimates; run on a limited parameter grid; summarize results and uncertainties.", "domain": "general", "max_cycles": 24}

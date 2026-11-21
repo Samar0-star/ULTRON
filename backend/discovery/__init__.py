@@ -1,6 +1,4 @@
-# Discovery Module - The SVEL Killer
-# With 5 Upgrades: Temporal Survival, Orthogonal Attacks, Failure Patterns, 
-# Survivor Amplification, Discovery Rate Governance
+# SVEL Discovery & Reality Gates
 
 from backend.discovery.assumption_graph import (
     AssumptionGraph,
@@ -19,23 +17,9 @@ from backend.discovery.reality_constraints import (
     ConstraintType,
     REALITY_CONSTRAINTS
 )
-from backend.discovery.discovery_orchestrator import (
-    DiscoverySession,
-    get_discovery_session,
-    reset_discovery_session,
-    DISCOVERY_HARD_CAPS,
-    # UPGRADE 1: Temporal Survival
-    SurvivorTier,
-    # UPGRADE 2: Orthogonal Attacks
-    AttackAxis
-)
-from backend.discovery.failure_patterns import (
-    # UPGRADE 3: Failure Pattern Memory
-    FailurePatternIndex,
-    FailureCategory,
-    FailureRecord,
-    get_failure_index,
-    reset_failure_index
+
+from backend.discovery.adversarial_executor import (
+    AdversarialExecutor
 )
 
 __all__ = [
@@ -46,7 +30,6 @@ __all__ = [
     "DiscrepancyType",
     "DiscrepancyReport",
     "get_assumption_graph",
-
     "reset_assumption_graph",
     # Reality Constraints
     "check_reality_constraints",
@@ -54,20 +37,8 @@ __all__ = [
     "DerivationGate",
     "ConstraintType",
     "REALITY_CONSTRAINTS",
-    # Discovery Session
-    "DiscoverySession",
-    "get_discovery_session",
-    "reset_discovery_session",
-    "DISCOVERY_HARD_CAPS",
-    # UPGRADE 1: Temporal Survival
-    "SurvivorTier",
-    # UPGRADE 2: Orthogonal Attacks
-    "AttackAxis",
-    # UPGRADE 3: Failure Patterns
-    "FailurePatternIndex",
-    "FailureCategory",
-    "FailureRecord",
-    "get_failure_index",
-    "reset_failure_index"
+    # Adversarial Testing
+    "AdversarialExecutor",
 ]
+
 

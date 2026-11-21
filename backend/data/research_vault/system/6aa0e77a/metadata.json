@@ -1,1 +1,0 @@
-{"question": "Design a structured replication dataset schema including fields: study_id, authors, year, journal, sample_form, synthesis_approach, measurement_technique, replication_status, provenance, version, and data lineage metadata.", "domain": "general", "max_cycles": 24}
