@@ -116,7 +116,7 @@ class DataResolver:
 
         _internal_db_prefixes = (
             "world_model", "knowledge_graph", "result_store", "sessions",
-            "ultron", "persistence", "morgue", "checkpoint", "memory_store",
+            "svel", "persistence", "morgue", "checkpoint", "memory_store",
             "telemetry", "provenance", "action_log", "audit_log", "event_log"
         )
         _internal_db_tables = {
@@ -131,7 +131,7 @@ class DataResolver:
             fname_lower_for_check = f.name.lower()
             if not any(fname_lower_for_check.endswith(ext) for ext in valid_exts):
                 continue
-            # 1. Block internal ULTRON state databases by filename prefix or exact match
+            # 1. Block internal SVEL state databases by filename prefix or exact match
             if any(fname_lower_for_check.startswith(pfx) for pfx in _internal_db_prefixes):
                 continue
             if any(k in fname_lower_for_check for k in ("world_model", "knowledge_graph", "result_store", "provenance", "action_log")):
@@ -151,7 +151,7 @@ class DataResolver:
                         continue
             except Exception:
                 continue
-            # 3. Block SQLite files whose schema consists exclusively of ULTRON internal state tables
+            # 3. Block SQLite files whose schema consists exclusively of SVEL internal state tables
             schema_tokens = self._introspect_schema_tokens(f)
             if f.suffix.lower() in (".db", ".sqlite", ".sqlite3"):
                 try:
@@ -264,7 +264,7 @@ class DataResolver:
             "import sqlite3",
             "import os, sys",
             "",
-            "MAX_PRELOAD_ROWS = int(os.environ.get('ULTRON_MAX_PRELOAD_ROWS', '500000'))",
+            "MAX_PRELOAD_ROWS = int(os.environ.get('SVEL_MAX_PRELOAD_ROWS', '500000'))",
             "",
             "def connect_verified_db(path):",
             "    if not path or not os.path.exists(str(path)): return None",

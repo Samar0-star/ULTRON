@@ -1,4 +1,4 @@
-# Discovery Module - The Ultron Killer
+# Discovery Module - The SVEL Killer
 # With 5 Upgrades: Temporal Survival, Orthogonal Attacks, Failure Patterns, 
 # Survivor Amplification, Discovery Rate Governance
 

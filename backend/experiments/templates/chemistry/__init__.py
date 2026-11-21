@@ -1,4 +1,4 @@
-from .molecular_docking import UltronApexChemistryTemplate
+from .molecular_docking import SVELApexChemistryTemplate
 from .additional_templates import (
     ReactionKineticsTemplate,
     QuantumChemistryTemplate,
@@ -7,7 +7,7 @@ from .additional_templates import (
 )
 
 __all__ = [
-    "UltronApexChemistryTemplate",
+    "SVELApexChemistryTemplate",
     "ReactionKineticsTemplate",
     "QuantumChemistryTemplate",
     "SpectroscopyTemplate",

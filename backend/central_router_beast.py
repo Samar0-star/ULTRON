@@ -1,6 +1,6 @@
 # backend/central_router_beast.py
 """
-CentralRouterBeast  consolidated router with Graph & UltronMeta Orchestrator integration.
+CentralRouterBeast  consolidated router with Graph & SVELMeta Orchestrator integration.
 TITAN V68.14: Final Sovereignty Edition.
 
 UPGRADES:
@@ -29,7 +29,7 @@ import inspect
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Callable, Union, Tuple
 
-logger = logging.getLogger("ultron.central_router_beast")
+logger = logging.getLogger("svel.central_router_beast")
 logger.setLevel(os.getenv("BEAST_LOG_LEVEL", "INFO"))
 
 logger.debug("CentralRouterBeast: Standard library imports done.")
@@ -44,7 +44,7 @@ try:
     CORE_AVAILABLE = True
     logger.debug("CentralRouterBeast: Core modules imported.")
 except ImportError as e:
-    logger.critical(f" [INTEGRITY CRITICAL] Core ULTRON modules missing: {e}")
+    logger.critical(f" [INTEGRITY CRITICAL] Core SVEL modules missing: {e}")
     if os.getenv("GODZILLA_MODE", "false").lower() == "true":
         raise RuntimeError("GODZILLA_MODE requires core infrastructure. Aborting.")
     CORE_AVAILABLE = False
@@ -104,7 +104,7 @@ def _log_research_data(query: str, result: Any,
 from backend.llm_manager import LLMManager
 
 # Trace logging setup
-TRACE_LOG_PATH = os.getenv("ULTRON_TRACE_LOG", "logs/ultron_traces.jsonl")
+TRACE_LOG_PATH = os.getenv("SVEL_TRACE_LOG", "logs/svel_traces.jsonl")
 
 def _write_trace(trace: Dict[str, Any]):
     try:
@@ -290,7 +290,7 @@ class CentralRouterBeast:
                 _log_research_data(query, res, kwargs.get("mission_id"), kwargs.get("session_id"), explicit_agent)
                 return {"agent": explicit_agent, "result": res, "trace": trace.to_dict()}
 
-            # 2. ULTRON CORE REDIRECT
+            # 2. SVEL CORE REDIRECT
             ctx = kwargs.get("context") or {}
             in_session = (
                 kwargs.get("orchestrator") == "DeepResearch"
@@ -300,7 +300,7 @@ class CentralRouterBeast:
                 logger.info(" ROUTER DECISION: Redirecting to ResearchAgent (Main Entry)")
                 res = await self.execute_agent_async("research_agent", query, {**kwargs, "deep_mode": True}, trace)
                 _log_research_data(query, res, kwargs.get("mission_id"), kwargs.get("session_id"), "research_agent")
-                return {"engine": "ultron_engine", "result": res, "trace": trace.to_dict()}
+                return {"engine": "svel_engine", "result": res, "trace": trace.to_dict()}
 
             # 3. SELECT SOVEREIGN COMPONENT
             detection = await self.select_component_via_llm(query, kwargs.get("context"))

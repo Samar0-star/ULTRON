@@ -1,5 +1,5 @@
 """
-ULTRON BEAST Validation Module
+SVEL BEAST Validation Module
 ===============================
 
 3-LAYER ULTRA-VALIDATION SYSTEM:

@@ -2,7 +2,7 @@
 """
 Database Models
 ================
-SQLAlchemy models for ULTRON Production.
+SQLAlchemy models for SVEL Production.
 """
 
 from backend.models.execution import Base, ResearchLog, ResearchExecution, TraceStep, Artifact

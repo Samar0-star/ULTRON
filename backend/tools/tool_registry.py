@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 """
-ULTRON Sovereign Tool Registry
+SVEL Sovereign Tool Registry
 - Defensive imports and instantiated tool bindings.
 - Registers real technical tools (Literature Search, Full-Text PDF Extraction, Code Sandbox, Table/Image Processing).
 """

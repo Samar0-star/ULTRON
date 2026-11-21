@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 """
 ================================================================================
-ULTRON: THE DETERMINISTIC VERIFICATION CAGE (LIVE PRODUCTION INTEGRATION)
+SVEL: THE DETERMINISTIC VERIFICATION CAGE (LIVE PRODUCTION INTEGRATION)
 ================================================================================
 Autonomous Pre-Experiment Popperian Falsification Engine.
 
-Directly imports and executes the production verification modules from ULTRON:
+Directly imports and executes the production verification modules from SVEL:
   1. backend.discovery.reality_constraints (Pre-literature physical invariant gates)
   2. backend.experiments.kernels.physics_kernels (Thermodynamic & Benettin chaos kernels)
   3. backend.experiments.kernels.falsification_engine (Adversarial Popperian attack suite)
@@ -27,7 +27,7 @@ repo_root = os.path.dirname(os.path.abspath(__file__))
 if repo_root not in sys.path:
     sys.path.insert(0, repo_root)
 
-# Import REAL ULTRON backend modules
+# Import REAL SVEL backend modules
 from backend.discovery.reality_constraints import (
     check_reality_constraints,
     DerivationGate,
@@ -58,7 +58,7 @@ C_RESET  = "\033[0m"
 
 async def run_live_verification_harness():
     print(f"\n{C_BOLD}{'=' * 80}{C_RESET}")
-    print(f"{C_BOLD}{C_CYAN}   ULTRON : DETERMINISTIC VERIFICATION CAGE & REALITY GATES{C_RESET}")
+    print(f"{C_BOLD}{C_CYAN}   SVEL : DETERMINISTIC VERIFICATION CAGE & REALITY GATES{C_RESET}")
     print(f"{C_DIM}   Live Execution of backend/discovery & backend/experiments/kernels{C_RESET}")
     print(f"{C_BOLD}{'=' * 80}{C_RESET}")
     print(f"Backend Modules Linked:")
@@ -68,7 +68,7 @@ async def run_live_verification_harness():
     print(f"  • {C_CYAN}backend.epistemic.the_morgue.TheMorgue{C_RESET}")
     print(f"{'-' * 80}\n")
 
-    morgue = TheMorgue(storage_path="/tmp/ultron_demo_morgue.jsonl")
+    morgue = TheMorgue(storage_path="/tmp/svel_demo_morgue.jsonl")
 
     # Sample LLM-Generated Candidate Hypotheses
     test_cases = [

@@ -1,5 +1,5 @@
 """
-ULTRON AI Scientist Startup Checks
+SVEL AI Scientist Startup Checks
 Run this script to validate backend health before starting the server.
 """
 import sys

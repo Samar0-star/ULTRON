@@ -1,8 +1,8 @@
-# ULTRON Live Mission Telemetry & Execution Journals
+# SVEL Live Mission Telemetry & Execution Journals
 
-This directory contains unedited sample telemetry journals recorded during real, autonomous discovery runs of the **ULTRON Autonomous AI Scientist** running locally on an Apple Silicon M-series machine (16GB unified memory).
+This directory contains unedited sample telemetry journals recorded during real, autonomous discovery runs of the **SVEL Autonomous AI Scientist** running locally on an Apple Silicon M-series machine (16GB unified memory).
 
-Each `.jsonl` file represents a continuous, machine-generated event log recorded by ULTRON's `beast_tracer.py` and persistent SQLite WAL execution engine.
+Each `.jsonl` file represents a continuous, machine-generated event log recorded by SVEL's `beast_tracer.py` and persistent SQLite WAL execution engine.
 
 ---
 
@@ -54,4 +54,4 @@ Every event line is a self-contained JSON object with the following standardized
 
 ---
 
-> To view the raw stream directly, open the [Raw JSONL link](https://raw.githubusercontent.com/Samar0-star/ULTRON/main/telemetry/live_superconduct_mission_journal.sample.jsonl).
+> To view the raw stream directly, open the [Raw JSONL link](https://raw.githubusercontent.com/Samar0-star/SVEL/main/telemetry/live_superconduct_mission_journal.sample.jsonl).

@@ -1,4 +1,4 @@
-# ULTRON Physics & Falsification Kernels
+# SVEL Physics & Falsification Kernels
 from .physics_kernels import (
     BenettinKernel,
     NumericalIntegrator,

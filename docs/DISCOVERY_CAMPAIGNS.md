@@ -1,6 +1,6 @@
 # Autonomous Discovery Campaigns & Execution Telemetry
 
-ULTRON is engineered for continuous 12 to 24-hour autonomous scientific campaigns.
+SVEL is engineered for continuous 12 to 24-hour autonomous scientific campaigns.
 
 ---
 

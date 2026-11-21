@@ -63,7 +63,7 @@ class ReaperResult:
 
 class EpistemicReaper:
     """
-    The Epistemic Reaper: Unifies ULTRON's statistical rigor with Ultron's clash logic.
+    The Epistemic Reaper: Unifies SVEL's statistical rigor with SVEL's clash logic.
     Stalks the WorldModel for empirical contradictions.
     """
     
@@ -73,7 +73,7 @@ class EpistemicReaper:
 
     def audit_statistical_clash(self, new_stats: Dict[str, Any], existing_stats: Dict[str, Any]) -> Optional[ReaperResult]:
         """
-        Implements the high-precision port of Ultron's conflict math using Welch's t-test and Z-scores.
+        Implements the high-precision port of SVEL's conflict math using Welch's t-test and Z-scores.
         """
         import scipy.stats as stats
         

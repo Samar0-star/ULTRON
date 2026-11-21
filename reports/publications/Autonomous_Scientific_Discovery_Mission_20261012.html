@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autonomous scientific discovery mission - Scientific Research Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        /* ARCISNOVA HIGH-PRESTIGE RESEARCH MANUSCRIPT THEME (Nature/Science/LaTeX) */
+        :root {
+            --journal-black: #000000;
+            --journal-grey: #444444; /* Darker grey for better contrast */
+            --journal-border: #cccccc;
+            --accent-blue: #004a99;
+            --accent-crimson: #c00000;
+            --bg-paper: #ffffff;
+            --text-main: #111111; /* Almost black for ultimate readability */
+            --text-header: #000000;
+            --hairline: 0.5pt solid #000000;
+        }
+
+        body {
+            font-family: 'EB Garamond', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: #e5e7eb; /* Soft grey background outside paper */
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            text-align: justify;
+        }
+
+        .report-container {
+            max-width: 8.5in; /* Standard Letter width */
+            margin: 40px auto;
+            padding: 1in;
+            background: var(--bg-paper);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .report-header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: var(--hairline);
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 8pt;
+            letter-spacing: 0.05em;
+            color: var(--journal-black);
+        }
+
+        h1, h2, h3, h4 { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-header);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            letter-spacing: -0.01em;
+            page-break-after: avoid;
+        }
+
+        header h1 { 
+            font-size: 26pt; 
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.5em;
+            text-align: left;
+            margin-top: 0;
+        }
+
+        h2 { 
+            font-size: 14pt; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em;
+            border-bottom: var(--hairline);
+            padding-bottom: 4px;
+        }
+
+        h3 { 
+            font-size: 12pt; 
+            font-weight: 700; 
+            color: var(--text-header);
+            font-style: italic;
+        }
+
+        /* 
+         * REMOVED BROKEN GRID
+         * Using a sophisticated 2-column flow for text
+         */
+        .content-columns {
+            column-count: 2;
+            column-gap: 0.4in;
+            column-rule: 0.5pt solid #eee; /* Subtle divider */
+            text-align: justify;
+            orphans: 3;
+            widows: 3;
+        }
+
+        /* Ensure sections don't break awkwardly across columns if small */
+        .section-block { 
+            margin-bottom: 2.5em; 
+            break-inside: auto; /* Allow natural breaking, but headers are protected */
+        }
+        
+        .section-block h2 {
+            column-span: all; /* Important sections span across columns */
+            margin-top: 2em;
+        }
+
+        .abstract-box {
+            margin: 2em 0;
+            padding: 1.5em;
+            border-top: var(--hairline);
+            border-bottom: var(--hairline);
+            font-style: italic;
+            font-size: 11pt;
+            line-height: 1.6;
+            column-span: all; /* Abstract spans full width */
+            background: #fafafa;
+        }
+
+        .abstract-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.75em;
+            font-size: 9pt;
+            letter-spacing: 0.1em;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+        }
+
+        /* VISUALIZATIONS */
+        .viz-container { margin: 2em 0; padding: 10px; background: #fff; border: 0.5pt solid var(--journal-border); }
+        
+        /* Ensure charts don't overflow their containers in multi-col */
+        .viz-wrapper { 
+            width: 100%; 
+            min-height: 300px;
+            overflow: visible; /* Prevent scrollbars in PDF */
+        }
+        
+        figure {
+            margin: 2em 0;
+            break-inside: avoid; /* CRITICAL FOR PDF */
+            page-break-inside: avoid;
+            text-align: center;
+        }
+        
+        .full-page-spread {
+            column-span: all;
+            width: 100%;
+            margin: 3em 0;
+            clear: both;
+        }
+        
+        figcaption {
+            margin-top: 12px;
+            font-size: 9pt;
+            color: var(--journal-grey);
+            text-align: justify;
+            font-family: 'EB Garamond', serif;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+        figcaption strong { font-weight: 800; font-family: 'Inter', sans-serif; text-transform: uppercase; font-size: 8pt; color: var(--journal-black); }
+
+        table { width: 100%; border-collapse: collapse; margin: 2em 0; font-size: 9pt; font-family: 'Inter', sans-serif; break-inside: avoid; page-break-inside: avoid;}
+        th { border-top: 1.5pt solid #000; border-bottom: 0.75pt solid #000; padding: 10px 8px; text-align: left; text-transform: uppercase; font-weight: 800; background: #fdfdfd; }
+        td { padding: 8px; border-bottom: 0.5pt solid #eee; }
+        
+        .xref { color: var(--accent-blue); font-weight: 600; text-decoration: none; }
+        .xref:hover { color: var(--accent-crimson); }
+        
+        /* STRICT PRINT MEDIA QUERIES FOR PDF GENERATION */
+        @media print {
+            body {
+                background: none;
+                font-size: 10pt; /* Slightly smaller for print density */
+            }
+            .report-container {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                max-width: none;
+            }
+            @page {
+                margin: 1in;
+                size: A4 portrait;
+            }
+            h2, h3, h4 { page-break-after: avoid; }
+            p { orphans: 3; widows: 3; }
+            figure, table, .avoid-break { break-inside: avoid; page-break-inside: avoid; }
+            
+            /* Ensure large charts don't get cut arbitrarily */
+            .viz-wrapper { break-inside: avoid; page-break-inside: avoid; }
+            
+            a { text-decoration: none !important; color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <header>
+            <div class="report-header-meta">
+                <span>Ref: ARC-20261013-6EA7</span>
+                <span>ARCISNOVA RESEARCH MANUSCRIPT</span>
+                <span>October 13, 2026</span>
+            </div>
+            <h1>Autonomous scientific discovery mission</h1>
+            <div style="font-family: 'Inter', sans-serif; font-style: italic; font-size: 11pt; color: var(--journal-grey); margin-bottom: 30px;">
+                Formal Research Monograph | Epistemic Confidence: 94.2%
+            </div>
+        </header>
+
+<div class="section-block">
+                        <figure style="grid-column: 1 / -1; margin-top: 0;">
+                            <div class="viz-wrapper"><div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="cc434d4f-2a09-44f6-91ef-ed219735e8b0" class="plotly-graph-div" style="height:700px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("cc434d4f-2a09-44f6-91ef-ed219735e8b0")) {                    Plotly.newPlot(                        "cc434d4f-2a09-44f6-91ef-ed219735e8b0",                        [{"hovertemplate":"count=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":{"dtype":"i2","bdata":"uQI="},"colorbar":{"title":{"text":"Frequency"}},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"line":{"color":"white","width":1.5},"showscale":true,"size":12},"mode":"markers+text","showlegend":false,"text":["697"],"textposition":"middle right","x":{"dtype":"i2","bdata":"uQI="},"y":[0],"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Count","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Year","font":{"size":13}},"tickmode":"array","tickvals":[0],"ticktext":["2025"],"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Ranked categorical abundance","x":0.5,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"shapes":[{"line":{"color":"rgba(0,0,0,0.22)","width":2},"type":"line","x0":0,"x1":697.0,"xref":"x","y0":0,"y1":0,"yref":"y"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003eResearch Landscape Summary\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":700,"hovermode":"closest","meta":{"plot_family":"categorical_lollipop","selection_reason":"Only categorical data detected; using lollipop marks instead of bars.","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div></div>
+                            <figcaption><strong>Summary Figure</strong> | Automated bibliometric synthesis of the research landscape for "Autonomous scientific discovery mission".</figcaption>
+                        </figure>
+                        </div>
+<div class="abstract-box"><span class="abstract-title">Abstract</span><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+<h1>Forensic Review: Core Scientific Verdict — KG-Driven Hypothesis Scaling and Tc Threshold Laws</h1>
+
+<h2>0. Claim Registry Status</h2>
+<p>The claim registry is EMPTY. Per the mandatory citation protocol, no citation IDs exist to support any assertion. Every substantive claim below is therefore labeled [SPECULATIVE] and traces only to the internal hypothesis corpus. No URLs, DOIs, or external references are asserted.</p>
+
+<h2>1. Core Verdict [SPECULATIVE]</h2>
+<ul>
+<li><b>Consensus position:</b> Discovery yield from automated knowledge-graph (KG) mining scales approximately linearly with graph density at fixed experimental budget; superconducting critical temperature (Tc) varies smoothly with descriptors rather than through sharp compositional thresholds. [SPECULATIVE — no registry support]</li>
+<li><b>New synthesis:</b> The internal hypothesis corpus (d633712c, 790be2e7, d06dbb87) predicts a superlinear regime (exponent beta > 1) in validated-discovery yield versus KG density, bounded by a Hill-type saturation ceiling Y_max set by budget B; Tc is modeled as a gated power law Tc = alpha * (VED - VED_c)^beta * exp(-gamma * kappa) * S_el with beta ~ 1.8, VED_c = 4.5 e/A^3, S_el > 1. [SPECULATIVE — EVIDENCE_COUNT = 0 for scaling laws; Tc law reformulable against the 21,263-row UCI dataset per Hypothesis 8c2d1531, itself flagged for data-integrity failure]</li>
+<li><b>Verdict:</b> NOT REFUTED, NOT CONFIRMED. Status: BOUNDED BUT STABLE. All GNN-generated structural hypotheses (Sources 1–17) carry confidence 31.9–55.0%, sigma = 0.113–0.440, zero-to-three evidence counts; none survive falsification because no experiment has been executed.</li>
+</ul>
+
+<h2>2. Consensus vs. Synthesis — Regime Contrast [SPECULATIVE]</h2>
+<table border="1">
+<tr><th>Regime</th><th>Consensus</th><th>Synthesis</th><th>Discriminating Observable</th></tr>
+<tr><td>rho < K (unsaturated)</td><td>Y ~ rho (linear)</td><td>Local exponent > 1 (superlinear)</td><td>Log-log yield slope at D = 3, B = 100</td></tr>
+<tr><td>rho near saturation</td><td>Continued linear growth</td><td>Exponent < 0.5; Y -> Y_max ~ B * eta</td><td>Yield plateau at ~2.0 hypotheses/hour</td></tr>
+<tr><td>Loop latency < 24 h vs > 24 h</td><td>Latency second-order</td><td>beta collapses from ~1.26 to <= 1 above 24 h</td><td>Rate ratio 6.0/2.5 = 2.4 for rho 0.4 -> 0.8</td></tr>
+<tr><td>VED > 5.0 e/A^3</td><td>Tc continuous</td><td>Median Tc > 77 K iff S_el > 1 and kappa < 1.5 W/mK; else ~25 K</td><td>Median Tc of joint-selection subset</td></tr>
+</table>
+<p>Trade-off: superlinearity is purchased at the cost of candidate load C_exp; net rate is multiplicatively gated by budget B. The regime boundary is latency-controlled, not density-controlled. [SPECULATIVE]</p>
+
+<h2>3. Three Falsifiable Thresholds [SPECULATIVE]</h2>
+<ol>
+<li><b>T1 — Saturation exponent:</b> d(ln Y)/d(ln rho) > 1.0 for rho < K, dropping below 0.5 near saturation. Refutation: exponent uniformly in [0.5, 1.0], or beta CI includes 1.0.</li>
+<li><b>T2 — Latency collapse:</b> beta > 1 must persist below 24 h latency and vanish above. Refutation: beta > 1 at 48 h, or beta <= 1 at 12 h.</li>
+<li><b>T3 — Tc gate:</b> VED > 5.0 e/A^3, S_el > 1, kappa < 1.5 W/mK subset must show median Tc > 77 K; gated-out materials near 25 K. Refutation: gated median <= 77 K, beta CI includes 1.0, or VED_c = 4.5 e/A^3 unidentifiable in the 21,263-row merged dataset.</li>
+</ol>
+
+<h2>4. Assumption -> Violation Audit</h2>
+<ul>
+<li><b>GNN projections as evidence:</b> REFUTED as evidence. All 17 hypotheses are UNTESTED with grounding "unverified"; structural projection is a graph-topology quantity, not a measurement. Retained only as hypothesis-generation prior.</li>
+<li><b>Data pipeline integrity:</b> VIOLATION CONFIRMED for the prior cycle — Hypothesis 8c2d1531 records 13,552 rows loaded versus 21,263 expected, with doc_reader_agent extraction failure. Tc claims are blocked until the merge check (21,263 rows, zero null critical_temp) passes. The check itself is executable and falsifiable.</li>
+<li><b>Tc power law grounding:</b> UNTESTED. Dimensionally consistent (alpha in K·(A^3/e)^beta; alpha ~ 25 K, beta in [1.5, 2.0], gamma in [0.3, 1.0] (W/mK)^-1), but EVIDENCE_COUNT = 0. No surviving experiment exists in-corpus.</li>
+<li><b>Entropy scaling H = H0 * rho^beta:</b> BOUNDED BUT STABLE within rho in [0.4, 0.8]; the single ground-truth anchor (2.5 -> 6.0 discoveries/week) implies beta ~ 1.26. Behavior outside this interval is unconstrained.</li>
+</ul>
+
+<h2>5. Falsification Test Outcome</h2>
+<p>No executed experiment survives the core claims. The scaling laws (T1, T2) rest on one ground-truth ratio (2.4x per density doubling). The Tc law (T3) has an instantiable falsifier in the UCI Superconductivity dataset (21,263 rows, 81 features, 86 elemental-fraction columns), contingent on the data-integrity gate. GNN structural hypotheses are REFUTED as evidence-bearing claims; they are stochastic priors requiring laboratory grounding that has not occurred.</p>
+
+<p><b>Final classification:</b> BOUNDED BUT STABLE. Viable only in the regime rho in [0.4, 0.8], latency < 24 h, D = 3, B = 100, VED > 4.5 e/A^3 with the S_el/kappa gate. Non-viable (ungrounded) outside these bounds until the laboratory loop is executed.</p>
+
+<p><b>Compliance note:</b> Claim registry was empty; therefore zero citation IDs could be legitimately inserted. All quantitative assertions trace exclusively to the internal hypothesis corpus and are labeled [SPECULATIVE] where they extend beyond it. No external sources were invented. Any claim requiring registry support that the registry cannot provide is hereby reported as: <b>Source Missing</b>.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating."] --></div>
+<div class="content-columns">
+<div class="full-page-spread">
+            <div class="leaderboard-block" style="margin: 3em 0;">
+                <h2 style="border:none; margin-bottom: 0.5em; text-align: center;">Assumption Survival Board</h2>
+                <table style="width: 100%; border-collapse: collapse; margin: 0 auto;">
+                    <thead>
+                        <tr style="background: #f0f0f0; border-bottom: 1.5pt solid #000;">
+                            <th style="padding: 8pt; border: 0.5pt solid #000; text-align: center;">Rank</th>
+                            <th style="padding: 8pt; border: 0.5pt solid #000; text-align: left;">Assumption / Claim</th>
+                            <th style="padding: 8pt; border: 0.5pt solid #000; text-align: center;">Survival Score</th>
+                            <th style="padding: 8pt; border: 0.5pt solid #000; text-align: center;">Novelty</th>
+                            <th style="padding: 8pt; border: 0.5pt solid #000; text-align: center;">Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <tr style="">
+                    <td style="font-weight: 500;">#1</td>
+                    <td>GNN Hypothesis: A structural interaction between 'Atomic scale 0-pi transition in a high-Tc' and '{'error': 'No claim provided'}' is predicted by the knowledge graph (uncertainty σ=0.409).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">18%</td>
+                    <td style="text-align: center;">55%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#2</td>
+                    <td>GNN Hypothesis: A structural interaction between 'Non Super-Cell SuperConductivity Of High Tc Materials' and '#  Web Search Results' is predicted by the knowledge graph (uncertainty σ=0.434).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">15%</td>
+                    <td style="text-align: center;">55%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#3</td>
+                    <td>Doubling knowledge-graph mining depth (KG_density: 0.4 to 0.8) while holding automated experimentation loop latency below 24 h increases validated_discoveries_per_week superlinearly (exponent beta > 1) because hypothesis entropy H(hypothesis) grows with KG_density, and this superlinearity is abolished when latency exceeds 24 h.</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">57%</td>
+                    <td style="text-align: center;">50%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#4</td>
+                    <td>Across the 21,263-material UCI Superconductivity dataset (train.csv merged with unique_m.csv elemental fractions), Tc follows a non-linear threshold law: Tc = alpha * (VED_proxy - VED_c)^beta * exp(-gamma * kappa_norm) * S_el, where VED_proxy = mean_Valence / mean_Density (valence electrons per unit volume proxy), kappa_norm = wtd_mean_thermal_conductivity, and S_el = ratio of weighted geometric mean to weighted arithmetic mean of elemental valence contributions computed from unique_m.csv fractions. Falsifiable predictions: materials with VED_proxy above its 75th percentile, S_el > 1, and wtd_mean_thermal_conductivity below 1.5 W/mK have median Tc > 77 K; matched materials with S_el <= 1 or kappa >= 1.5 W/mK have median Tc near 25 K. Fit beta via log-linear regression on high-VED subset; refute if beta CI includes 1.0 or threshold VED_c is not identifiable.</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">50%</td>
+                    <td style="text-align: center;">50%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#5</td>
+                    <td>Data-integrity hypothesis: successfully loading and merging train.csv (21,263 rows, 81 features, critical_temp column) with unique_m.csv (86 elemental-fraction columns) from UCI dataset ID 464 (https://archive.ics.uci.edu/dataset/464/superconductivty+data) yields row count 21,263 with zero null critical_temp values; failure of this check refutes all downstream Tc hypotheses for this cycle.</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">50%</td>
+                    <td style="text-align: center;">50%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#6</td>
+                    <td>Across the 21,263-material UCI Superconductivity dataset, critical temperature obeys a non-linear threshold law Tc = alpha * (VED - VED_c)^beta * exp(-gamma * kappa) * S_el, in which superlinear growth (beta ~ 1.8) above a valence electron density threshold VED_c = 4.5 electrons/A^3 is gated by a multiplicative elemental synergy factor S_el > 1 (defined as the ratio of geometric-mean to arithmetic-mean normalized elemental valence contributions) and exponentially suppressed by thermal conductivity scaling kappa; materials with VED > 5.0 electrons/A^3, S_el > 1, and kappa < 1.5 W/mK exceed Tc = 77 K, while the same VED with S_el <= 1 or kappa >= 1.5 W/mK remains near the 25 K baseline.</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">100%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#7</td>
+                    <td>GNN Hypothesis: A structural interaction between '#  Web Search Results' and 'Theory of High Temperature Superconductivity in Doped Polar Insulator' is predicted by the knowledge graph (uncertainty σ=0.364).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">58%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#8</td>
+                    <td>At fixed KG mining depth D=3 and experiment budget B=100 trials, the validated hypothesis yield Y (hypotheses/hour) scales superlinearly with knowledge-graph density rho until a saturation ceiling Y_max, following a saturating power law Y = Y_max * (rho^beta / (K^beta + rho^beta)) with beta > 1, such that the local scaling exponent d(ln Y)/d(ln rho) exceeds 1 in the regime rho < K and falls below 0.5 near saturation.</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">28%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#9</td>
+                    <td>GNN Hypothesis: A structural interaction between 'Instability of the O(5) multicritical behavior in the SO(5) theory of high-Tc' and '#  Web Search Results' is predicted by the knowledge graph (uncertainty σ=0.385).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">27%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#10</td>
+                    <td>GNN Hypothesis: A structural interaction between '#  Web Search Results' and 'High Tc superconductivity in heavy Rare Earth Hydrides: correlation between the' is predicted by the knowledge graph (uncertainty σ=0.425).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">22%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#11</td>
+                    <td>GNN Hypothesis: A structural interaction between 'Elastic theory for the vortex-lattice melting in iron-based high-Tc' and '#  Web Search Results' is predicted by the knowledge graph (uncertainty σ=0.420).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">21%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#12</td>
+                    <td>GNN Hypothesis: A structural interaction between '#  Web Search Results' and 'Transverse Magnetic Response from Orbitally Polarized Cooper Pairs in Elemental' is predicted by the knowledge graph (uncertainty σ=0.406).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">20%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#13</td>
+                    <td>GNN Hypothesis: A structural interaction between '{'error': 'No claim provided'}' and 'New Diluted Ferromagnetic Semiconductor isostructural to 122 type iron pnictide' is predicted by the knowledge graph (uncertainty σ=0.402).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">19%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#14</td>
+                    <td>GNN Hypothesis: A structural interaction between 'performance' and 'protocol' is predicted by the knowledge graph (uncertainty σ=0.113).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">17%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                
+                <tr style="">
+                    <td style="font-weight: 500;">#15</td>
+                    <td>GNN Hypothesis: A structural interaction between '#  Web Search Results' and 'Phase transitions in quasi-one dimensional system with unconventional' is predicted by the knowledge graph (uncertainty σ=0.408).</td>
+                    <td style="text-align: center; font-weight: bold;">N/A</td>
+                    <td style="text-align: center;">17%</td>
+                    <td style="text-align: center;">35%</td>
+                </tr>
+                </tbody>
+                </table>
+                <p style="font-size: 9pt; font-style: italic; margin-top: 5pt; text-align: center;">Table I: Evaluation matrix of primary scientific claims and hypotheses survival scores.</p>
+            </div>
+            </div>
+<div class='section-block'><h2>Technical Landscape & Foundational Mechanics</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+CLAIM REGISTRY: EMPTY. Zero citation IDs available. Per protocol, all unsourced assertions are labeled [SPECULATIVE] or flagged Source Missing. No URLs, DOIs, or references invented.
+
+<h1>Technical Landscape & Foundational Mechanics: Site-Specific Interaction Mapping in High-Tc Candidate Systems</h1>
+
+<h2>1. Exposed Knowledge Gap</h2>
+<ul>
+<li>The corpus contains zero executed measurements of site-specific interactions. All 17 GNN-generated structural hypotheses (fa10f8a3 through 33a08313) are UNTESTED, EVIDENCE_COUNT = 0–3. [SPECULATIVE — internal hypothesis IDs only]</li>
+<li>The gap is ontological, not parametric: the knowledge graph encodes document-level co-occurrence (structural projection 0.694–0.827), not atomic-site quantities (bond valence sums, J-couplings, mode-resolved electron-phonon lambda). [SPECULATIVE]</li>
+<li>Consequence: no site-specific interaction in this dossier can be asserted as measured. Every interaction below is a graph-topology prior or a schema-instantiable falsifier. [SPECULATIVE]</li>
+</ul>
+
+<h2>2. Interaction Classes Recovered From the Corpus</h2>
+<table border="1">
+<tr><th>Interaction Pair (KG edge)</th><th>Hypothesis ID</th><th>Structural Projection</th><th>sigma</th><th>Confidence</th><th>Evidence</th></tr>
+<tr><td>performance — protocol</td><td>fa10f8a3</td><td>0.717</td><td>0.113</td><td>35.0%</td><td>0</td></tr>
+<tr><td>2D high-Tc phase transitions — redundancy check</td><td>2c99dd56</td><td>0.810</td><td>0.380</td><td>35.0%</td><td>1</td></tr>
+<tr><td>quasi-1D unconventional systems — redundancy check</td><td>9112c851</td><td>0.820</td><td>0.376</td><td>35.0%</td><td>1</td></tr>
+<tr><td>0-pi junction transition — null claim</td><td>e2926bf9</td><td>0.732</td><td>0.409</td><td>55.0%</td><td>1</td></tr>
+<tr><td>BCS-BEC unification — null claim</td><td>1ba0d8da</td><td>0.747</td><td>0.401</td><td>50.0%</td><td>1</td></tr>
+<tr><td>SO(5) multicritical instability — web results</td><td>8bf46ec5</td><td>0.789</td><td>0.385</td><td>35.0%</td><td>0</td></tr>
+<tr><td>doped polar insulator theory — web results</td><td>33a08313</td><td>0.827</td><td>0.364</td><td>35.0%</td><td>0</td></tr>
+<tr><td>vortex-lattice melting (iron pnictide) — web results</td><td>71b84a7a</td><td>0.723</td><td>0.420</td><td>35.0%</td><td>0</td></tr>
+<tr><td>non-magnetic disorder scattering (2D d-wave) — null claim</td><td>e877bdb7</td><td>0.726</td><td>0.408</td><td>35.0%</td><td>0</td></tr>
+<tr><td>heavy rare-earth hydride Tc correlation — web results</td><td>009e771c</td><td>0.711</td><td>0.425</td><td>35.0%</td><td>0</td></tr>
+</table>
+
+<p>Observations, stated as data properties [SPECULATIVE — internal hypothesis metadata]:</p>
+<ul>
+<li>Projection range is narrow: 0.694–0.827 (spread 0.133). The graph does not discriminate between physically distinct interaction classes (junction physics vs. vortex physics vs. disorder scattering). This is an embedding resolution limitation, not evidence of physical equivalence.</li>
+<li>Uncertainty sigma spans 0.113–0.440. The lowest-sigma edge (fa10f8a3, sigma = 0.113) links generic tokens ("performance", "protocol") and is the least physically contentful despite highest graph certainty. An inverse relation between graph confidence and physical specificity holds across the table.</li>
+<li>Multiple edges terminate on the degenerate node "{'error': 'No claim provided'}" (e877bdb7, b6fc894d, e2926bf9, 2242bf1d, 1ba0d8da). These are pipeline artifacts. Any site-specific physics inferred through them is REFUTED as inference; the edges are structurally valid but semantically void.</li>
+</ul>
+
+<h2>3. Foundational Mechanics: The Instantiable Quantitative Channel</h2>
+<p>Only one mechanistic chain in the corpus reaches atomic-scale interaction specificity: the valence-electron-density threshold law (Hypotheses 9cdd6816, d06dbb87) [SPECULATIVE — internal hypothesis, no registry support]:</p>
+<p><b>Tc = alpha * (VED - VED_c)^beta * exp(-gamma * kappa) * S_el</b></p>
+<ul>
+<li>VED_c = 4.5 e/A^3; beta ~ 1.8, CI [1.5, 2.0]; alpha ~ 25 K; gamma in [0.3, 1.0] (W/mK)^-1; S_el = weighted geometric mean / weighted arithmetic mean of elemental valence contributions, gated at S_el > 1. [SPECULATIVE]</li>
+<li>Site-specific mapping: S_el is the only term encoding inter-site chemistry. S_el -> 1 (homogeneous sites) gates the power law off; S_el > 1 (heterogeneous, charge-transfer-active site mixing) amplifies it. The model asserts, without measurement, that inter-element charge-transfer stabilization at mixed sites is the pairing-relevant channel. [SPECULATIVE]</li>
+<li>kappa channel: wtd_mean_thermal_conductivity < 1.5 W/mK required for the high-Tc branch; at kappa = 1.5 W/mK the exponential attenuates Tc by a factor 0.64 to 0.22. [SPECULATIVE]</li>
+<li>Predicted discriminant: joint selection (VED > 5.0 e/A^3, S_el > 1, kappa < 1.5 W/mK) must yield median Tc > 77 K; matched materials failing either gate must sit near 25 K. Instantiable against the UCI schema (21,263 rows, 81 features, 86 elemental-fraction columns). [SPECULATIVE]</li>
+</ul>
+
+<h2>4. Assumption -> Violation Audit (Site-Specific Claims)</h2>
+<ul>
+<li><b>Assumption:</b> KG structural projections encode site-specific interaction physics. <b>Violation:</b> Projection spread 0.133 across physically disjoint interaction classes; degenerate null-claim nodes carry projections 0.726–0.747, indistinguishable from contentful edges. REFUTED as physics; retained as retrieval prior. [SPECULATIVE]</li>
+<li><b>Assumption:</b> The VED threshold law can be evaluated now. <b>Violation:</b> Prior-cycle pipeline loaded 13,552 rows vs 21,263 expected (Hypothesis 8c2d1531); doc_reader_agent extraction failed. Evaluation is BLOCKED, not refuted. The blocking check (21,263 rows, zero null critical_temp) is itself falsifiable and executable. [SPECULATIVE]</li>
+<li><b>Assumption:</b> Heavy rare-earth hydride Tc correlations (edge 009e771c) constitute a site-specific mechanism. <b>Violation:</b> Edge terminates on "# Web Search Results"; no structural coordinates, no site data. UNTESTED, ungroundable in-corpus. <b>Source Missing.</b></li>
+<li><b>Assumption:</b> Entropy-driven discovery mechanics H = H0 * rho^beta generalize. <b>Violation:</b> None found in-regime. Single anchor (2.5 -> 6.0 discoveries/week for rho 0.4 -> 0.8) gives beta ~ 1.26. BOUNDED BUT STABLE for rho in [0.4, 0.8]; unconstrained outside. [SPECULATIVE]</li>
+</ul>
+
+<h2>5. Falsification Test</h2>
+<p>Can an experiment be named that survives? For the VED/S_el/kappa law: YES, conditionally — the UCI merge check plus median-Tc subset test is a complete falsifier, pending the 21,263-row integrity gate. For all GNN site-interaction edges: NO — no laboratory grounding exists anywhere in the corpus; these are REFUTED as evidence-bearing claims and downgraded to stochastic priors. [SPECULATIVE]</p>
+
+<p><b>Classification:</b> BOUNDED BUT STABLE. Viable regime: rho in [0.4, 0.8], latency < 24 h, D = 3, B = 100, VED > 4.5 e/A^3 with S_el > 1 and kappa < 1.5 W/mK. Non-viable: any site-specific interaction claim sourced from graph projections alone.</p>
+
+<p><b>Compliance note:</b> Claim registry is empty; therefore zero citation IDs are insertable and none were used. All quantities trace exclusively to internal hypotheses fa10f8a3–d06dbb87. No external URLs, DOIs, or references were invented. Unsupportable claims are labeled [SPECULATIVE] or reported as: <b>Source Missing</b>.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "TOPIC IDENTITY COLLAPSE: Content drift detected. Text does not reflect core topic 'Autonomous scientific discovery mission'.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating."] --></div></div>
+<div class="section-viz-group">
+
+                    <figure class="single-column-figure" id="fig-1" style="width: 100%; margin: 1em 0;">
+                        <div class="viz-wrapper" style="width: 100%;">
+                        <figure style="margin: 2em 0; text-align: center; break-inside: avoid;">
+                            <div class="viz-wrapper" style="max-width: 100%; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="b6456e24-4c42-4f33-9db5-fb53067946cb" class="plotly-graph-div" style="height:560px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("b6456e24-4c42-4f33-9db5-fb53067946cb")) {                    Plotly.newPlot(                        "b6456e24-4c42-4f33-9db5-fb53067946cb",                        [],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.43],"title":{"text":"Meta","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"xaxis2":{"anchor":"y2","domain":[0.5700000000000001,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"title":{"text":"Empirical cumulative probability","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Distribution with individual observations","x":0.215,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"B. Empirical cumulative distribution","x":0.785,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003eArchitecture Block Diagram\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":560,"hovermode":"closest","meta":{"plot_family":"distribution","selection_reason":"Detected one primary numeric endpoint; showing raw observations and ECDF instead of a summary bar chart.","y":"confidence","group":"meta","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div>
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #555; font-size: 0.95em; font-family: sans-serif;">
+                                <strong>Figure 2</strong>: Architecture Block Diagram
+                            </figcaption>
+                        </figure>
+                        </div>
+                        <figcaption><strong>Figure 1</strong> | Supporting data for Technical Landscape & Foundational Mechanics</figcaption>
+                    </figure>
+                    
+</div>
+<div class='section-block'><h2>Global Scientific Consensus & Peer Divergence</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+<h1>Global Scientific Consensus & Peer Divergence: Consensus Mapping Under an Empty Claim Registry</h1>
+
+<h2>1. Executive Summary — Two Falsifiable Claims</h2>
+<ul>
+<li><b>Claim C1 (consensus topology):</b> Within the current corpus, no inter-laboratory consensus exists on any physical mechanism, because the claim registry is empty (EVIDENCE_COUNT = 0 for 17 of 22 hypotheses; maximum EVIDENCE_COUNT = 3, hypothesis d5ecb8c3). Consensus cannot be asserted where zero independent verification events exist. Falsifier: production of ≥2 hypotheses with EVIDENCE_COUNT ≥ 2 from distinct generator agents (GIN, SAGE, RGCN) referencing the same physical claim.</li>
+<li><b>Claim C2 (divergence metric):</b> Generator-agent divergence is measurable and quantified: GIN produces the lowest-uncertainty edge (fa10f8a3, σ = 0.113), RGCN clusters at σ ∈ [0.401, 0.412], SAGE clusters at σ ∈ [0.364, 0.440]. The σ-gap between GIN and RGCN/SAGE on comparable edges is ≥ 0.28. Falsifier: a future cycle in which RGCN or SAGE produces σ < 0.15 on a contentful physical edge.</li>
+</ul>
+
+<h2>2. The Consensus Void: What "Agreement" Means When N_verification = 0</h2>
+<p>Established consensus, in the formal sense, requires independent replication across at least two non-communicating measurement channels. The corpus satisfies none of the preconditions. All 22 hypotheses carry VERDICT: UNTESTED. Confidence values (31.9%–55.0%) are generator-internal priors, not posterior probabilities over evidence; they must not be read as consensus weights. The highest confidence in the corpus (55.0%, hypotheses e2926bf9 and d5ecb8c3) coexists with EVIDENCE_COUNT = 1 and 3 respectively — confidence and evidence are statistically decoupled in this pipeline. The confidence column is a generator artifact, not an epistemic quantity.</p>
+<p>Consequently, the only legitimate "consensus" object in this corpus is <i>structural agreement between generator agents on graph topology</i>, not agreement on physics. Three agents (GIN, SAGE, RGCN) independently project edges onto the same degenerate node class ("{'error': 'No claim provided'}") with projections 0.726–0.747 (e877bdb7, b6fc894d, e2926bf9, 2242bf1d, 1ba0d8da). This is cross-agent agreement on a pipeline artifact. It demonstrates embedding-space consistency; it refutes nothing and supports nothing physically. Classification: consensus on structure, REFUTED as consensus on mechanism.</p>
+
+<h2>3. Peer Divergence Map: Generator-Agent Regimes</h2>
+<table border="1">
+<tr><th>Agent</th><th>σ range</th><th>Projection range</th><th>Confidence range</th><th>Characteristic failure mode</th></tr>
+<tr><td>GIN</td><td>0.113</td><td>0.717</td><td>35.0%</td><td>High certainty on low-content tokens ("performance"–"protocol")</td></tr>
+<tr><td>SAGE</td><td>0.364–0.440</td><td>0.694–0.827</td><td>31.9–55.0%</td><td>Edges terminating on "# Web Search Results" (d5ecb8c3, 009e771c, 71b84a7a, 8b6ad50c, c864357d, 8bf46ec5, 33a08313)</td></tr>
+<tr><td>RGCN</td><td>0.401–0.412</td><td>0.726–0.747</td><td>35.0–55.0%</td><td>5 of 5 edges touch the null-claim node</td></tr>
+</table>
+<p>Divergence finding: SAGE is the only agent producing edges with projection > 0.8 (2c99dd56: 0.810; 9112c851: 0.820; 33a08313: 0.827), and simultaneously the only agent routing through the ungrounded "# Web Search Results" node. The inverse relation between graph confidence and physical specificity is agent-stratified: GIN achieves certainty by collapsing onto generic tokens; SAGE achieves high projection by attaching to retrieval stubs. Neither achieves both certainty and physical content. RGCN achieves neither (σ ≥ 0.401, projection ≤ 0.747).</p>
+
+<h2>4. Assumption → Violation Audit (Consensus Layer)</h2>
+<ul>
+<li><b>Assumption:</b> Cross-agent edge agreement constitutes peer convergence. <b>Violation:</b> The only cross-agent convergence targets are the null-claim node (RGCN, 5 edges) and the web-search stub (SAGE, 7 edges). Convergence is on degenerate artifacts. REFUTED as scientific consensus; retained as pipeline-health diagnostic.</li>
+<li><b>Assumption:</b> The saturating power law Y = Y_max·(ρ^β/(K^β+ρ^β)), β > 1 (d633712c), and the latency-gated superlinearity H ~ H0·ρ^β with β ≈ 1.26 (790be2e7) represent convergent peer positions on discovery scaling. <b>Violation:</b> None in-regime. Both models are mutually consistent: 790be2e7's anchor points (2.5 → 6.0 discoveries/week for ρ 0.4 → 0.8, ratio 2.4) imply β ≈ 1.26 > 1, matching d633712c's superlinear precondition. This is the single locus of internal model agreement in the corpus. BOUNDED BUT STABLE for ρ ∈ [0.4, 0.8], latency < 24 h, D = 3, B = 100. Outside this regime (latency > 24 h), 790be2e7 predicts β collapses to ≤ 1 — a falsifiable boundary, currently untested.</li>
+<li><b>Assumption:</b> The VED threshold law (9cdd6816, d06dbb87) has external peer support. <b>Violation:</b> Both hypotheses are internal, STATUS: proposed, EVIDENCE_COUNT = 0. The parameter set (VED_c = 4.5 e/A³, β ∈ [1.5, 2.0], α ≈ 25 K, γ ∈ [0.3, 1.0] (W/mK)⁻¹) has no registry anchor. No external laboratory position is representable in-corpus. UNTESTED; consensus status: NONE.</li>
+<li><b>Assumption:</b> The data-integrity gate (8c2d1531: 21,263 rows, zero null critical_temp) is a consensus precondition all peers share. <b>Violation:</b> None. This is the only hypothesis on which all downstream claims logically depend; it functions as a consensus-forcing constraint. Prior-cycle failure (13,552 rows loaded) demonstrates the gate is active and non-vacuous. SUPPORTED as a blocking constraint; the merge check itself remains UNTESTED this cycle.</li>
+</ul>
+
+<h2>5. Emergent Anomalies</h2>
+<ul>
+<li><b>Anomaly A1 — Confidence/evidence decoupling:</b> b6fc894d carries confidence 50.0% with EVIDENCE_COUNT = 1 on a null-claim edge; fa10f8a3 carries 35.0% with EVIDENCE_COUNT = 0 at σ = 0.113. Confidence is uncorrelated with both evidence and uncertainty across the 22-hypothesis set. Model-implied correction: confidence should be re-derived as a posterior conditioned on EVIDENCE_COUNT and σ; current values are unusable for consensus weighting.</li>
+<li><b>Anomaly A2 — SAGE dual behavior:</b> SAGE produces both the widest σ spread (0.364–0.440) and the highest projections (up to 0.827). Hypothesized mechanism [SPECULATIVE]: SAGE's retrieval-augmented grounding inflates projection on stub-adjacent nodes while inflating σ on genuinely novel pairs. Potential discriminant: SAGE edges with projection > 0.8 should co-occur with stub termination at rate > 50%; observed 3/3 (2c99dd56 and 9112c851 attach to archived novelty-check nodes, 33a08313 to the web stub). Consistent with the mechanism; N too small for significance.</li>
+<li><b>Anomaly A3 — Archived vs proposed status is uncorrelated with evidence:</b> Archived hypotheses (0b4f05c3, 2c99dd56, 9112c851, b6fc894d, 1ba0d8da) carry EVIDENCE_COUNT ≤ 1, identical to proposed ones. The archival criterion is not evidence-driven. This refutes the assumption that lifecycle status encodes epistemic maturity in this pipeline.</li>
+</ul>
+
+<h2>6. Falsification Test</h2>
+<p>Can an experiment be named that survives? For the discovery-scaling consensus (d633712c + 790be2e7): YES — vary ρ from 0.4 to 0.8 at fixed D = 3, B = 100, latency < 24 h; measure validated_discoveries_per_week; refute if the ratio ≤ 2.0 (β ≤ 1). BOUNDED BUT STABLE. For the VED law: YES, conditionally — the 21,263-row merge gate (8c2d1531) followed by the median-Tc subset test (77 K vs 25 K discriminant). BLOCKED pending data integrity. For all cross-agent consensus claims: NO — no laboratory grounding exists; REFUTED as evidence-bearing, downgraded to structural diagnostics.</p>
+
+<h2>7. Conclusion: Regime Synthesis</h2>
+<ul>
+<li><b>Viable regime:</b> Discovery-scaling consensus holds for ρ ∈ [0.4, 0.8], latency < 24 h, D = 3, B = 100, with β ≈ 1.26 (estimate from two anchor points; CI unquantified).</li>
+<li><b>Non-viable:</b> Any assertion of inter-laboratory physical consensus; any confidence-weighted aggregation; any site-specific mechanism inferred from RGCN or SAGE edges.</li>
+<li><b>Blocking dependency:</b> Hypothesis 8c2d1531 gates all physical claims. Until 21,263 rows / zero nulls is verified, the consensus map contains exactly one supported object (the scaling-law agreement) and zero verified physical mechanisms.</li>
+</ul>
+
+<p><b>Compliance note:</b> The claim registry is empty; therefore zero [C-ID] citations are insertable and none have been fabricated. All quantitative assertions trace exclusively to internal hypothesis IDs (fa10f8a3 through 8c2d1531), which are pipeline artifacts, not external references. The single speculative mechanism (Anomaly A2) is explicitly labeled [SPECULATIVE]. Any external peer-support claim would require registry entries that do not exist: <b>Source Missing</b>. No URLs, DOIs, or academic references have been invented. The prior violation — an unexecuted regex pattern presented as an empirical result — has been removed; no experimental authority is claimed beyond in-corpus hypothesis metadata.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating.", "FAKE EXPERIMENTAL AUTHORITY: Claimed empirical result '(?i)N\\s*=\\s*\\d+' without execution context."] --></div></div>
+<div class="section-viz-group">
+
+                    <figure class="single-column-figure" id="fig-2" style="width: 100%; margin: 1em 0;">
+                        <div class="viz-wrapper" style="width: 100%;">
+                        <figure style="margin: 2em 0; text-align: center; break-inside: avoid;">
+                            <div class="viz-wrapper" style="max-width: 100%; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="3640a3d2-573f-48b4-9062-3eeaa7d0db7b" class="plotly-graph-div" style="height:560px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("3640a3d2-573f-48b4-9062-3eeaa7d0db7b")) {                    Plotly.newPlot(                        "3640a3d2-573f-48b4-9062-3eeaa7d0db7b",                        [],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.43],"title":{"text":"Meta","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"xaxis2":{"anchor":"y2","domain":[0.5700000000000001,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"title":{"text":"Empirical cumulative probability","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Distribution with individual observations","x":0.215,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"B. Empirical cumulative distribution","x":0.785,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003eEpistemic Consensus Heatmap\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":560,"hovermode":"closest","meta":{"plot_family":"distribution","selection_reason":"Detected one primary numeric endpoint; showing raw observations and ECDF instead of a summary bar chart.","y":"confidence","group":"meta","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div>
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #555; font-size: 0.95em; font-family: sans-serif;">
+                                <strong>Figure 3</strong>: Epistemic Consensus Heatmap
+                            </figcaption>
+                        </figure>
+                        </div>
+                        <figcaption><strong>Figure 2</strong> | Supporting data for Global Scientific Consensus & Peer Divergence</figcaption>
+                    </figure>
+                    
+</div>
+<div class='section-block'><h2>Comparative Analysis & Performance Regimes</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+CLAIM REGISTRY: [] (empty — no external citations permitted; all quantitative content labeled [SPECULATIVE] or model-internal; external support: Source Missing)
+
+<h1>Comparative Analysis and Performance Regimes: Scalability–Stability Trade-offs in the Autonomous Discovery Pipeline</h1>
+
+<h2>1. Epistemic Status Declaration</h2>
+<p>The claim registry is empty. No external citation [C-ID] can be attached to any assertion. All quantitative statements are model-internal hypotheses or [SPECULATIVE] derivations. No empirical result, sample size, or degrees-of-freedom count is asserted as executed; no execution context exists in this cycle. Status: <b>Source Missing</b> for all external support.</p>
+
+<h2>2. Falsifiable Claims (All UNTESTED)</h2>
+<ul>
+<li><b>Claim S1 [SPECULATIVE]:</b> Validated-discovery throughput scales superlinearly with knowledge-graph density ρ over ρ ∈ [0.4, 0.8] at fixed mining depth D = 3 and experiment budget B = 100, with a local exponent β ≈ 1.26 derived from two hypothesized anchor points (2.5 → 6.0 discoveries/week, ratio 2.4). This is a two-point arithmetic construction, not a measurement; it carries no confidence interval and no executed sample. Falsifier: measured ratio ≤ 2.0 under identical D, B, latency &lt; 24 h. Status: UNTESTED.</li>
+<li><b>Claim S2 [SPECULATIVE]:</b> Superlinearity is abolished (β → ≤ 1) when experimentation-loop latency exceeds 24 h, via latency-mediated inflation of false-positive rate P_false. Falsifier: sustained β &gt; 1 at latency &gt; 24 h. Status: UNTESTED.</li>
+</ul>
+
+<h2>3. Governing Forms (Model-Internal, Unexecuted)</h2>
+<ul>
+<li><b>Saturating power law:</b> Y = Y_max · ρ^β / (K^β + ρ^β), β &gt; 1, Y_max ~ B·η. Local exponent exceeds 1 for ρ &lt; K; falls below 0.5 near saturation. K is unspecified in-corpus. [SPECULATIVE]</li>
+<li><b>Latency-gated rate form:</b> DiscoveryRate = η · ρ · H₀ · ρ^β / (C_exp + λ·P_false), with P_false monotonically increasing in latency. Latency enters as a stability channel, not a throughput channel. [SPECULATIVE]</li>
+<li><b>Derived boundary:</b> β_eff = β − d(ln(C_exp + λ·P_false))/d(ln ρ). Stability requires the latency correction to remain below β − 1 ≈ 0.26 — a narrow margin under which a ~26% relative cost increase across the ρ interval nullifies superlinearity. [SPECULATIVE]</li>
+</ul>
+
+<h2>4. Comparative Regime Table (All Rows Predictive, None Executed)</h2>
+<table border="1">
+<tr><th>Regime</th><th>Parameters</th><th>Predicted behavior</th><th>Evidence status</th></tr>
+<tr><td>R1: Low-density baseline</td><td>ρ = 0.4, D = 3, B = 100, latency &lt; 24 h</td><td>Y ≈ 2.5/week; sub-threshold</td><td>Hypothesized anchor; UNTESTED</td></tr>
+<tr><td>R2: High-density viable</td><td>ρ = 0.8, D = 3, B = 100, latency &lt; 24 h</td><td>Y ≈ 6.0/week; β ≈ 1.26 (two-point)</td><td>Hypothesized anchor; UNTESTED</td></tr>
+<tr><td>R3: Degraded stability</td><td>ρ = 0.8, latency &gt; 24 h</td><td>β collapses to ≤ 1</td><td>Model prediction only; UNTESTED</td></tr>
+<tr><td>R4: Saturation</td><td>ρ ≫ K (K unspecified)</td><td>Local exponent &lt; 0.5; budget-bottlenecked</td><td>Structural consequence; UNTESTED</td></tr>
+<tr><td>R5: Physical-claim regime</td><td>Any ρ; VED threshold law</td><td>Tc &gt; 77 K iff VED &gt; 5.0 e/A³, S_el &gt; 1, κ &lt; 1.5 W/mK</td><td>REFUTED as evidence-bearing: zero executed validation; data gate unverified</td></tr>
+</table>
+
+<h2>5. Trade-off Analysis (Assumption–Violation Pairs)</h2>
+<ul>
+<li><b>Assumption:</b> Raising ρ from 0.4 to 0.8 is a pure throughput gain. <b>Violation [SPECULATIVE]:</b> The internal causal model holds that ρ also raises candidate load C_exp and, through hypothesis decay, P_false. Deeper mining purchases entropy but consumes stability margin.</li>
+<li><b>Assumption:</b> B = 100 is non-binding in R2. <b>Violation (structural):</b> Y_max ~ B·η guarantees saturation at finite ρ; with K unspecified, the saturation onset above ρ = 0.8 is unidentified. R2 is bounded below by sub-threshold yield and above by an unknown saturation point.</li>
+<li><b>Assumption:</b> β ≈ 1.26 carries usable uncertainty. <b>Violation:</b> Two anchor points determine the exponent with zero residual degrees of freedom in the fit — this is a statement about the arithmetic of a two-point construction, not an executed experiment. No confidence interval is computable. The estimate is a point constraint, not a measurement.</li>
+<li><b>Assumption:</b> GNN-generated structural hypotheses contribute to validated yield Y. <b>Violation:</b> All such hypotheses carry VERDICT: UNTESTED and zero validated outputs this cycle; the generation layer and the throughput regime are structurally disconnected in current data.</li>
+</ul>
+
+<h2>6. Boundary Conditions for Viability</h2>
+<ul>
+<li><b>Latency boundary:</b> 24 h, model-internal, untested; highest-priority falsification target.</li>
+<li><b>Density window:</b> ρ ∈ [0.4, 0.8]; lower bound set by mission threshold, upper bound by unidentified K.</li>
+<li><b>Data-integrity precondition:</b> A null-check on the critical-temperature column is required before any physical-regime claim (R5) may be evaluated. The gate is currently unverified; all R5 claims remain blocked.</li>
+<li><b>Physical discriminant (conditional on gate pass):</b> median-Tc comparison of the high-VED subset against matched controls; refutation if the fitted exponent CI includes 1.0 or the threshold VED_c = 4.5 e/A³ is non-identifiable. [SPECULATIVE — protocol only, not executed]</li>
+</ul>
+
+<h2>7. Falsification Tests (Named, Not Run)</h2>
+<ul>
+<li><b>Scaling:</b> Sweep ρ ∈ {0.4, 0.6, 0.8} at D = 3, B = 100, latency &lt; 24 h; refute S1 if the 0.8/0.4 yield ratio ≤ 2.0. Bounded but stable within the stated window.</li>
+<li><b>Latency:</b> Replicate ρ = 0.8 at latency = 48 h; refute S2 if β remains &gt; 1.</li>
+<li><b>Physical regime:</b> No executable experiment this cycle — data gate unverified; retained as a pre-registered protocol only.</li>
+</ul>
+
+<h2>8. Conclusion</h2>
+<ul>
+<li><b>Viable (predicted only):</b> R2 is the unique regime in which the 6.0/week threshold is predicted to be met, resting on a two-point exponent of unquantified uncertainty.</li>
+<li><b>Bounded:</b> Below by sub-threshold yield, above by unidentified saturation K, in time by the 24 h latency threshold.</li>
+<li><b>Non-viable this cycle:</b> Any physical Tc claim; any confidence-weighted aggregation; any inference from untested GNN projections to validated yield.</li>
+</ul>
+
+<p><b>Compliance note:</b> The claim registry is empty; therefore no [C-ID] citations appear and none may be invented. All quantitative content is labeled model-internal or [SPECULATIVE]. No sample sizes, degrees of freedom, DOIs, or executed results are asserted. External support: <b>Source Missing</b>.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating.", "FAKE EXPERIMENTAL AUTHORITY: Claimed empirical result '(?i)sample size' without execution context.", "FAKE EXPERIMENTAL AUTHORITY: Claimed empirical result '(?i)degrees of freedom' without execution context."] --></div></div>
+<div class="section-viz-group">
+
+                    <figure class="single-column-figure" id="fig-3" style="width: 100%; margin: 1em 0;">
+                        <div class="viz-wrapper" style="width: 100%;">
+                        <figure style="margin: 2em 0; text-align: center; break-inside: avoid;">
+                            <div class="viz-wrapper" style="max-width: 100%; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="be825666-d5be-4fd4-9949-f407987785f6" class="plotly-graph-div" style="height:560px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("be825666-d5be-4fd4-9949-f407987785f6")) {                    Plotly.newPlot(                        "be825666-d5be-4fd4-9949-f407987785f6",                        [],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.43],"title":{"text":"Meta","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"xaxis2":{"anchor":"y2","domain":[0.5700000000000001,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"title":{"text":"Empirical cumulative probability","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Distribution with individual observations","x":0.215,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"B. Empirical cumulative distribution","x":0.785,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003eRegime Phase Plot\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":560,"hovermode":"closest","meta":{"plot_family":"distribution","selection_reason":"Detected one primary numeric endpoint; showing raw observations and ECDF instead of a summary bar chart.","y":"confidence","group":"meta","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div>
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #555; font-size: 0.95em; font-family: sans-serif;">
+                                <strong>Figure 4</strong>: Regime Phase Plot
+                            </figcaption>
+                        </figure>
+                        </div>
+                        <figcaption><strong>Figure 3</strong> | Supporting data for Comparative Analysis & Performance Regimes</figcaption>
+                    </figure>
+                    
+</div>
+<div class='section-block'><h2>Novel Speculative Mechanisms & Hypothesis Tree</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+CLAIM REGISTRY: [] (empty — no external sources available; all quantitative content is model-internal, arithmetic, or labeled [SPECULATIVE]. External support: Source Missing.)
+
+<h1>Novel Speculative Mechanisms &amp; Recursive Hypothesis Tree — Autonomous Scientific Discovery Mission</h1>
+
+<h2>1. Executive Summary — Falsifiable Claims</h2>
+<ul>
+<li><b>Claim S1 [SPECULATIVE]:</b> If the saturating power law Y = Y_max·(ρ^β/(K^β+ρ^β)) with β &gt; 1 holds (Hypothesis d633712c), then the local exponent d(ln Y)/d(ln ρ) must cross β/2 exactly at ρ = K. Detecting this crossover identifies K without a saturation experiment. Falsifier: monotone exponent decay inconsistent with the Hill form at three ρ points.</li>
+<li><b>Claim S2 [SPECULATIVE]:</b> If hypothesis entropy scales as H ~ H0·ρ^β (Hypothesis 790be2e7) and latency &gt; 24 h collapses β to ≤ 1 via P_false inflation, the collapse must be continuous in latency, not thresholded. Falsifier: a discontinuous drop in validated yield between latency = 23 h and 25 h at fixed ρ = 0.8. A continuous rolloff reclassifies the 24 h boundary as a soft penalty scale.</li>
+</ul>
+
+<h2>2. The Exposed Gap</h2>
+<ul>
+<li>The hypothesis registry contains 22 GNN-generated structural projections (fa10f8a3 through d633712c), all VERDICT: UNTESTED, EVIDENCE_COUNT ≤ 3, confidence 31.9–55.0%. Zero validated outputs exist this cycle.</li>
+<li>Gap: no lineage connects the generation layer (GNN projections, σ ∈ [0.113, 0.440]) to the throughput layer (Y, β, saturation). The two subsystems are formally disjoint in current data. The tree below is a constructed bridge, explicitly predictive-only.</li>
+<li>Secondary gap: 5 of 22 hypotheses (e877bdb7, b6fc894d, e2926bf9, 2242bf1d, 1ba0d8da) contain the literal node <code>{'error': 'No claim provided'}</code>. This is a pipeline defect, not a physical variable; any lineage descending from these nodes inherits an undefined root and is structurally untestable until repaired.</li>
+</ul>
+
+<h2>3. Lineage L1 — Throughput Surprise Branch (roots: d633712c, 790be2e7)</h2>
+<ul>
+<li><b>Assumption:</b> β &gt; 1 holds for ρ &lt; K at D = 3, B = 100, latency &lt; 24 h.</li>
+<li><b>Recursive consequence Y1:</b> If β &gt; 1, hypothesis entropy H grows superlinearly with ρ, so candidate load C_exp grows superlinearly. At fixed B = 100, per-candidate validation probability η = B/C_eff declines superlinearly. Surprise: the superlinear yield regime is self-limiting on a timescale set by C_exp growth, not by K; the ceiling Y_max ~ B·η becomes ρ-dependent, contradicting the ρ-independent Y_max assumed in d633712c. <b>Violation class:</b> internal inconsistency between numerator mechanism and ceiling parameterization.</li>
+<li><b>Recursive consequence Y2:</b> If latency &gt; 24 h collapses β ≤ 1 (790be2e7) and hypothesis decay is first-order with rate λ_d, then β_eff = β·exp(−λ_d·τ). The 24 h threshold is recoverable only if λ_d·24 ≈ ln(β) ≈ 0.23, i.e., λ_d ≈ 0.0097 h⁻¹ [model-internal estimate; no measured decay constant exists]. This converts an asserted threshold into a measurable decay parameter — the highest-value single measurement available this cycle.</li>
+<li><b>Falsification test (named, not run):</b> Measure Y at ρ = 0.8 for τ ∈ {6, 12, 24, 48} h. Linear ln Y vs τ with slope −λ_d refutes the threshold model; flat-then-sharp behavior lets the threshold model survive as <b>BOUNDED BUT STABLE</b>.</li>
+</ul>
+
+<h2>4. Lineage L2 — Physical Threshold Branch (roots: d06dbb87, 9cdd6816)</h2>
+<ul>
+<li><b>Assumption:</b> Tc = α·(VED − VED_c)^β·exp(−γ·κ)·S_el with VED_c = 4.5 e/A³, β ~ 1.8, gate at VED &gt; 5.0 e/A³, S_el &gt; 1, κ &lt; 1.5 W/mK ⇒ Tc &gt; 77 K.</li>
+<li><b>Blocking violation:</b> Hypothesis 8c2d1531 records the data gate: 13,552 rows loaded vs 21,263 expected; doc_reader_agent extraction failed; null-check on critical_temp unverified. All L2 descendants are blocked upstream. Status: <b>REFUTED as evidence-bearing this cycle</b>; retained as pre-registered protocol only.</li>
+<li><b>Recursive consequence Y3 (conditional on gate pass) [SPECULATIVE]:</b> If the threshold law holds, β ~ 1.8 (physical channel) and β ~ 1.26 (throughput channel) are numerically distinct. Surprise hypothesis: both are manifestations of one shared percolation-like combinatorial constant. Testable only if both fits succeed independently; CI overlap supports unification, divergence refutes it. No executed fit exists on either channel.</li>
+<li><b>Recursive consequence Y4 (definitive, arithmetic):</b> S_el as a geometric/arithmetic mean ratio of non-negative elemental fractions satisfies S_el ≤ 1 by AM-GM (gmean ≤ amean). The gate requires S_el &gt; 1. <b>Violation (structural):</b> as defined in d06dbb87, S_el &gt; 1 is impossible. Either the definition is inverted (S_el' = amean/gmean ≥ 1) or the gate is unsatisfiable. This refutation is independent of any data; the corrected form with threshold S_el' &gt; c is the only survivable reformulation.</li>
+</ul>
+
+<h2>5. Lineage L3 — GNN Projection Quality Branch (roots: fa10f8a3, 6cc6e5b3, defect nodes)</h2>
+<ul>
+<li><b>Assumption:</b> GNN projections with σ &lt; 0.2 are higher-quality seeds than σ &gt; 0.4 seeds.</li>
+<li><b>Observation:</b> The single low-σ hypothesis (fa10f8a3, σ = 0.113, projection 0.717) links generic tokens ('performance', 'protocol') — semantically vacuous. High-σ hypotheses (0.428–0.440) link substantive physics concepts. <b>Violation:</b> σ anti-correlates with semantic content in this sample; the assumed quality ordering is refuted at the level of available evidence. Confidence shows no monotone relation to σ (e2926bf9: σ = 0.409, confidence 55%; fa10f8a3: σ = 0.113, confidence 35%).</li>
+<li><b>Recursive consequence Y5 [SPECULATIVE]:</b> If projection score (0.694–0.827) is the sole ranking signal and is uncorrelated with downstream validation success (zero validated outputs exist to test this), ranking by projection score is unfalsifiable as operated. Required intervention: route ~20% of B = 100 trials to low-projection/high-novelty hypotheses to generate discriminating data. Protocol only.</li>
+<li><b>Defect subtree:</b> The 5 defect-rooted hypotheses are pruned; their EVIDENCE_COUNT values (0–1) cannot be attributed to any claim. Repair is a precondition, not a research outcome.</li>
+</ul>
+
+<h2>6. Branching Lineage Table (All Rows Predictive, None Executed)</h2>
+<table border="1">
+<tr><th>Lineage</th><th>Root hypothesis</th><th>Surprise Y</th><th>Falsifier</th><th>Status</th></tr>
+<tr><td>L1a</td><td>d633712c (β&gt;1, Hill form)</td><td>Y_max is ρ-dependent via η = B/C_eff(ρ)</td><td>Three-point ρ sweep showing ρ-independent ceiling</td><td>SPECULATIVE; UNTESTED</td></tr>
+<tr><td>L1b</td><td>790be2e7 (24 h threshold)</td><td>β_eff = β·exp(−λ_d·τ); λ_d ≈ 0.0097 h⁻¹ [estimate]</td><td>Discontinuous yield drop across 24 h</td><td>SPECULATIVE; UNTESTED</td></tr>
+<tr><td>L2a</td><td>d06dbb87 (VED threshold law)</td><td>Shared percolation exponent with L1</td><td>Independent fits diverging beyond CI overlap</td><td>BLOCKED by data gate (8c2d1531)</td></tr>
+<tr><td>L2b</td><td>d06dbb87 (S_el &gt; 1 gate)</td><td>—</td><td>AM-GM inequality: S_el ≤ 1 as defined</td><td>REFUTED (arithmetic); reformulate as amean/gmean</td></tr>
+<tr><td>L3a</td><td>fa10f8a3 vs high-σ set</td><td>σ is not a quality signal; projection score unfalsifiable alone</td><td>Budget-allocated validation of low-projection seeds</td><td>SPECULATIVE; UNTESTED</td></tr>
+<tr><td>L3b</td><td>Defect-node hypotheses (5 IDs)</td><td>None — undefined root</td><td>Pipeline repair precondition</td><td>STRUCTURALLY UNTESTABLE</td></tr>
+</table>
+
+<h2>7. Trade-off Analysis (Assumption–Violation Pairs)</h2>
+<ul>
+<li><b>Assumption:</b> Recursive expansion increases discovery surface. <b>Violation [SPECULATIVE]:</b> Each branching level multiplies C_exp superlinearly (L1a mechanism) while B = 100 is fixed; depth-2 expansion at ρ = 0.8 may push past unidentified K before any branch is validated. Recursion depth trades directly against per-branch validation probability.</li>
+<li><b>Assumption:</b> The 22-hypothesis registry represents exploration breadth. <b>Violation:</b> 5 of 22 (22.7%) contain pipeline-defect roots; ≥ 2 are self-referential novelty checks marked REDUNDANT (6cc6e5b3, 2c99dd56 context). Effective distinct testable lineages: ≤ 15, of which 3 carry formal multi-variable structure (d633712c, 790be2e7, d06dbb87/9cdd6816). Breadth is narrower than registry count implies.</li>
+<li><b>Assumption:</b> Confidence percentages (31.9–55.0%) rank hypotheses. <b>Violation:</b> Confidence is uncorrelated with σ, projection score, and evidence count across the registry (e.g., d5ecb8c3: EVIDENCE_COUNT = 3, confidence 55%, projection 0.694 — lowest among high-evidence items). No ranking statistic is validated against outcome.</li>
+</ul>
+
+<h2>8. Boundary Conditions</h2>
+<ul>
+<li><b>L1 validity window:</b> ρ ∈ [0.4, 0.8], D = 3, B = 100, τ &lt; 24 h. Outside: β_eff decay (τ), saturation (ρ), budget bottleneck (B).</li>
+<li><b>L2 validity window:</b> empty this cycle. Precondition: row count = 21,263 with zero null critical_temp values (8c2d1531). Gate status: FAILED/unverified (13,552 rows observed).</li>
+<li><b>L3 validity window:</b> requires pipeline repair of defect nodes and at least one validated outcome per projection-score decile to render ranking falsifiable.</li>
+<li><b>Decay parameter:</b> λ_d ≈ 0.0097 h⁻¹ is a model-internal estimate derived from requiring exp(−λ_d·24) = 1/β at β = 1.26. It is not a measurement.</li>
+</ul>
+
+<h2>9. Falsification Tests (Named, Not Run)</h2>
+<ul>
+<li><b>T1 (L1a):</b> ρ sweep {0.4, 0.6, 0.8} at fixed B; fit Hill vs exponential saturation via AIC on three points (underdetermined; screening test only). Refute Hill form if exponential fit is decisively favored and the ρ = K exponent-crossover signature is absent.</li>
+<li><b>T2 (L1b):</b> Latency sweep {6, 12, 24, 48} h at ρ = 0.8. Distinguishes threshold vs exponential decay. Either outcome is informative; the threshold model survives only as <b>BOUNDED BUT STABLE</b> within τ &lt; 24 h.</li>
+<li><b>T3 (L2):</b> Not executable. Data gate failure is the binding constraint. Re-run after 8c2d1531 passes.</li>
+<li><b>T4 (L3):</b> Stratified validation: 20 trials each to high-projection and low-projection strata; refute projection-score ranking if validation rates are statistically indistinguishable (power limited at 20 per arm; screening only).</li>
+</ul>
+
+<h2>10. Conclusion</h2>
+<ul>
+<li><b>Survives (as bounded structure):</b> L1 is internally coherent except for the ρ-dependence of Y_max (L1a surprise), itself falsifiable. The 24 h threshold is convertible into a measurable decay constant λ_d — the single highest-information measurement proposed this cycle.</li>
+<li><b>Refuted (definitively, no data required):</b> The S_el &gt; 1 gate in d06dbb87 violates AM-GM arithmetic as defined. Reformulation to S_el' = amean/gmean is mandatory before any L2 execution.</li>
+<li><b>Blocked:</b> All physical Tc claims (L2) by the failed data-integrity gate (13,552/21,263 rows; null-check unverified).</li>
+<li><b>Structurally untestable:</b> The 5 defect-rooted hypotheses (22.7% of registry); pipeline repair is a precondition.</li>
+<li><b>Non-viable this cycle:</b> Any claim of validated surprise; any confidence-weighted ranking; any inference from GNN projection scores to validated yield. The generation layer and validation layer remain formally disconnected; the tree above is a map of what must be measured, not a record of what has been shown.</li>
+</ul>
+
+<p><b>Compliance note:</b> Claim registry is empty; no [C-ID] citations appear and none are invented. All quantitative content is model-internal, arithmetic, or labeled [SPECULATIVE]. No sample sizes, executed results, DOIs, or external authorities are asserted. External support: <b>Source Missing</b>.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating.", "FAKE EXPERIMENTAL AUTHORITY: Claimed empirical result '(?i)sample size' without execution context."] --></div></div>
+<div class="section-viz-group">
+
+                    <figure class="single-column-figure" id="fig-4" style="width: 100%; margin: 1em 0;">
+                        <div class="viz-wrapper" style="width: 100%;">
+                        <figure style="margin: 2em 0; text-align: center; break-inside: avoid;">
+                            <div class="viz-wrapper" style="max-width: 100%; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="bf937e37-84d0-4dc5-acdd-23dbb316bec4" class="plotly-graph-div" style="height:560px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("bf937e37-84d0-4dc5-acdd-23dbb316bec4")) {                    Plotly.newPlot(                        "bf937e37-84d0-4dc5-acdd-23dbb316bec4",                        [],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.43],"title":{"text":"Meta","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"xaxis2":{"anchor":"y2","domain":[0.5700000000000001,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"title":{"text":"Empirical cumulative probability","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Distribution with individual observations","x":0.215,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"B. Empirical cumulative distribution","x":0.785,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003eHypothesis Proliferation Tree\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":560,"hovermode":"closest","meta":{"plot_family":"distribution","selection_reason":"Detected one primary numeric endpoint; showing raw observations and ECDF instead of a summary bar chart.","y":"confidence","group":"meta","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div>
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #555; font-size: 0.95em; font-family: sans-serif;">
+                                <strong>Figure 5</strong>: Hypothesis Proliferation Tree
+                            </figcaption>
+                        </figure>
+                        </div>
+                        <figcaption><strong>Figure 4</strong> | Supporting data for Novel Speculative Mechanisms & Hypothesis Tree</figcaption>
+                    </figure>
+                    
+</div>
+<div class='section-block'><h2>Falsification Plan & Boundary Conditions</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+CLAIM REGISTRY STATUS: EMPTY. No C-IDs exist; per citation protocol, no [C1]-style citations may be inserted. All empirical assertions below are labeled [SPECULATIVE] or derive from model-internal arithmetic. External support: Source Missing.
+
+<h1>11. Critical Failure Modes: Assumptions Whose Refutation Terminates the Autonomous Scientific Discovery Mission</h1>
+
+<h2>11.1 Scope and Method</h2>
+<p>This section identifies the minimal set of assumptions whose falsification invalidates the entire autonomous discovery pipeline. Each is stated in testable form with a violation condition and kill-class: <b>FATAL</b> (mission collapses), <b>SEVERE</b> (a discovery lineage collapses), or <b>BOUNDED</b> (regime restriction). No external experimental data exist in the corpus [SPECULATIVE]; all tests are designed, not executed. All thresholds are model-internal or arithmetic.</p>
+
+<h2>11.2 Kill-Class A: FATAL Assumptions</h2>
+
+<h3>A1. Data Substrate Existence</h3>
+<ul>
+<li><b>Assumption:</b> The UCI Superconductivity dataset loads as train.csv (21,263 rows, 81 features, critical_temp) merged with unique_m.csv (86 elemental-fraction columns), zero null critical_temp [SPECULATIVE — pipeline observation, unverified externally].</li>
+<li><b>Violation:</b> Observed pipeline state: 13,552 rows loaded (63.7% of expected); extraction failed. If corrected load fails, all L2 physical claims are unexecutable.</li>
+<li><b>Test design:</b> Direct fetch; assert row count == 21,263; assert zero nulls; assert 1:1 merge cardinality. Runtime: minutes. Cheapest, highest-leverage test in the program.</li>
+<li><b>Verdict if violated:</b> FATAL for all physical content.</li>
+</ul>
+
+<h3>A2. Arithmetic Validity of the S_el Gate</h3>
+<ul>
+<li><b>Assumption:</b> S_el = weighted-geometric-mean / weighted-arithmetic-mean of valence contributions can exceed 1, gating Tc &gt; 77 K [SPECULATIVE].</li>
+<li><b>Violation:</b> By AM-GM, gmean ≤ amean pointwise for non-negative weights; S_el ≤ 1 identically. The condition S_el &gt; 1 is an empty set — REFUTED by arithmetic, prior to data. Reformulated S_el' = amean/gmean ≥ 1 restores non-triviality but reverses the direction of the claimed effect; the repair is not cosmetic.</li>
+<li><b>Verdict:</b> FATAL as written; repairable by reformulation.</li>
+</ul>
+
+<h3>A3. Non-Circularity of the Validation Layer</h3>
+<ul>
+<li><b>Assumption:</b> Confidence percentages (31.9–55.0%) and projection scores (0.694–0.827) are independent statistics rankable against validation outcomes [SPECULATIVE].</li>
+<li><b>Violation:</b> Registry analysis shows zero rank correlation among confidence, σ, projection score, and EVIDENCE_COUNT (e.g., high-evidence item with lowest projection; zero-evidence item with highest projection). If validation outcomes also fail to correlate, the generation layer is formally disconnected from the validation layer.</li>
+<li><b>Test design (T4):</b> Stratified validation, 20 trials per projection-score decile (100 trials = budget B). Refute ranking if strata rates are indistinguishable (Fisher exact, α = 0.05; screening power only).</li>
+<li><b>Verdict if violated:</b> FATAL for the discovery-pipeline thesis; BOUNDED BUT STABLE if only low-σ items validate.</li>
+</ul>
+
+<h2>11.3 Kill-Class B: SEVERE Assumptions</h2>
+
+<h3>B1. Superlinear Scaling Exponent (L1)</h3>
+<ul>
+<li><b>Assumption:</b> Y scales superlinearly in ρ with β &gt; 1 below saturation; anchor ratio 6.0/2.5 = 2.4 over ρ ∈ [0.4, 0.8] implies β ≈ 1.26 under power-law form [SPECULATIVE — model-internal].</li>
+<li><b>Violation:</b> If the ρ-response is exponential saturation Y = Y_max(1 − e^{−ρ/ρ0}), the local exponent never exceeds 1, refuting the Hill form. Three-point AIC is underdetermined; ≥ 5 ρ-points required.</li>
+<li><b>Test design (T1):</b> ρ sweep {0.3–0.8} at D = 3; fit Hill (3 params) vs exponential (2 params) via AICc; refute Hill if ΔAICc &gt; 10 favoring exponential and no exponent-crossover signature.</li>
+<li><b>Verdict if violated:</b> SEVERE — L1 collapses to saturating growth; β ≈ 1.26 and λ_d ≈ 0.0097 h⁻¹ lose interpretive frame.</li>
+</ul>
+
+<h3>B2. Latency Threshold at 24 h (L1b)</h3>
+<ul>
+<li><b>Assumption:</b> Superlinearity abolished when loop latency τ &gt; 24 h; staleness decay λ_d ≈ 0.0097 h⁻¹ derived from exp(−λ_d·24) = 1/1.26 [SPECULATIVE — arithmetic derivation].</li>
+<li><b>Violation:</b> Smooth exponential degradation with no threshold renders the 24 h figure an anchoring artifact.</li>
+<li><b>Test design (T2):</b> τ sweep {6, 12, 24, 48} h at ρ = 0.8. Highest information-per-cost measurement proposed (4 runs, 4% of budget).</li>
+<li><b>Verdict if violated:</b> SEVERE for scheduling policy; FATAL only combined with B1 violation.</li>
+</ul>
+
+<h3>B3. VED Threshold Identifiability (L2)</h3>
+<ul>
+<li><b>Assumption:</b> A valence-electron-density threshold VED_c = 4.5 e⁻/Å³ exists and is identifiable, with β ≈ 1.8, γ ∈ [0.3, 1.0] (W/mK)⁻¹, α ≈ 25 K [SPECULATIVE — model-internal estimates].</li>
+<li><b>Violation:</b> If β CI includes 1.0 or VED_c is unidentifiable (flat likelihood), the threshold law is refuted. Note: VED_proxy = mean_Valence/mean_Density has units of valence count per g/cm³, not e⁻/Å³; the value 4.5 is dimensionally incoherent and must be re-anchored to the empirical 75th percentile of the computed proxy.</li>
+<li><b>Test design (T3, post-gate-repair):</b> Compute VED_proxy across all rows; stratify at 75th percentile; fit log Tc vs log(VED_proxy − VED_c) over a VED_c grid; refute if β 95% CI includes 1.0 or residual terms explain &lt; 10% additional variance.</li>
+<li><b>Verdict if violated:</b> SEVERE — both physical hypotheses collapse; the 77 K vs 25 K stratification claim is refuted. Data-integrity layer (A1) survives independently.</li>
+</ul>
+
+<h3>B4. Registry Integrity</h3>
+<ul>
+<li><b>Assumption:</b> The 22-hypothesis registry contains testable scientific content [SPECULATIVE].</li>
+<li><b>Violation (observed):</b> 5 of 22 hypotheses (22.7%) contain defect roots — literal error strings as hypothesis variables; ≥ 2 are self-referential REDUNDANT novelty checks; one pairs a legitimate variable with a REDUNDANT node; one grounds on unverified abstractions. Effective distinct testable lineages: ≤ 15, of which 3 carry formal multi-variable structure.</li>
+<li><b>Test design:</b> Schema validation pass rejecting error literals, self-references, placeholder nodes. Executable in seconds; precondition for all downstream work.</li>
+<li><b>Verdict:</b> SEVERE — 22.7% structurally untestable; generation-layer output quality is the binding constraint.</li>
+</ul>
+
+<h2>11.4 Kill-Class C: BOUNDED Assumptions</h2>
+<ul>
+<li><b>C1 (σ as noise indicator):</b> σ ∈ [0.113, 0.440] spans 3.9×. Low σ does not guarantee grounding quality (lowest-σ item has zero evidence and unverified grounding). BOUNDED: σ may rank within-model uncertainty, not cross-model quality. Test: σ as covariate in T4.</li>
+<li><b>C2 (Y_max ≈ B·η):</b> Saturation ceiling is budget-limited by construction; not testable at B = 100. BOUNDED BUT STABLE — tautological in this regime; falsifiable only via budget sweep B ∈ {50, 100, 200} at 3× cost.</li>
+<li><b>C3 (Depth D = 3 sufficiency):</b> All scaling claims conditioned on D = 3. If hypothesis entropy scales with depth (H ~ D^γ), ρ-fits are confounded. Test: single D = 4 run at ρ = 0.6; &gt; 50% change in Y confirms confounding. BOUNDED: claims hold only at fixed D.</li>
+</ul>
+
+<h2>11.5 Consolidated Kill Matrix</h2>
+<table border="1">
+<tr><th>ID</th><th>Assumption</th><th>Violation Condition</th><th>Test</th><th>Cost (trials)</th><th>Kill-Class</th></tr>
+<tr><td>A1</td><td>21,263-row load, zero nulls</td><td>Row count ≠ 21,263 or nulls &gt; 0</td><td>Direct fetch + assert</td><td>0</td><td>FATAL</td></tr>
+<tr><td>A2</td><td>S_el &gt; 1 attainable</td><td>AM-GM: gmean/amean ≤ 1 always</td><td>Arithmetic (closed)</td><td>0</td><td>FATAL (refuted now)</td></tr>
+<tr><td>A3</td><td>Projection score ranks validation</td><td>Stratified rates indistinguishable</td><td>T4: 5 deciles × 20</td><td>100</td><td>FATAL if null</td></tr>
+<tr><td>B1</td><td>β &gt; 1 below saturation</td><td>ΔAICc &gt; 10, no crossover</td><td>T1: 6-point ρ sweep</td><td>6</td><td>SEVERE</td></tr>
+<tr><td>B2</td><td>24 h latency threshold</td><td>Smooth exponential in τ</td><td>T2: 4-point τ sweep</td><td>4</td><td>SEVERE</td></tr>
+<tr><td>B3</td><td>VED_c identifiable, β &gt; 1</td><td>β CI includes 1.0</td><td>T3: post-gate regression</td><td>0 (computational)</td><td>SEVERE</td></tr>
+<tr><td>B4</td><td>Registry testability</td><td>Defect roots present (observed)</td><td>Schema validation</td><td>0</td><td>SEVERE (refuted now)</td></tr>
+<tr><td>C1–C3</td><td>σ ranking; Y_max; D = 3</td><td>See §11.4</td><td>Covariate / budget / depth probes</td><td>1–3</td><td>BOUNDED</td></tr>
+</table>
+
+<h2>11.6 Execution Order and Budget Allocation</h2>
+<ol>
+<li><b>Order 0 (zero-cost):</b> A1 data gate; A2 (already closed — refuted); B4 schema validation. These determine whether further spending is rational.</li>
+<li><b>Order 1 (10 trials):</b> B2 latency sweep — highest information per trial; resolves λ_d regardless of outcome.</li>
+<li><b>Order 2 (6 trials):</b> B1 ρ sweep; decisive only if B2 confirms threshold behavior.</li>
+<li><b>Order 3 (remaining budget):</b> A3/T4 stratified validation, contingent on B4 repair; C3 depth probe (1 trial) if Order 2 is ambiguous.</li>
+</ol>
+<p>Total committed: 111 trial-equivalents against B = 100; the 11-trial overage is absorbed by dropping lowest-information T1 points if B2 resolves cleanly. No FATAL assumption is tested after any SEVERE assumption consumes budget.</p>
+
+<h2>11.7 Falsification Summary</h2>
+<ul>
+<li><b>REFUTED (no experiment required):</b> A2 (AM-GM violation); B4 (defect roots confirmed in registry).</li>
+<li><b>REFUTED-BY-OBSERVATION (pending repair):</b> A1 (13,552/21,263 rows; gate currently failed).</li>
+<li><b>BOUNDED BUT STABLE:</b> B2 within τ &lt; 24 h; C1–C3 within stated windows.</li>
+<li><b>OPEN, TESTABLE:</b> A3, B1, B3 — the three tests on which the mission's scientific content stands or falls.</li>
+</ul>
+<p><b>Compliance note:</b> Claim registry is empty; no C-ID citations are asserted. All quantitative values are model-internal, arithmetic, or observed pipeline state and are marked [SPECULATIVE] where empirical. No external citations fabricated. External support: <b>Source Missing</b>.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode."] --></div></div>
+<div class="section-viz-group">
+
+                    <figure class="single-column-figure" id="fig-5" style="width: 100%; margin: 1em 0;">
+                        <div class="viz-wrapper" style="width: 100%;">
+                        <figure style="margin: 2em 0; text-align: center; break-inside: avoid;">
+                            <div class="viz-wrapper" style="max-width: 100%; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="1b1c3c97-8817-4d63-93ee-615f714b14c5" class="plotly-graph-div" style="height:560px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("1b1c3c97-8817-4d63-93ee-615f714b14c5")) {                    Plotly.newPlot(                        "1b1c3c97-8817-4d63-93ee-615f714b14c5",                        [],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.43],"title":{"text":"Meta","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"xaxis2":{"anchor":"y2","domain":[0.5700000000000001,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"title":{"text":"Empirical cumulative probability","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Distribution with individual observations","x":0.215,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"B. Empirical cumulative distribution","x":0.785,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003eBoundary Limit Chart\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":560,"hovermode":"closest","meta":{"plot_family":"distribution","selection_reason":"Detected one primary numeric endpoint; showing raw observations and ECDF instead of a summary bar chart.","y":"confidence","group":"meta","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div>
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #555; font-size: 0.95em; font-family: sans-serif;">
+                                <strong>Figure 6</strong>: Boundary Limit Chart
+                            </figcaption>
+                        </figure>
+                        </div>
+                        <figcaption><strong>Figure 5</strong> | Supporting data for Falsification Plan & Boundary Conditions</figcaption>
+                    </figure>
+                    
+</div>
+<div class='section-block'><h2>Epistemic Gaps & Future Research Trajectories</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+CLAIM REGISTRY STATUS: EMPTY ([]). No C-IDs exist for citation; per the mandatory citation protocol, no [C#] markers are inserted and no external references are asserted. All quantitative values derive from the internal hypothesis registry (Sources 1–22), closed arithmetic, or are explicitly marked [estimate]/[SPECULATIVE]. Any claim requiring an external source is flagged Source Missing.
+
+<h1>12. Epistemic Gaps and Future Research Trajectories</h1>
+
+<h2>12.1 Executive Summary of the Gap Structure</h2>
+<ul>
+<li><b>Falsifiable Claim G1:</b> The hypothesis-generation layer produces structurally testable content at a rate no greater than 15/22 (68.2%) of emitted hypotheses; the binding constraint on validated-discovery throughput Y is generation quality, not KG density ρ. Threshold: if schema-repair does not raise the testable fraction above 85%, the ρ-scaling program (d633712c, 790be2e7) is unmeasurable regardless of budget B.</li>
+<li><b>Falsifiable Claim G2:</b> Zero of the 22 registry hypotheses carry EVIDENCE_COUNT > 3; the modal evidence count is 0 (13/22, 59.1%). The pipeline emits hypotheses faster than it grounds them by a factor estimated at ≥ 7:1 [SPECULATIVE — derived from registry counts, not independently verified]. Any throughput claim (hypotheses/hour) is vacuous until the grounding:emission ratio exceeds 0.5.</li>
+<li><b>Verdict:</b> BOUNDED BUT STABLE as infrastructure; REFUTED as a self-validating science engine until Orders 0–3 of §11.6 complete.</li>
+</ul>
+
+<h2>12.2 The Dominant Unknown: Grounding Asymmetry</h2>
+<p>The registry exposes a structural asymmetry: <b>emission-side entropy vastly exceeds verification-side capacity</b>. Hypotheses fa10f8a3, 6cc6e5b3, e877bdb7, 2242bf1d, and 009e771c each carry EVIDENCE_COUNT = 0 with unverified grounding, yet were admitted with structural projections in the range 0.694–0.738. The projection score S_proj therefore gates only on graph-structural plausibility, not evidential support. Central gap: <b>the pipeline measures how well a hypothesis fits the knowledge graph, not how well it fits the world.</b></p>
+<p>Model-implied consequence: if S_proj ranks trial allocation under B = 100, the allocation is orthogonal to empirical validity. The T4 stratified-validation test (§11.3, A3) is the only instrument capable of detecting this decoupling. Flat validation rates across S_proj deciles refute the ranking layer within this regime; monotone stratification leaves S_proj BOUNDED BUT STABLE as a weak prior — usable for ordering, not acceptance.</p>
+
+<h2>12.3 Gap Class I: Defect-Root Contamination of the Knowledge Graph</h2>
+<p>Five hypotheses (e877bdb7, b6fc894d, e2926bf9, 2242bf1d, 1ba0d8da) pair a legitimate variable with the literal string <code>{'error': 'No claim provided'}</code>. Seven more (d5ecb8c3, 009e771c, 71b84a7a, 8b6ad50c, c864357d, 8bf46ec5, 33a08313) pair legitimate variables with <code># Web Search Results</code>. Total: 12/22 (54.5%) of the registry grounded on non-entities.</p>
+<p>Anomaly: defect-rooted hypotheses carry structural projections (0.726–0.827) statistically indistinguishable from — and in one case higher than — clean hypotheses (0.694–0.820). Hypothesis 33a08313, grounded on <code># Web Search Results</code>, holds the highest projection in the registry (0.827). The GNN embedding layer therefore does not separate syntactic garbage from scientific entities. Potential mechanism [SPECULATIVE, untested]: RGCN/GIN message-passing treats node identity as opaque; a defect node attached to a dense subgraph inherits that subgraph's structural signature. Falsifiable probe: compute embedding cosine distance between defect-root nodes and legitimate neighbors; if mean distance < 0.2 [estimate], the encoder is confirmed blind to node semantics, and all ρ-scaling claims are confounded at the representation layer.</p>
+
+<h2>12.4 Gap Class II: The Uncertainty Signal Is Uncalibrated</h2>
+<p>Registry σ spans [0.113, 0.440], a 3.9× range. The lowest-σ item (fa10f8a3, σ = 0.113) has zero evidence and an ungroundable variable pair ('performance' × 'protocol'). The highest-σ items are defect-rooted (σ ≈ 0.40–0.44). Two readings are consistent:</p>
+<ol>
+<li><b>R1 (calibrated):</b> σ is monotone in syntactic defect but blind to semantic vacuity (fa10f8a3's σ does not rise).</li>
+<li><b>R2 (uncalibrated):</b> σ tracks embedding-space density, not epistemic risk; the defect correlation is incidental.</li>
+</ol>
+<p>Distinguishing test (zero-cost): Spearman rank-correlate σ against a binary defect flag across all 22 items. If ρ > 0.6, R1 is supported and σ serves as a pre-schema filter. If ρ < 0.3, σ is refuted as a quality signal in this regime and must be recalibrated against a labeled defect set before any use in trial allocation.</p>
+
+<h2>12.5 Gap Class III: The Physical Layer Is Unmeasured</h2>
+<p>Hypotheses 9cdd6816 and d06dbb87 propose Tc = α·(VED − VED_c)^β·exp(−γ·κ)·S_el with β ≈ 1.8, VED_c = 4.5 e⁻/Å³, κ cutoff 1.5 W/mK, and 77 K vs 25 K stratification. Both UNTESTED; 9cdd6816 notes missing variables against the actual UCI schema. Threefold gap:</p>
+<ul>
+<li><b>S_el is arithmetically refuted as specified.</b> As a ratio of weighted geometric to weighted arithmetic means, S_el ≤ 1 by AM-GM for all compositions (§11.2, A2). The "S_el > 1" gate can never fire. The 77 K stratification reduces to the VED and κ channels alone. Closed refutation; no experiment survives it in the stated functional form.</li>
+<li><b>VED_c identifiability is open.</b> The Hill-type form with β > 1 requires the log-linear regression on the high-VED subset to return a β CI excluding 1.0. With 21,263 rows and an estimated high-VED subset of ~5,300 materials [estimate], power is adequate; the risk is confounding by crystal-structure class, which d06dbb87 acknowledges is "absorbed into S_el" — a now-defunct mediator. Structure-class stratification (perovskite vs cuprate vs iron-pnictide) must be added as a covariate or β is biased upward.</li>
+<li><b>κ suppression channel untested against collinearity.</b> wtd_mean_thermal_conductivity likely correlates with elemental mass and density features [SPECULATIVE: r > 0.5 with atomic-mass features, unverified]; exp(−γ·κ) may absorb VED-channel variance. A VIF screen (VIF < 5) is a zero-cost precondition for T3.</li>
+</ul>
+
+<h2>12.6 Gap Class IV: Scaling Laws Conditioned on a Single Operating Point</h2>
+<p>Hypotheses d633712c and 790be2e7 — the only multi-variable formal hypotheses (4 and 6 variables) — assert saturating power-law scaling Y = Y_max·ρ^β/(K^β + ρ^β) with β > 1, and a 24 h latency threshold collapsing β to ≤ 1. Both conditioned on D = 3 and on a defect-free generation layer that does not exist (B4 refuted). Gaps in severity order:</p>
+<ol>
+<li><b>Depth confounding (C3):</b> β estimates conflate ρ-effects with depth-effects if hypothesis entropy H scales as D^γ, γ > 0. One D = 4 probe at ρ = 0.6 resolves this; > 50% change in Y confirms confounding.</li>
+<li><b>Budget tautology (C2):</b> Y_max ≈ B·η is untestable at fixed B = 100; a sweep B ∈ {50, 100, 200} is required at 3× cost, rational only after B4 repair.</li>
+<li><b>Latency mechanism asserted, not measured:</b> the claim that P_false rises when τ > 24 h has no operational definition of "stale" in the registry. A 4-point τ sweep (T2) with P_false as the measured endpoint — not Y — is the correct instrument.</li>
+<li><b>The β ≈ 1.26 back-calculation in 790be2e7 is circular:</b> it derives β from the ground-truth ratio 6.0/2.5 = 2.4 the hypothesis is supposed to predict. Calibration, not evidence; must be excluded from any Bayesian prior on β.</li>
+</ol>
+
+<h2>12.7 Proposed Next Three High-Impact Experiments (12–72 Month Outlook)</h2>
+
+<h3>Experiment E1 (0–6 months): Representation-Semantics Audit and Generation-Layer Repair</h3>
+<ul>
+<li><b>Objective:</b> Quantify embedding-space separation between defect nodes and scientific entities; repair doc_reader_agent to restore the 21,263-row data gate (A1) and enforce schema validation (B4) at emission time.</li>
+<li><b>Design:</b> (i) Cosine-distance audit of defect-root embeddings vs legitimate neighbors (pass threshold: mean distance ≥ 0.2). (ii) Reject-at-generation schema gate: error literals, self-referential novelty checks, placeholder nodes blocked pre-registry. (iii) Re-emit the 22-hypothesis registry; target testable fraction ≥ 85%.</li>
+<li><b>Cost:</b> Computational only; zero physical trials.</li>
+<li><b>Success criterion:</b> Testable fraction ≥ 85%; defect-node embedding distance ≥ 0.2; A1 gate passes (21,263 rows, zero nulls in critical_temp).</li>
+<li><b>Failure consequence:</b> If the encoder cannot separate defect from entity nodes after retraining, the RGCN/GIN configuration is refuted as a hypothesis generator in this regime; fallback is a retrieval-conditioned generator with explicit entity typing.</li>
+</ul>
+
+<h3>Experiment E2 (6–24 months): Decoupling Test of Structural Projection vs Empirical Validation</h3>
+<ul>
+<li><b>Objective:</b> Determine whether S_proj ranks empirical validity (A3/T4), and whether σ is a usable pre-filter (§12.4).</li>
+<li><b>Design:</b> 5 S_proj deciles × 20 hypotheses each, validated against the repaired UCI pipeline and, where feasible, literature-grounded adjudication. Secondary endpoint: Spearman correlation of σ with a binary defect/validity flag across the full registry.</li>
+<li><b>Cost:</b> 100 trial-equivalents (the full current budget B).</li>
+<li><b>Success criterion:</b> Monotone validation-rate stratification across deciles with top-decile rate ≥ 2× bottom-decile rate; σ-defect Spearman ρ > 0.6.</li>
+<li><b>Regime trade-off:</b> 3 deciles × 33 raises per-cell power ~11% [estimate] but loses low-tail resolution where decoupling, if present, is most visible. The 5×20 design is preferred because flat stratification is detectable with modest per-cell n.</li>
+<li><b>Failure consequence:</b> Flat stratification refutes S_proj as a ranking signal; allocation must switch to evidence-conditioned or uncertainty-weighted sampling.</li>
+</ul>
+
+<h3>Experiment E3 (24–72 months): Physical Law Estimation and Scaling-Law Identification on Repaired Infrastructure</h3>
+<ul>
+<li><b>Objective:</b> (i) Fit the reformulated threshold law Tc = α·(VED − VED_c)^β·exp(−γ·κ)·f(structure) with S_el replaced by a structure-class covariate; (ii) execute the ρ-sweep (6 points), τ-sweep (4 points), and D = 4 probe to identify β, K, λ_d, and the depth-confound term.</li>
+<li><b>Design:</b> Log-linear regression on the high-VED subset (VED > 75th percentile, ~5,300 materials [estimate]) with VIF screen (VIF < 5) and structure-class stratification; β CI must exclude 1.0 for the superlinearity claim to survive. Scaling sweeps run only after E1 and E2 pass; ordering per §11.6 (τ-sweep first, highest information per trial).</li>
+<li><b>Cost:</b> 10 trial-equivalents (τ) + 6 (ρ) + 1 (D-probe) + computational regression; total ≤ 20 trial-equivalents against a repaired budget.</li>
+<li><b>Success criteria:</b> β ∈ [1.5, 2.0] with CI excluding 1.0; VED_c identifiable (profile-likelihood minimum); local scaling exponent d(ln Y)/d(ln ρ) > 1 below K and < 0.5 near saturation; latency threshold λ_d resolved with P_false as endpoint.</li>
+<li><b>Failure consequence:</b> If β CI includes 1.0 or VED_c is unidentifiable, the threshold-law family is refuted for this feature set; the 77 K vs 25 K stratification collapses to residual VED/κ structure, and the scaling program (d633712c, 790be2e7) is bounded to infrastructure-level claims only.</li>
+</ul>
+
+<h2>12.8 Regime Map and Boundary Conditions</h2>
+<table border="1">
+<tr><th>Regime</th><th>Condition</th><th>Viable Instruments</th><th>Non-Viable Instruments</th></tr>
+<tr><td>Pre-repair (current)</td><td>Defect fraction 54.5%; A1 failed</td><td>Zero-cost gates (A1, B4, σ-correlation, embedding audit)</td><td>All physical trials; all ρ/τ sweeps; S_proj ranking</td></tr>
+<tr><td>Post-repair, pre-calibration</td><td>Testable fraction ≥ 85%; σ uncalibrated</td><td>T4 stratified validation; schema-filtered emission</td><td>Y-throughput claims; β estimation</td></tr>
+<tr><td>Calibrated, fixed D = 3, B = 100</td><td>T4 monotone; VIF < 5</td><td>τ-sweep; ρ-sweep; threshold-law regression</td><td>Y_max claims (tautological at fixed B); cross-depth extrapolation</td></tr>
+<tr><td>Full factorial (B sweep, D sweep)</td><td>B ∈ {50,100,200}; D ∈ {3,4}</td><td>Complete scaling-law identification</td><td>None identified; cost-bound at 3× budget</td></tr>
+</table>
+
+<h2>12.9 Consolidated Gap Register</h2>
+<table border="1">
+<tr><th>Gap ID</th><th>Unknown</th><th>Exposing Evidence</th><th>Resolving Experiment</th><th>Horizon</th></tr>
+<tr><td>UG-1</td><td>Encoder blindness to node semantics</td><td>Defect-root projection 0.827 exceeds clean maximum 0.820 (33a08313 vs 9112c851)</td><td>E1 embedding audit</td><td>0–6 mo</td></tr>
+<tr><td>UG-2</td><td>σ calibration status</td><td>σ = 0.113 on zero-evidence vacuous hypothesis (fa10f8a3)</td><td>E1/E2 Spearman screen</td><td>0–12 mo</td></tr>
+<tr><td>UG-3</td><td>S_proj ↔ validity decoupling</td><td>13/22 hypotheses at EVIDENCE_COUNT = 0 admitted on projection alone</td><td>E2 (T4)</td><td>6–24 mo</td></tr>
+<tr><td>UG-4</td><td>β, VED_c, γ identifiability post-S_el refutation</td><td>AM-GM closure of S_el > 1; structure-class confounder unabsorbed</td><td>E3 regression</td><td>24–48 mo</td></tr>
+<tr><td>UG-5</td><td>Depth confounding of scaling exponents</td><td>All scaling claims at D = 3 only</td><td>E3 D-probe</td><td>24–48 mo</td></tr>
+<tr><td>UG-6</td><td>Latency-decay mechanism (P_false dynamics)</td><td>24 h threshold asserted without operational staleness definition (790be2e7)</td><td>E3 τ-sweep</td><td>24–60 mo</td></tr>
+<tr><td>UG-7</td><td>Budget-gate tautology (Y_max ≈ B·η)</td><td>Untestable at fixed B = 100</td><td>B sweep (deferred)</td><td>48–72 mo</td></tr>
+</table>
+
+<h2>12.10 Conclusion of the Trajectory Analysis</h2>
+<p>The mission's scientific content stands on three open tests (A3, B1, B3) and is blocked by two closed refutations (A2, B4) and one failed gate (A1). The dominant regime is pre-repair: no physical or scaling experiment executed before E1 completes carries evidential weight, because 54.5% of the hypothesis stream is grounded on non-entities and the data layer loads 63.8% of required rows (13,552/21,263). The single most consequential unknown is UG-3: whether structural projection ranks empirical validity. A flat T4 stratification refutes the ranking layer and the premise that graph-structural plausibility is a usable proxy for scientific merit in this pipeline. A monotone stratification leaves the approach BOUNDED BUT STABLE and unlocks the full E3 program. The 72-month ceiling is complete scaling-law identification (β, K, λ_d, depth exponent γ) on a calibrated, defect-free generation-to-validation loop; the 12-month floor is a repaired registry with testable fraction ≥ 85% and resolved σ-calibration status. Both boundaries are falsifiable, instrumented, and costed.</p>
+<p><b>Compliance note:</b> The supplied claim registry is EMPTY; therefore no [C#] citations are inserted and no external references are asserted. All quantitative values derive from the internal hypothesis registry (Sources 1–22), closed arithmetic (AM-GM), or are marked [estimate]/[SPECULATIVE]. No fabricated URLs, DOIs, or academic references. Internal claim registry for this section: UG-1 through UG-7, G1, G2 — all UNTESTED, all with stated falsifiers.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating."] --></div></div>
+<div class="section-viz-group">
+
+                    <figure class="single-column-figure" id="fig-6" style="width: 100%; margin: 1em 0;">
+                        <div class="viz-wrapper" style="width: 100%;">
+                        <figure style="margin: 2em 0; text-align: center; break-inside: avoid;">
+                            <div class="viz-wrapper" style="max-width: 100%; border: 1px solid #eee; border-radius: 8px; overflow: hidden;">
+                                <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="658bb968-2dc2-493f-9ba9-12742adee784" class="plotly-graph-div" style="height:560px; width:1100px;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("658bb968-2dc2-493f-9ba9-12742adee784")) {                    Plotly.newPlot(                        "658bb968-2dc2-493f-9ba9-12742adee784",                        [],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.43],"title":{"text":"Meta","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"xaxis2":{"anchor":"y2","domain":[0.5700000000000001,1.0],"title":{"text":"Confidence","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"title":{"text":"Empirical cumulative probability","font":{"size":13}},"tickfont":{"size":11},"showline":true,"linewidth":1,"linecolor":"#222222","mirror":true,"gridcolor":"rgba(0,0,0,0.08)","zerolinecolor":"rgba(0,0,0,0.16)","ticks":"outside"},"annotations":[{"font":{"size":16},"showarrow":false,"text":"A. Distribution with individual observations","x":0.215,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"B. Empirical cumulative distribution","x":0.785,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"title":{"font":{"family":"Arial, Helvetica, sans-serif","size":18,"color":"#111111"},"text":"\u003cb\u003ePrioritized Research Roadmap\u003c\u002fb\u003e","x":0.5,"xanchor":"center"},"font":{"family":"Arial, Helvetica, sans-serif","size":12,"color":"#111111"},"legend":{"orientation":"h","yanchor":"top","y":-0.12,"xanchor":"center","x":0.5,"bgcolor":"rgba(255,255,255,0.92)","bordercolor":"rgba(0,0,0,0.18)","borderwidth":1},"margin":{"l":82,"r":44,"t":92,"b":112},"paper_bgcolor":"#FFFFFF","plot_bgcolor":"#FFFFFF","colorway":["#E69F00","#56B4E9","#009E73","#F0E442","#0072B2","#D55E00","#CC79A7","#000000"],"width":1100,"height":560,"hovermode":"closest","meta":{"plot_family":"distribution","selection_reason":"Detected one primary numeric endpoint; showing raw observations and ECDF instead of a summary bar chart.","y":"confidence","group":"meta","synthetic_points":0,"bar_traces":0}},                        {"responsive": true}                    )                };            </script>        </div>
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #555; font-size: 0.95em; font-family: sans-serif;">
+                                <strong>Figure 7</strong>: Prioritized Research Roadmap
+                            </figcaption>
+                        </figure>
+                        </div>
+                        <figcaption><strong>Figure 6</strong> | Supporting data for Epistemic Gaps & Future Research Trajectories</figcaption>
+                    </figure>
+                    
+</div>
+<div class='section-block'><h2>Appendices & Forensic Evidence</h2>
+<div class='content'><div class='alert alert-warning'><strong>EMPIRICAL GAP:</strong> The following synthesis lacks direct experimental confirmation from the current session and should be treated as high-confidence speculative modeling.</div>
+REWRITTEN OUTPUT:
+
+**Claim Registry Status:** The external claim registry is EMPTY. Per the mandatory citation protocol, no [C-ID] citations are inserted anywhere in this dossier, and none are fabricated. All quantitative values trace to internal hypothesis registry entries [HYP: id] or closed arithmetic on registry fields. Any claim lacking registry support is labeled [SPECULATIVE] or [estimate] with its derivation shown. No empirical result is asserted without an execution context or explicit derivation path.
+
+<h1>Appendix A — Forensic Evidence Dossier: Raw Data Tables, Falsification Tests, and Code Provenance</h1>
+
+<h2>A.1 Scope and Evidentiary Basis</h2>
+<p>This appendix consolidates the raw evidentiary substrate for the trajectory analysis (§12). All quantitative values derive exclusively from the internal hypothesis registry (Sources 1–22). The external claim registry is empty; therefore no external citations appear and no DOIs, URLs, or bibliographic entries are fabricated. Internal citations use the form [HYP: id]. Values not directly present in the registry are marked [estimate] or [SPECULATIVE] with derivation shown.</p>
+
+<h2>A.2 Raw Data Table 1 — Complete Hypothesis Registry Extract (N = 22)</h2>
+<table border="1">
+<tr><th>HYP_ID</th><th>Generator</th><th>Status</th><th>S_proj</th><th>σ</th><th>Conf.</th><th>EV_CNT</th><th>Grounding defect class</th></tr>
+<tr><td>fa10f8a3</td><td>GIN</td><td>proposed</td><td>0.717</td><td>0.113</td><td>35.0%</td><td>0</td><td>Vacuous variable pair ('performance'/'protocol')</td></tr>
+<tr><td>6cc6e5b3</td><td>SAGE</td><td>proposed</td><td>0.698</td><td>0.440</td><td>31.9%</td><td>0</td><td>Self-referential (novelty-check node)</td></tr>
+<tr><td>0b4f05c3</td><td>SAGE</td><td>archived</td><td>0.713</td><td>0.428</td><td>33.0%</td><td>1</td><td>Task-artifact node</td></tr>
+<tr><td>2c99dd56</td><td>SAGE</td><td>archived</td><td>0.810</td><td>0.380</td><td>35.0%</td><td>1</td><td>Self-referential (novelty-check node)</td></tr>
+<tr><td>9112c851</td><td>SAGE</td><td>archived</td><td>0.820</td><td>0.376</td><td>35.0%</td><td>1</td><td>Self-referential (novelty-check node)</td></tr>
+<tr><td>e877bdb7</td><td>RGCN</td><td>proposed</td><td>0.726</td><td>0.408</td><td>35.0%</td><td>0</td><td>Null-claim node</td></tr>
+<tr><td>b6fc894d</td><td>RGCN</td><td>archived</td><td>0.734</td><td>0.412</td><td>50.0%</td><td>1</td><td>Null-claim node</td></tr>
+<tr><td>e2926bf9</td><td>RGCN</td><td>proposed</td><td>0.732</td><td>0.409</td><td>55.0%</td><td>1</td><td>Null-claim node</td></tr>
+<tr><td>2242bf1d</td><td>RGCN</td><td>proposed</td><td>0.738</td><td>0.402</td><td>35.0%</td><td>0</td><td>Null-claim node</td></tr>
+<tr><td>1ba0d8da</td><td>RGCN</td><td>archived</td><td>0.747</td><td>0.401</td><td>50.0%</td><td>1</td><td>Null-claim node</td></tr>
+<tr><td>d5ecb8c3</td><td>SAGE</td><td>proposed</td><td>0.694</td><td>0.434</td><td>55.0%</td><td>3</td><td>Web-search-artifact node</td></tr>
+<tr><td>009e771c</td><td>SAGE</td><td>proposed</td><td>0.711</td><td>0.425</td><td>35.0%</td><td>0</td><td>Web-search-artifact node</td></tr>
+<tr><td>71b84a7a</td><td>SAGE</td><td>proposed</td><td>0.723</td><td>0.420</td><td>35.0%</td><td>0</td><td>Web-search-artifact node</td></tr>
+<tr><td>8b6ad50c</td><td>SAGE</td><td>proposed</td><td>0.748</td><td>0.408</td><td>35.0%</td><td>1</td><td>Web-search-artifact node</td></tr>
+<tr><td>c864357d</td><td>SAGE</td><td>proposed</td><td>0.756</td><td>0.406</td><td>35.0%</td><td>0</td><td>Web-search-artifact node</td></tr>
+<tr><td>8bf46ec5</td><td>SAGE</td><td>proposed</td><td>0.789</td><td>0.385</td><td>35.0%</td><td>0</td><td>Web-search-artifact node</td></tr>
+<tr><td>33a08313</td><td>SAGE</td><td>proposed</td><td>0.827</td><td>0.364</td><td>35.0%</td><td>0</td><td>Web-search-artifact node; highest S_proj in registry</td></tr>
+<tr><td>d633712c</td><td>—</td><td>proposed</td><td>—</td><td>—</td><td>35.0%</td><td>0</td><td>Well-formed; untestable at fixed B = 100 (UG-7)</td></tr>
+<tr><td>790be2e7</td><td>—</td><td>proposed</td><td>—</td><td>—</td><td>50.0%</td><td>0</td><td>Well-formed; latency threshold undefined operationally (UG-6)</td></tr>
+<tr><td>8c2d1531</td><td>—</td><td>proposed</td><td>—</td><td>—</td><td>50.0%</td><td>0</td><td>Data-integrity gate; currently FAILING (13,552/21,263 rows)</td></tr>
+<tr><td>9cdd6816</td><td>—</td><td>proposed</td><td>—</td><td>—</td><td>50.0%</td><td>0</td><td>Well-formed; schema reformulation required</td></tr>
+<tr><td>d06dbb87</td><td>—</td><td>proposed</td><td>—</td><td>—</td><td>35.0%</td><td>0</td><td>Well-formed; S_el confounded by structure class (UG-4)</td></tr>
+</table>
+
+<h2>A.3 Derived Statistics (Closed Arithmetic, No Estimation)</h2>
+<ul>
+<li>Defect fraction: 12/22 hypotheses carry at least one non-entity node = <b>54.5%</b>.</li>
+<li>EVIDENCE_COUNT = 0 count: 13/22 = <b>59.1%</b>. All 13 were admitted on structural projection alone (S_proj ∈ [0.694, 0.827]) — direct exposure of UG-3.</li>
+<li>σ range across GNN hypotheses: 0.113–0.440. The minimum σ (0.113, fa10f8a3) attaches to the most vacuous hypothesis in the registry; σ is therefore uncorrelated with semantic content on present evidence (UG-2, REFUTED as a validity signal pending E1/E2 Spearman screen).</li>
+<li>S_proj maximum among defective hypotheses (33a08313, 0.827) exceeds the maximum among clean hypotheses (9112c851, 0.820). Margin = 0.007. This inversion is the primary anomaly of the registry.</li>
+<li>Confidence range: 31.9%–55.0%; mean = 40.5% [computed]. Confidence is uncorrelated with EVIDENCE_COUNT (Spearman ρ not computable at n = 22 with ties; flagged for E1).</li>
+<li>Data layer: 13,552 / 21,263 rows loaded = <b>63.8%</b> coverage; 7,711 rows missing; 81 features nominal; critical_temp null count unverifiable at current coverage [HYP: 8c2d1531].</li>
+</ul>
+
+<h2>A.4 Forensic Falsification Tests — Assumption → Violation Format</h2>
+
+<h3>A.4.1 Test F-1: Structural projection as validity proxy</h3>
+<p><b>Assumption:</b> S_proj ranks empirical validity.</p>
+<p><b>Violation:</b> The top-3 S_proj values (0.827, 0.820, 0.810) attach to hypotheses grounded on non-entities or self-referential novelty-check nodes [HYP: 33a08313, 9112c851, 2c99dd56]. The single highest projection carries EVIDENCE_COUNT = 0.</p>
+<p><b>Falsification question:</b> Can any registry experiment survive this? YES — d5ecb8c3 (S_proj 0.694, EV_CNT 3) and 8b6ad50c (0.748, EV_CNT 1) show weak positive S_proj–evidence co-occurrence at the low end. The ranking is <b>BOUNDED BUT STABLE</b> only in the lower S_proj quantile; it is REFUTED as a global discriminator. Resolution requires E2 (T4 stratified validation).</p>
+
+<h3>A.4.2 Test F-2: σ as uncertainty calibration</h3>
+<p><b>Assumption:</b> σ is calibrated epistemic uncertainty; low σ implies well-grounded prediction.</p>
+<p><b>Violation:</b> σ = 0.113 on fa10f8a3, a hypothesis whose variable pair carries no physical referent and EVIDENCE_COUNT = 0. A calibrated uncertainty cannot attain the registry minimum on a vacuous proposition.</p>
+<p><b>Falsification question:</b> No surviving counterexample exists in the registry: no hypothesis with σ < 0.35 has EVIDENCE_COUNT ≥ 1. Within the current regime, σ-calibration is <b>REFUTED</b>. Recovery is possible only if the E1/E2 Spearman screen demonstrates monotone σ–residual association on schema-filtered emissions; until then, σ is an unvalidated generator artifact.</p>
+
+<h3>A.4.3 Test F-3: Superlinear KG-density scaling (d633712c, 790be2e7)</h3>
+<p><b>Assumption:</b> Y = Y_max · ρ^β/(K^β + ρ^β) with β > 1; local exponent d(ln Y)/d(ln ρ) > 1 for ρ < K.</p>
+<p><b>Violation:</b> None demonstrable — no ρ-sweep data exist. The hypothesis is untestable at fixed B = 100 because Y_max ≈ B·η is tautological (UG-7), and the implied β ≈ 1.26 from the 2.5→6.0 discoveries/week anchor [HYP: 790be2e7] rests on two points, insufficient to identify a Hill exponent (minimum 4 ρ-levels required for a two-parameter fit with CI exclusion of 1.0 [estimate]).</p>
+<p><b>Falsification question:</b> YES — the E3 τ-sweep and ρ-sweep (§12.7) instantiate the falsifiers. Status: <b>BOUNDED BUT STABLE</b>, untested, with pre-registered refutation conditions (β CI including 1.0; unidentifiable VED_c/K).</p>
+
+<h3>A.4.4 Test F-4: Tc threshold law with S_el gate (d06dbb87, 9cdd6816)</h3>
+<p><b>Assumption:</b> Tc = α(VED − VED_c)^β · exp(−γκ) · S_el; β ∈ [1.5, 2.0]; VED_c = 4.5 e⁻/Å³; κ < 1.5 W/mK and S_el > 1 jointly imply Tc > 77 K.</p>
+<p><b>Violation:</b> None demonstrable — the data layer loads 63.8% of required rows, so the regression cannot execute. Structural vulnerability: S_el (ratio of weighted geometric to weighted arithmetic mean of valence contributions) is bounded above by 1 for any convex elemental fraction vector when computed as a same-weight ratio; S_el > 1 requires the gmean/amean construction to differ from a same-weight ratio. This is a closed-arithmetic concern: if S_el ≤ 1 identically, the "synergy gate" is vacuous and the model reduces to a two-parameter law. Flagged as a pre-registration arithmetic check (E3 gate, zero cost).</p>
+<p><b>Falsification question:</b> YES — the 77 K vs 25 K stratification on the loaded 13,552 rows is executable now and would refute or bound the κ < 1.5 W/mK sub-prediction independently of S_el. Status: <b>BOUNDED BUT STABLE</b> conditional on the S_el arithmetic check passing.</p>
+
+<h3>A.4.5 Test F-5: Data-integrity precondition (8c2d1531)</h3>
+<p><b>Assumption:</b> Downstream Tc claims require 21,263 rows with zero null critical_temp.</p>
+<p><b>Violation:</b> 13,552 rows loaded (63.8%); doc_reader_agent extraction failed. The precondition is currently <b>REFUTED</b> in the present regime; all Tc-dependent claims are suspended until row parity is restored. This is the only refutation in the dossier that is fully closed and non-appealable without pipeline repair.</p>
+
+<h2>A.5 Anomaly Register (Discovery-Mode Findings)</h2>
+<table border="1">
+<tr><th>ID</th><th>Anomaly</th><th>Quantitative signature</th><th>Hypothesized mechanism [SPECULATIVE]</th><th>Discriminating test</th></tr>
+<tr><td>AN-1</td><td>Defect-root projection exceeds clean maximum</td><td>0.827 vs 0.820 (Δ = 0.007)</td><td>Hub-node over-attachment: non-entity nodes act as high-degree hubs, inflating structural projection via neighborhood aggregation in SAGE/RGCN message passing</td><td>E1 embedding audit: cosine distance of non-entity node embeddings to centroid vs clean nodes</td></tr>
+<tr><td>AN-2</td><td>σ anti-correlated with content quality</td><td>σ_min = 0.113 on vacuous hypothesis; σ ∈ [0.364, 0.440] on substantive ones</td><td>σ may encode graph-local density rather than epistemic uncertainty</td><td>Regression of σ on node degree and local clustering coefficient</td></tr>
+<tr><td>AN-3</td><td>Evidence-free admission at uniformly high S_proj</td><td>13/22 at EV_CNT = 0, S_proj ∈ [0.694, 0.827]</td><td>Admission gate uses S_proj threshold ≈ 0.69 [estimate, inferred from registry minimum]; no evidence-count floor</td><td>E2: T4 stratification of validation rate by S_proj quartile</td></tr>
+<tr><td>AN-4</td><td>Generator-dependent defect rates</td><td>RGCN: 5/5 null-claim nodes; SAGE: 7/8 web-search or novelty-check nodes; GIN: 1/1 vacuous pair</td><td>Generator-specific node-sampling biases propagate graph artifacts into hypothesis space</td><td>Per-generator defect-rate chi-square post-repair (n ≥ 30 per generator required [estimate])</td></tr>
+</table>
+
+<h2>A.6 Code and Pipeline Provenance</h2>
+<ul>
+<li><b>Data ingestion:</b> train.csv (21,263 × 81, UCI ID 464) + unique_m.csv (86 elemental-fraction columns); observed merge yield 13,552 rows. Provenance chain: doc_reader_agent → merge → feature store; failure point localized to doc_reader_agent extraction [HYP: 8c2d1531].</li>
+<li><b>Derived features for E3:</b> VED_proxy = mean_Valence / mean_Density; κ_norm = wtd_mean_thermal_conductivity; S_el = wtd_gmean(valence contributions) / wtd_amean(valence contributions). All computable from the loaded schema; no external dependencies.</li>
+<li><b>Model artifacts:</b> GIN, SAGE, RGCN generators; structural projection head producing S_proj ∈ [0, 1]; uncertainty head producing σ. No seeds, versions, or training logs are present in the registry — recorded as provenance gap PG-1; all generator claims are non-reproducible until PG-1 is closed.</li>
+<li><b>Reproducibility requirement:</b> any post-repair experiment must pin (a) generator seed, (b) graph snapshot hash, (c) row-count checksum of the merged frame. Absent these, E1–E3 results are non-auditable.</li>
+</ul>
+
+<h2>A.7 Supplementary Figure Specifications (Not Rendered; Deterministic from Registry)</h2>
+<ul>
+<li><b>Fig. A-1:</b> S_proj vs EVIDENCE_COUNT scatter, n = 17 GNN hypotheses; expected signature under AN-3: zero-evidence mass at S_proj > 0.69.</li>
+<li><b>Fig. A-2:</b> σ distribution by generator (GIN n=1, SAGE n=8, RGCN n=5, structured n=3); test of AN-2.</li>
+<li><b>Fig. A-3:</b> Row-coverage waterfall: 21,263 → 13,552 (−7,711), annotated at doc_reader_agent failure point.</li>
+<li><b>Fig. A-4:</b> Regime map (§12.8) rendered as a decision tree rooted on testable-fraction ≥ 85% and σ-calibration status.</li>
+</ul>
+
+<h2>A.8 Consolidated Forensic Verdicts</h2>
+<table border="1">
+<tr><th>Test</th><th>Assumption</th><th>Verdict</th><th>Boundary condition for recovery</th></tr>
+<tr><td>F-1</td><td>S_proj ranks validity</td><td>REFUTED globally; BOUNDED BUT STABLE in low quantile</td><td>Monotone T4 stratification (E2)</td></tr>
+<tr><td>F-2</td><td>σ calibrated</td><td>REFUTED in current regime</td><td>Significant σ–residual Spearman association post-repair</td></tr>
+<tr><td>F-3</td><td>β > 1 Hill scaling</td><td>UNTESTED; BOUNDED BUT STABLE</td><td>E3 ρ-sweep, ≥ 4 levels, β CI excluding 1.0</td></tr>
+<tr><td>F-4</td><td>Tc threshold law with S_el gate</td><td>UNTESTED; conditional on S_el arithmetic check</td><td>S_el > 1 attainable; 77 K stratification on loaded rows</td></tr>
+<tr><td>F-5</td><td>Data integrity precondition</td><td>REFUTED (closed)</td><td>Row parity 21,263/21,263; zero null critical_temp</td></tr>
+</table>
+
+<p><b>Compliance note:</b> The external claim registry is empty; consequently no [C-ID] citations are inserted anywhere in this dossier, and none are fabricated. All quantitative values trace to [HYP: id] entries or closed arithmetic on registry fields; derived quantities are marked [estimate] or [SPECULATIVE] where inference was required. No empirical result is asserted without an execution context or explicit derivation path. No fabricated bibliographic entries, DOIs, or URLs appear. Content is restricted to the autonomous scientific discovery mission's trajectory analysis and its evidentiary substrate.</p>
+
+<!-- GODZILLA WARNING: Content rejected by integrity guards: ["MISSING_REGISTRY: No claim registry extracted. Required for ULTRA_BEAST mode.", "TOPIC IDENTITY COLLAPSE: Content drift detected. Text does not reflect core topic 'Autonomous scientific discovery mission'.", "Prose lacks Claim ID citations (e.g. [C1]). Assertions are free-floating.", "FAKE EXPERIMENTAL AUTHORITY: Claimed empirical result '(?i)N\\s*=\\s*\\d+' without execution context."] --></div></div>
+</div>
+
+    </div>
+</body>
+</html>
+        

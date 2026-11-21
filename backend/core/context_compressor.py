@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Context Compressor - ULTRON Ultra-Upgrade
+Context Compressor - SVEL Ultra-Upgrade
 ==========================================
 
 Hierarchical context compression for managing large research contexts
@@ -16,7 +16,7 @@ Strategies:
 - Key findings summarization (preserves meaning)
 - Numerical precision preservation for critical results
 
-Author: ULTRON Team
+Author: SVEL Team
 """
 
 import logging

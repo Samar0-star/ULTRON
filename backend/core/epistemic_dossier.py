@@ -1,5 +1,5 @@
 """
-Epistemic Discovery Dossier Generator for ULTRON Autonomous AI Scientist
+Epistemic Discovery Dossier Generator for SVEL Autonomous AI Scientist
 ========================================================================
 Compiles high-rigor, publication-grade scientific discovery dossiers that replace
 generic prose reports.
@@ -122,7 +122,7 @@ class EpistemicDossierGenerator:
         md_lines = []
         md_lines.append(f"# Epistemic Discovery Dossier: {research_question}")
         md_lines.append("")
-        md_lines.append(f"**Autonomous System**: ULTRON Autonomous AI Scientist (2026 Engine)  ")
+        md_lines.append(f"**Autonomous System**: SVEL Autonomous AI Scientist (2026 Engine)  ")
         md_lines.append(f"**Mission Identifier**: `{mission_id}`  ")
         md_lines.append(f"**Target Domain**: `{domain}`  ")
         md_lines.append(f"**Sovereign Baseline LLM**: `{baseline_llm}`  ")
@@ -138,7 +138,7 @@ class EpistemicDossierGenerator:
         # Section 1: Executive Mission Provenance
         md_lines.append("## 1. Executive Mission Provenance & Hardware Envelope")
         md_lines.append("")
-        md_lines.append("This document constitutes the formal scientific discovery dossier compiled autonomously by ULTRON. "
+        md_lines.append("This document constitutes the formal scientific discovery dossier compiled autonomously by SVEL. "
                         "All claims are evaluated under strict Popperian falsification standards, eliminating narrative prose "
                         "in favor of mathematical framing, boundary condition stress tests, and cryptographic verification.")
         md_lines.append("")
@@ -527,7 +527,7 @@ class EpistemicDossierGenerator:
         md_lines.append("")
         md_lines.append("```")
         md_lines.append(f"MISSION_ID           : {mission_id}")
-        md_lines.append(f"SOVEREIGN_ENGINE     : ULTRON AI Scientist (2026 Engine)")
+        md_lines.append(f"SOVEREIGN_ENGINE     : SVEL AI Scientist (2026 Engine)")
         md_lines.append(f"BASELINE_LLM         : {baseline_llm}")
         md_lines.append(f"SURVIVOR_TIER        : TIER_{survivor_tier.upper()}")
         md_lines.append(f"FALSIFICATION_STATUS : {overall_falsification_status}")

@@ -1,4 +1,4 @@
-# ULTRON Epistemic Governance & Falsification
+# SVEL Epistemic Governance & Falsification
 from .epistemic_regulator import EpistemicRegulator
 from .the_morgue import TheMorgue, MorgueRecord, KillGate
 from .dossier_composer import EpistemicDossierComposer

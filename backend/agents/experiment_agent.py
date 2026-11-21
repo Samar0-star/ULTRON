@@ -1,7 +1,7 @@
 """
 [SCIENCE] SCIENTIFIC EXPERIMENT AGENT - THE HIGH-FIDELITY RESEARCHER
 =====================================================
-Part of Ultron's Advanced Research Architecture.    
+Part of SVEL's Advanced Research Architecture.    
 
 Reference: PCD Pillar 3.
 
@@ -1202,7 +1202,7 @@ DO NOT use np.random.rand() or create sample data. Load the REAL data."""
                              result.metadata["details"] += f" (CRITICAL: Finding broken by numeric adversarial stress test. Unbreakability: {adversarial_report.get('unbreakability_index')})"
 
                     # C. Optional Legacy Tabular AutoML Attack (only if falsification_report was not already computed AND explicitly enabled)
-                    if "falsification_report" not in result.metadata and os.environ.get("ULTRON_ENABLE_LEGACY_AUTOML_ATTACK", "0") == "1":
+                    if "falsification_report" not in result.metadata and os.environ.get("SVEL_ENABLE_LEGACY_AUTOML_ATTACK", "0") == "1":
                         try:
                             from backend.discovery.adversarial_executor import AdversarialExecutor
                             import pandas as pd
@@ -1279,14 +1279,14 @@ DO NOT use np.random.rand() or create sample data. Load the REAL data."""
 
     async def design_experiment(self, hypothesis: Hypothesis, experiment_id: str, task_description: str = "", mandated_skills: List[str] = None, data_paths: Dict[str, str] = None, domain: str = "general", **kwargs) -> str:
         """
-        [ULTRON_CORE] Two-step sovereign pipeline
+        [SVEL_CORE] Two-step sovereign pipeline
         Step 1: ExperimentDesigner.design_protocol() -> JSON artifact
         Step 2: ExperimentImplementer.implement_protocol() -> Python code
         """
         if not self.llm_manager:
             return "import json; print(json.dumps({'supported': False, 'confidence': 0.0, 'details': 'No LLM manager'}))"
 
-        logger.info(f" [ULTRON_CORE] Initiating Sovereign Pipeline for: {experiment_id}")
+        logger.info(f" [SVEL_CORE] Initiating Sovereign Pipeline for: {experiment_id}")
         data_context = self._data_context_for_prompt(data_paths or {})
 
         # --- STEP 1: DESIGN PROTOCOL (Ph.D. Refinement Loop) ---
@@ -1294,7 +1294,7 @@ DO NOT use np.random.rand() or create sample data. Load the REAL data."""
             from backend.experiments.designer import ExperimentDesigner
             designer = ExperimentDesigner(self.llm_manager)
             
-            # [ULTRON_CORE] Self-Correction turn for maximum rigor
+            # [SVEL_CORE] Self-Correction turn for maximum rigor
             artifact_json = None
             last_design_error = None
             for design_attempt in range(1, 3): 
@@ -1306,7 +1306,7 @@ DO NOT use np.random.rand() or create sample data. Load the REAL data."""
                             domain=domain
                         )
                     else:
-                        logger.info(f" [ULTRON_CORE] Turn 2 Refinement: Physically correcting protocol omissions...")
+                        logger.info(f" [SVEL_CORE] Turn 2 Refinement: Physically correcting protocol omissions...")
                         artifact_json = await designer.refine_protocol(
                             hypothesis=hypothesis,
                             code="# N/A (Designer Turn)",
@@ -1317,9 +1317,9 @@ DO NOT use np.random.rand() or create sample data. Load the REAL data."""
                     last_design_error = ve
                     if design_attempt == 2: raise ve
             
-            logger.info(f" [ULTRON_CORE] Step 1: Artifact '{artifact_json.get('title', 'Unknown')}' designed")
+            logger.info(f" [SVEL_CORE] Step 1: Artifact '{artifact_json.get('title', 'Unknown')}' designed")
         except Exception as e:
-            logger.error(f" [ULTRON_CORE] Step 1 failed: {e}")
+            logger.error(f" [SVEL_CORE] Step 1 failed: {e}")
             raise e
 
         # --- STEP 2: IMPLEMENT PROTOCOL ---
@@ -1587,7 +1587,7 @@ Return ONLY the fixed Python code.
         for var in path_vars:
             code = re.sub(rf"^\s*{var}\s*=.*$", f"# [LOCK] {var} overridden", code, flags=re.MULTILINE)
         
-        # Strip LLM-declared definitions of VerificationMonitor, UltronRigorMonitor, or overrides of _ultron_rigor
+        # Strip LLM-declared definitions of VerificationMonitor, SVELRigorMonitor, or overrides of _svel_rigor
         cleaned_lines = []
         skip_indent = None
         for line in code.split('\n'):
@@ -1605,14 +1605,14 @@ Return ONLY the fixed Python code.
                 else:
                     skip_indent = None
             
-            class_match = re.match(r"^\s*class\s+(VerificationMonitor|UltronRigorMonitor)\b", line, re.IGNORECASE)
+            class_match = re.match(r"^\s*class\s+(VerificationMonitor|SVELRigorMonitor)\b", line, re.IGNORECASE)
             if class_match:
                 indent = len(line) - len(stripped)
                 skip_indent = indent
                 cleaned_lines.append("# [STRIPPED MONITOR CLASS] " + line)
                 continue
                 
-            var_match = re.match(r"^\s*(_ultron_rigor)\s*=", line, re.IGNORECASE)
+            var_match = re.match(r"^\s*(_svel_rigor)\s*=", line, re.IGNORECASE)
             if var_match:
                 cleaned_lines.append("# [STRIPPED MONITOR OVERRIDE] " + line)
                 continue
@@ -1624,8 +1624,8 @@ Return ONLY the fixed Python code.
         # Redirect results/experiments to our verified exp_dir
         code = code.replace("results/experiments", exp_dir)
         code = code.replace("results/data", abs_data_dir)
-        code = code.replace("/tmp/ultron_results/experiments", exp_dir)
-        code = code.replace("/tmp/ultron_results", exp_dir)
+        code = code.replace("/tmp/svel_results/experiments", exp_dir)
+        code = code.replace("/tmp/svel_results", exp_dir)
         
         # [GODZILLA V54.7] LIBRARY HIJACK: Bypass all math restrictions
         # Renaming libraries to 'trusted' aliases prevents the preamble from hooking them.
@@ -1678,7 +1678,7 @@ import gc
 import hashlib
 import os
 
-class UltronRigorMonitor:
+class SVELRigorMonitor:
     def __init__(self):
         self.initial_hash = None
         self.initial_count = 0
@@ -1722,7 +1722,7 @@ class UltronRigorMonitor:
              
         self.target_model = target_model
         self.initial_hash, self.initial_count, _ = self._hash_tensors()
-        with open('.ultron_rigor.hash', 'w') as f:
+        with open('.svel_rigor.hash', 'w') as f:
             f.write(self.initial_hash)
         print(f" [RIGOR] Initial state locked to disk: {{self.initial_count}} parameters.")
         
@@ -1744,12 +1744,12 @@ class UltronRigorMonitor:
 
     def verify_final(self):
         final_hash, final_count, final_grad_norm = self._hash_tensors()
-        if not os.path.exists('.ultron_rigor.hash'):
+        if not os.path.exists('.svel_rigor.hash'):
              if self.target_model is not None:
                  print(" [RIGOR-CRITICAL] Physical Proof-of-Work FAILED: Lockfile deleted.")
              return
 
-        with open('.ultron_rigor.hash', 'r') as f:
+        with open('.svel_rigor.hash', 'r') as f:
             stored_initial = f.read().strip()
 
         # [RIGOR-HEAL] If the original model didn't change, scan memory for a pruned/updated copy
@@ -1781,11 +1781,11 @@ class UltronRigorMonitor:
             # Cryptographic confirmation
             print(f" [RIGOR-VERIFIED-{{self.nonce}}] Physical transformation detected: Target model weights evolved (Grad Norm: {{final_grad_norm:.6f}}).")
 
-_ultron_rigor = UltronRigorMonitor()
-VerificationMonitor = UltronRigorMonitor
+_svel_rigor = SVELRigorMonitor()
+VerificationMonitor = SVELRigorMonitor
 """
 
-        pow_end = "\n_ultron_rigor.verify_final()"
+        pow_end = "\n_svel_rigor.verify_final()"
         
         # Only inject PyTorch weight-hash Proof-of-Work monitor when the script explicitly uses PyTorch neural modules
         uses_pytorch_training = bool(re.search(r"\btorch\.nn\b|\bnn\.Module\b|\b\.backward\s*\(|\bcapture_initial\s*\(", code))
@@ -1804,7 +1804,7 @@ VerificationMonitor = UltronRigorMonitor
         initial_files_mtime = {f: os.path.getmtime(os.path.join(exp_dir, f)) for f in os.listdir(exp_dir)}
 
         # [TITAN V155.0] ADVERSARIAL TELEMETRY
-        # We will parse the hash from the rescued .ultron_rigor.hash file
+        # We will parse the hash from the rescued .svel_rigor.hash file
         initial_hash = "missing_hash"
         
         # [TITAN V170.0] ATOMIC EXECUTION
@@ -1817,8 +1817,8 @@ VerificationMonitor = UltronRigorMonitor
             workdir,
             os.getcwd(),
             os.path.abspath("experiments"),
-            "/tmp/ultron_results",
-            "/tmp/ultron_results/experiments"
+            "/tmp/svel_results",
+            "/tmp/svel_results/experiments"
         ]
         for rescue_dir in rescue_candidates:
             if rescue_dir and os.path.exists(rescue_dir) and os.path.abspath(rescue_dir) != os.path.abspath(exp_dir):
@@ -1832,7 +1832,7 @@ VerificationMonitor = UltronRigorMonitor
                                 shutil.copy(src, dst)
                                 os.utime(dst, None)
                                 logger.info(f" [SCAVENGER] Rescued Ph.D. artifact: {f}")
-                                if f == '.ultron_rigor.hash':
+                                if f == '.svel_rigor.hash':
                                     with open(dst, 'r') as hf:
                                         initial_hash = hf.read().strip()
                             except Exception as rescue_e:

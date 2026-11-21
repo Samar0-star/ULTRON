@@ -53,7 +53,7 @@ _REGISTRY_LOCK = threading.Lock()
 
 def get_world_model(session_id: Optional[str] = None) -> "WorldModel":
     """Get or create a session-scoped WorldModel singleton."""
-    sid = session_id or os.environ.get("ULTRON_SESSION_ID") or "default"
+    sid = session_id or os.environ.get("SVEL_SESSION_ID") or "default"
     with _REGISTRY_LOCK:
         if sid not in _WORLD_MODEL_REGISTRY:
             _WORLD_MODEL_REGISTRY[sid] = WorldModel(session_id=sid)
@@ -77,7 +77,7 @@ def get_shared_embedding_model():
             from sentence_transformers import SentenceTransformer
             import torch
             # [GPU CLUSTER UPGRADE] Use CUDA if available or explicit device override; default CPU for MPS stability
-            device = os.environ.get("ULTRON_DEVICE")
+            device = os.environ.get("SVEL_DEVICE")
             if not device:
                 device = "cuda" if torch.cuda.is_available() else "cpu"
             logger.info(f" [VRAM] Initializing shared embedding model on {device} (GLOBAL SINGLETON)...")
@@ -591,7 +591,7 @@ class WorldModel:
         self._db_lock = threading.RLock()
         # [GODZILLA STABILITY] Force session alignment across swarm
         import os
-        env_session = os.environ.get("ULTRON_SESSION_ID")
+        env_session = os.environ.get("SVEL_SESSION_ID")
         self.session_id = session_id or env_session or hashlib.md5(
             str(time.time()).encode()
         ).hexdigest()[:8]
@@ -2129,7 +2129,7 @@ class WorldModel:
                         status=props.get("status", "pending")
                     )
             except Exception as e:
-                logger.error(f"Neo4j write failed: {e}. [ULTRON BEAST FIX] Writing to sync outbox to prevent State Desync.")
+                logger.error(f"Neo4j write failed: {e}. [SVEL BEAST FIX] Writing to sync outbox to prevent State Desync.")
                 try:
                     import json, os
                     os.makedirs("data/sync", exist_ok=True)

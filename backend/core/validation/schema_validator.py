@@ -1,5 +1,5 @@
 """
-ULTRON Column Schema Validator - Anti-Hallucination Gate
+SVEL Column Schema Validator - Anti-Hallucination Gate
 =========================================================
 Validates that generated code only uses actual column names from data files.
 """

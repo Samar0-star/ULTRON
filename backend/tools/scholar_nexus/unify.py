@@ -112,7 +112,7 @@ class UnifiedScholarSearch:
         - [GODZILLA FIX] Context Anchor: Force mission-relevance (Gap 97).
         - [GODZILLA FIX] 429 Pivot: Dynamic budget redistribution (Gap 91).
         """
-        # ULTRON UPGRADE: Use the Neural Brain for routing
+        # SVEL UPGRADE: Use the Neural Brain for routing
         weights = await self._neural_route(query, domain=domain)
         logger.info(f"ScholarNexus: Neural Weights -> {weights}")
         
@@ -398,10 +398,10 @@ class UnifiedScholarSearch:
         return results
 
 
-# Ultron-style source routing explanation:
+# SVEL-style source routing explanation:
 # =========================================
-# HOW Ultron DECIDES:
-#   Ultron uses a simple heuristic: domain field in configuration.
+# HOW SVEL DECIDES:
+#   SVEL uses a simple heuristic: domain field in configuration.
 #   If domain="biology"  PubMed + ArXiv
 #   If domain="physics"  ArXiv + Semantic Scholar
 #   No keyword detection, just config-based.

@@ -1,7 +1,7 @@
 """
 fusion_plasma_falsification_kernel_v2.py
 =========================================
-ULTRON Physics Domain  Fusion Plasma Falsification Kernel  UPGRADE_v2
+SVEL Physics Domain  Fusion Plasma Falsification Kernel  UPGRADE_v2
 Version : 2.0.1  (post-review critical fixes)
 Target  : Aneutronic p-B inertial confinement (Anubal / TIFR experimental campaign)
 

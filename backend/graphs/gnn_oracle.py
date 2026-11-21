@@ -124,7 +124,7 @@ class DreamReport:
     training_time_seconds: float = 0.0
     num_nodes: int = 0
     num_edges: int = 0
-    # ULTRON_CORE_MISSION extensions
+    # SVEL_CORE_MISSION extensions
     scientific_hypotheses: List[Any] = field(default_factory=list)
     motifs: List[GraphMotif] = field(default_factory=list)
 
@@ -375,7 +375,7 @@ class LinkPredictor(nn.Module):
         # Physically abolished hardcoded memory windows. 
         # Derived from environment to support heterogeneous hardware.
         import os
-        BLOCK_SIZE = int(os.getenv("ULTRON_GNN_BLOCK_SIZE", "512"))
+        BLOCK_SIZE = int(os.getenv("SVEL_GNN_BLOCK_SIZE", "512"))
         N = z.size(0)
         adj = torch.zeros((N, N), device=z.device)
         for i in range(0, N, BLOCK_SIZE):
@@ -1223,7 +1223,7 @@ class GNNOracle:
         # [IGOR AUDIT] SIGNAL GATE
         num_edges = self._last_report.num_edges
         auc = self._last_report.validation_auc
-        auc_threshold = float(os.getenv("ULTRON_GNN_AUC_THRESHOLD", "0.55"))
+        auc_threshold = float(os.getenv("SVEL_GNN_AUC_THRESHOLD", "0.55"))
         
         if num_edges < 2: 
             logger.warning(f" [IGOR] GNN dreaming blocked: insufficient edges ({num_edges} < 2)")
@@ -1372,7 +1372,7 @@ class GNNOracle:
         # [IGOR AUDIT] MASSIVE DISCOVERY GATE WITH CONFIGURABLE THRESHOLD
         num_edges = self._last_report.num_edges
         auc = self._last_report.validation_auc
-        auc_threshold = float(os.getenv("ULTRON_GNN_AUC_THRESHOLD", "0.55"))
+        auc_threshold = float(os.getenv("SVEL_GNN_AUC_THRESHOLD", "0.55"))
         if num_edges < 2:
             logger.warning(f" [IGOR] Global GNN discovery blocked: insufficient edges ({num_edges} < 2)")
             return []

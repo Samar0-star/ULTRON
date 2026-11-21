@@ -1,5 +1,5 @@
 """
-ULTRON-APEX COMPUTER SCIENCE FALSIFICATION ENGINE v4.0 — REAL SCIENCE EDITION
+SVEL-APEX COMPUTER SCIENCE FALSIFICATION ENGINE v4.0 — REAL SCIENCE EDITION
 ==============================================================================
 Purpose:
 - Rigorous CS hypothesis falsification grounded in formal methods
@@ -973,7 +973,7 @@ def _print_report(r: Dict):
         return str(v) if v is not None else "BLOCKED"
 
     print("\n" + "="*65)
-    print("  ULTRON CS FALSIFICATION REPORT")
+    print("  SVEL CS FALSIFICATION REPORT")
     print("="*65)
     print(f"  VERDICT:              {r['verdict']}")
     print(f"  Hypothesis ID:        {r['hypothesis_id']}")
@@ -1007,9 +1007,9 @@ def _print_report(r: Dict):
 # ─────────────────────────────────────────────────────────────────────────────
 
 @register_template
-class UltronApexCSTemplate(SimulationTemplate):
+class SVELApexCSTemplate(SimulationTemplate):
     """
-    ULTRON-APEX CS FALSIFICATION ENGINE — REAL SCIENCE EDITION
+    SVEL-APEX CS FALSIFICATION ENGINE — REAL SCIENCE EDITION
 
     Z3: Real SMT encoding — UNSAT actually means proven, not trivially SAT.
     Complexity: Bootstrap CI + AIC model selection — not a single polyfit.
@@ -1066,7 +1066,7 @@ class UltronApexCSTemplate(SimulationTemplate):
         byzantine_fraction  = params.custom_variables.get("byzantine_fraction", 0.33)
 
         return ExperimentProtocol(
-            title=f"ULTRON CS FALSIFICATION :: {params.hypothesis_id}",
+            title=f"SVEL CS FALSIFICATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.SIMULATION,
             domain="computer_science",

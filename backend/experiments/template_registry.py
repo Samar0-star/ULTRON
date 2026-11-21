@@ -1,5 +1,5 @@
 """
-ULTRON TEMPLATE REGISTRY
+SVEL TEMPLATE REGISTRY
 ========================
 Hybrid Template + LLM Integration System
 Connects orphaned templates to ExperimentAgent

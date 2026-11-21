@@ -1,5 +1,5 @@
 """
-Deep Research Orchestrator for ULTRON
+Deep Research Orchestrator for SVEL
 =================================================
 **THE BRAIN OF THE OPERATION.**
 
@@ -134,14 +134,14 @@ except ImportError as e:
     logger.info(" [INFO] MetaReasoningLayer not found. Strategic self-correction disabled.")
     MetaReasoningLayer = None
 
-# Ultron Expert System (Skill Injection)
+# SVEL Expert System (Skill Injection)
 try:
-    from backend.core.skill_injector import UltronExpertSystem, get_expert_system
+    from backend.core.skill_injector import SVELExpertSystem, get_expert_system
     from backend.core.strategy_engine import DynamicStrategyEngine, get_strategy_engine
     SKILL_INJECTION_AVAILABLE = True
 except ImportError:
     logger.warning(" [WARN] Skill Injection modules not found. Expert system fallbacks active.")
-    UltronExpertSystem = None
+    SVELExpertSystem = None
     get_expert_system = None
     SKILL_INJECTION_AVAILABLE = False
 
@@ -303,7 +303,7 @@ class CircuitBreaker:
     def record_failure(self, error: str = "") -> None:
         """
         Record a failure and potentially open the circuit.
-        [ULTRON RIGOR] FLAW 35 FIX: Grounding Failures (Honest Science) 
+        [SVEL RIGOR] FLAW 35 FIX: Grounding Failures (Honest Science) 
         do NOT trip the circuit breaker.
         """
         # If the error is an honest 'No Data Found' report, don't punish the system status
@@ -628,9 +628,9 @@ class DeepResearchOrchestrator:
         self.mode = ResearchMode(mode)
         
         if beast_config.orchestration.singularity_mode:
-            logger.info(f"  ULTRON SWARM ACTIVE: Overriding limits with Beast Config (Baseline)")
+            logger.info(f"  SVEL SWARM ACTIVE: Overriding limits with Beast Config (Baseline)")
             
-            # [ULTRON SYNC] Force physical worker limit to 10 to protect API keys
+            # [SVEL SYNC] Force physical worker limit to 10 to protect API keys
             max_parallel = 10
             
             logger.info(f"   - Max Parallel: {max_parallel}")
@@ -701,11 +701,11 @@ class DeepResearchOrchestrator:
         
         # Export orchestrator environment variables for session integrity across all agents and processes
         import os
-        os.environ["ULTRON_SESSION_ID"] = str(self.session.id)
-        os.environ["ULTRON_RUNNING_ORCHESTRATOR"] = "1"
-        os.environ["ULTRON_DOMAIN"] = str(self.domain)
+        os.environ["SVEL_SESSION_ID"] = str(self.session.id)
+        os.environ["SVEL_RUNNING_ORCHESTRATOR"] = "1"
+        os.environ["SVEL_DOMAIN"] = str(self.domain)
         
-        # PROJECT ULTRON: EMPIRICAL BEAST REFACTOR - Data Tethering
+        # PROJECT SVEL: EMPIRICAL BEAST REFACTOR - Data Tethering
         # Scan for locally uploaded files matching the session ID
         upload_dir = f"data/missions/{self.session.id}/uploaded_files/"
         root_dir = os.getcwd()
@@ -955,19 +955,19 @@ class DeepResearchOrchestrator:
             self.meta_reasoner = None
         
         # =========================================================================
-        # ULTRON BRAIN COMPONENTS (Skill Injection + Convergence + Security)
+        # SVEL BRAIN COMPONENTS (Skill Injection + Convergence + Security)
         # =========================================================================
         
-        # Ultron Expert System (Domain-Specific Skill Injection)
+        # SVEL Expert System (Domain-Specific Skill Injection)
         if SKILL_INJECTION_AVAILABLE and get_expert_system:
             self.expert_system = get_expert_system()
             self.strategy_engine = get_strategy_engine()
-            logger.info(f"  UltronExpertSystem initialized ({len(self.expert_system.skills_cache)} skills loaded)")
+            logger.info(f"  SVELExpertSystem initialized ({len(self.expert_system.skills_cache)} skills loaded)")
             logger.info(" [BATTLE] DynamicStrategyEngine Armed: Strategic Battle Planning Enabled")
         else:
             self.expert_system = None
             self.strategy_engine = None
-            logger.warning("UltronExpertSystem not available")
+            logger.warning("SVELExpertSystem not available")
         
         # Epistemic Convergence Engine (Advanced Stopping Criteria)
         if CONVERGENCE_ENGINE_AVAILABLE and get_convergence_engine:
@@ -1105,7 +1105,7 @@ class DeepResearchOrchestrator:
         k = 10.0
         x0 = 0.5
         
-        # [ULTRON RIGOR] Tie progress to PHYSICAL TIME, not infinite cycles
+        # [SVEL RIGOR] Tie progress to PHYSICAL TIME, not infinite cycles
         # This ensures the system cools down as the deadline approaches.
         if hasattr(self.session, "max_runtime_hours") and self.session.max_runtime_hours > 0:
             elapsed_hours = self.session.get_elapsed_hours()
@@ -1359,7 +1359,7 @@ class DeepResearchOrchestrator:
         elif current_fact_count < 5:
             logger.warning(f" [RIGOR] Low fact count ({current_fact_count}). Proceeding cautiously - hypotheses may be weak.")
 
-        # PHASE 0.5: STRATEGIC BATTLE PLANNING (ULTRON UPGRADE)
+        # PHASE 0.5: STRATEGIC BATTLE PLANNING (SVEL UPGRADE)
         if self.strategy_engine:
             logger.info(" [BATTLE] Composing initial strategic Battle Plan...")
             self.session.battle_plan = self.strategy_engine.compose_battle_plan(
@@ -1576,7 +1576,7 @@ class DeepResearchOrchestrator:
     
     async def _seed_world_model(self, min_abstracts: int = 50, min_papers: int = 10):
         """
-        [ULTRON HIGH-THROUGHPUT] Seed world model with both Local Database Schemas and Literature.
+        [SVEL HIGH-THROUGHPUT] Seed world model with both Local Database Schemas and Literature.
         """
         # Always index local physical datasets & databases into WorldModel so HypothesisGenerator knows exact table/column schemas
         try:
@@ -1599,7 +1599,7 @@ class DeepResearchOrchestrator:
         except Exception as _db_seed_err:
             logger.warning(f" [DATA VAULT] Local database schema seeding warning: {_db_seed_err}")
 
-        # [ULTRON REHYDRATION] Skip harvest if we already have sufficient grounded facts.
+        # [SVEL REHYDRATION] Skip harvest if we already have sufficient grounded facts.
         current_fact_count = self.world_model.get_facts_count()
         if current_fact_count >= 20:  # [FIX] Lower threshold so 31 cached facts skip re-harvest
             logger.info(f" [SEED] Persistence detected ({current_fact_count} facts). Skipping knowledge harvest.")
@@ -1620,7 +1620,7 @@ class DeepResearchOrchestrator:
             from backend.llm_manager import TASK_ROUTING_MODEL
             import asyncio
             prompt = f"""
-            ULTRON KNOWLEDGE HARVESTER
+            SVEL KNOWLEDGE HARVESTER
             Extract 10 distinct, high-impact technical keyword combinations for searching ArXiv/Scholar based on this mission.
             Mission: {self.research_question}
             
@@ -1694,7 +1694,7 @@ class DeepResearchOrchestrator:
                 if i > 0:
                     await asyncio.sleep(2.0)
 
-                # [ULTRON RIGOR] Apply tool-specific syntax
+                # [SVEL RIGOR] Apply tool-specific syntax
                 if source_tool == "pubmed":
                     # PubMed supports Entreze [pdat]
                     final_q = f"({q}) AND (2022:2026[pdat])"
@@ -1764,7 +1764,7 @@ class DeepResearchOrchestrator:
                 except Exception as router_err:
                     logger.error(f" [SEED_ERROR] Router fallback failed: {router_err}")
             
-            # [ULTRON INTELLIGENCE] Clean the query for PubMed/BioRxiv (Extract keywords)
+            # [SVEL INTELLIGENCE] Clean the query for PubMed/BioRxiv (Extract keywords)
             import re
             clean_query = re.sub(r'[^a-zA-Z0-9 ]', '', seed_query).replace("Hypothesis", "").replace("Analyze", "")
             kw_query = " ".join([w for w in clean_query.split() if len(w) > 4][:5])
@@ -1838,7 +1838,7 @@ class DeepResearchOrchestrator:
             logger.exception(f"[GLASS-TELEMETRY] CRITICAL FAILURE in {__name__}: {e}")
             logger.warning(f" [SEED] Seeding retrieval logic failed: {e}")
 
-        # [ULTRON UNIVERSAL PURIFICATION - ROOT FIX]
+        # [SVEL UNIVERSAL PURIFICATION - ROOT FIX]
         # Dynamically extract rigor anchors from the question to support ALL domains
         if seed_texts:
             original_len = len(seed_texts)
@@ -1846,7 +1846,7 @@ class DeepResearchOrchestrator:
             seed_texts = DomainRegulator.filter_by_domain_similarity(seed_texts, self.research_question)
             logger.info(f" [PURGE] Nuked {original_len - len(seed_texts)} slop papers using DomainRegulator mathematical similarity.")
 
-        # [ULTRON V68.18] Atomic Thread-Safe Seeding
+        # [SVEL V68.18] Atomic Thread-Safe Seeding
         logger.info(" [RIGOR] Harvesting abstracts sequentially to prevent SQLite lock contention.")
         
         import hashlib
@@ -1873,7 +1873,7 @@ class DeepResearchOrchestrator:
         logger.info(f" [HARVEST] Successfully committed {committed} facts to World Model. Swarm now unlocking...")
 
 
-        # [ULTRON V68.13] Hard Rigor: The 'Science or Death' Gate
+        # [SVEL V68.13] Hard Rigor: The 'Science or Death' Gate
         # [TITAN V139.0] DOMAIN-AGNOSTIC EXTRACTION
         # Physically abolished the 'Molecules/Genes' hardlock.
         # We verify that entities exist, but we do not force them to be biological.
@@ -2024,7 +2024,7 @@ class DeepResearchOrchestrator:
 
         logger.info(" [GNN] Subconscious Phase: GNN Oracle is dreaming...")
         
-        # [ULTRON BRIDGE] Physically train GNN on active graph before dreaming
+        # [SVEL BRIDGE] Physically train GNN on active graph before dreaming
         snapshot = None
         try:
             # [V255+] CRITICAL FIX: Use get_knowledge_snapshot() which populates node_texts for SBERT.
@@ -2277,7 +2277,7 @@ class DeepResearchOrchestrator:
             logger.error(f"Pre-emptive checkpoint failed: {e}")
         
         # =================================================================
-        # PHASE 0: META-COGNITIVE REFLECTION (ULTRON TIER)
+        # PHASE 0: META-COGNITIVE REFLECTION (SVEL TIER)
         # =================================================================
         # The system pauses to reflect on its own state before acting.
         if self.meta_reasoner:
@@ -2309,7 +2309,7 @@ class DeepResearchOrchestrator:
                 logger.info(f" [META-STRATEGY] Mode: {strategy.mode.value} | Branching: {strategy.branching_factor} | ExpRate: {strategy.exploration_rate}")
                 
                 # Dynamically adjust system parameters based on strategy
-                # ULTRON COST SAFETY: Respect hard cap from beast_config
+                # SVEL COST SAFETY: Respect hard cap from beast_config
                 ideal_parallel = max(1, strategy.branch_factor * 2) if hasattr(strategy, 'branch_factor') else max(1, strategy.branching_factor * 2)
                 self.max_parallel = min(beast_config.orchestration.max_parallel_agents, ideal_parallel)
             except Exception as e:
@@ -2399,7 +2399,7 @@ class DeepResearchOrchestrator:
                                     
                                     # 2. Transfer evidence to dominant (COGNITIVE PERSISTENCE FIX)
                                     if h_dom:
-                                        # Transfer 'evidence' (Primary ULTRON list)
+                                        # Transfer 'evidence' (Primary SVEL list)
                                         if hasattr(h_dom, 'evidence') and hasattr(h_weak, 'evidence'):
                                             # Avoid duplicates
                                             existing_e = {e.id for e in h_dom.evidence} if (h_dom.evidence and hasattr(h_dom.evidence[0], 'id')) else set()
@@ -2623,7 +2623,7 @@ class DeepResearchOrchestrator:
                                 # Multiple-testing tracking & Holm-Bonferroni / FDR adjusted p-value across campaign
                                 all_tracked = self.hypothesis_tracker.get_all() if self.hypothesis_tracker else []
                                 n_tested = max(1, sum(1 for h_item in all_tracked if h_item.metadata.get("experiment_run")))
-                                effective_alpha = 0.05 / n_tested if os.environ.get("ULTRON_STRICT_FWER", "0") == "1" else 0.05
+                                effective_alpha = 0.05 / n_tested if os.environ.get("SVEL_STRICT_FWER", "0") == "1" else 0.05
                                 if p_value is not None:
                                     try:
                                         target_h.metadata["raw_p_value"] = float(p_value)
@@ -2716,7 +2716,7 @@ class DeepResearchOrchestrator:
         if len(global_ready_tasks) < MIN_QUEUE_SIZE:
              logger.info(f" [QUEUE] Queue Starvation ({len(global_ready_tasks)} < {MIN_QUEUE_SIZE}). Triggering Planner.")
              
-             # [ULTRON RIGOR] Neural Intuition Pulse (GNN Dreaming)
+             # [SVEL RIGOR] Neural Intuition Pulse (GNN Dreaming)
              # Before planning, force the GNN to find hidden leads in the latest data.
              await self._gnn_dream_phase()
              
@@ -2824,7 +2824,7 @@ class DeepResearchOrchestrator:
         exp_count = sum(1 for f in self.session.findings if f.get("agent_name") == agent_key)
         if (len(global_ready_tasks) < MIN_QUEUE_SIZE or exp_count < MIN_EXPERIMENT_QUOTA) and cycle > 0:
             # Find high-confidence hypotheses that lack experiments
-            # [ULTRON RIGOR] Skip procedural tasks (Igor Protocol)
+            # [SVEL RIGOR] Skip procedural tasks (Igor Protocol)
             rigor_candidates = [
                 h for h in self.hypothesis_tracker.get_active()
                 if not h.metadata.get("experiment_run", False)
@@ -2878,7 +2878,7 @@ class DeepResearchOrchestrator:
             
             logger.info(f" [SWARM] Deploying Swarm Batch: {len(tasks_to_run)} tasks (Queue: {len(global_ready_tasks)})")
             
-            # [ULTRON UPGRADE] Parallel Fractal Decomposition
+            # [SVEL UPGRADE] Parallel Fractal Decomposition
             async def process_task_decomposition(t: ResearchTask) -> List[ResearchTask]:
                 # [TITAN 4] MEMORY INJECTION: CURE GOLDFISH MEMORY
                 task_context_recall = ""
@@ -2898,7 +2898,7 @@ class DeepResearchOrchestrator:
                 
                 execution_subtasks = []
                 try:
-                    # [ULTRON V66.0] MISSION CRITICAL RESILIENCE
+                    # [SVEL V66.0] MISSION CRITICAL RESILIENCE
                     # Wrap all fractalization in a shield to ensure the swarm never stops
                     try:
                         # 1. Fractal Decomposition (Singularity)
@@ -2975,7 +2975,7 @@ class DeepResearchOrchestrator:
                 logger.info(f" [SWARM DISCIPLINE] Capping execution batch from {len(final_execution_batch)} to {MAX_SWARM_BATCH} tasks.")
                 final_execution_batch = final_execution_batch[:MAX_SWARM_BATCH]
 
-            # [ULTRON PERSISTENCE] Physically commit the plan to the database before execution
+            # [SVEL PERSISTENCE] Physically commit the plan to the database before execution
             try:
                 for t in final_execution_batch:
                     self.session.tasks.append(t)
@@ -3051,7 +3051,7 @@ class DeepResearchOrchestrator:
                                     result_data["is_grounded"] = False
                                     result_data["significance_score"] = 0.0
 
-                            # [ULTRON TUNING] High-Capacity Checkpointing
+                            # [SVEL TUNING] High-Capacity Checkpointing
                             if len(completed_task_ids) % 10 == 0:
                                 try:
                                     state = {
@@ -3225,7 +3225,7 @@ class DeepResearchOrchestrator:
             ])
             
             if killed_this_cycle == 0 and len(discovery_session.assumptions) > 0:
-                # [ULTRON BEAST FIX] Compute actual rigor score to enable tier promotion
+                # [SVEL BEAST FIX] Compute actual rigor score to enable tier promotion
                 avg_rigor = 0.5
                 cycle_findings = [f for f in self.session.findings if f.get("cycle") == cycle]
                 if cycle_findings:
@@ -3337,12 +3337,12 @@ class DeepResearchOrchestrator:
         
         # This bypasses the LLM selector to ensure external APIs (arxiv, semantic_scholar) are called
         
-        # [ULTRON FIX] Infinite Recursion Trap Prevention
+        # [SVEL FIX] Infinite Recursion Trap Prevention
         # Identify tasks that are meant for search but lack explicitly populated `required_tools`
         task_desc_lower = task.description.lower()
         if not task.required_tools and not task.required_agents:
             if "scholar" in task_desc_lower or "literature" in task_desc_lower or "pubmed" in task_desc_lower:
-                logger.info(f" [ULTRON FIX] Intercepted implicit search task. Forcing direct tool execution.")
+                logger.info(f" [SVEL FIX] Intercepted implicit search task. Forcing direct tool execution.")
                 task.required_tools = ["scholar_search"]
         
         if task.required_tools and not task.required_agents:
@@ -3354,7 +3354,7 @@ class DeepResearchOrchestrator:
         
         try:
             # Route the task to appropriate component
-            # [ULTRON ALIGNMENT & P0-31] Sovereign ExperimentAgent Routing:
+            # [SVEL ALIGNMENT & P0-31] Sovereign ExperimentAgent Routing:
             # Frontier models (GPT-6 Astra, Gemini 4 Carbon, Claude Opus 5.5) write bespoke
             # PyTorch/SciPy/ML experiments via ExperimentAgent rather than brittle AutoML wrappers.
             task_desc_low = task.description.lower()
@@ -3377,9 +3377,9 @@ class DeepResearchOrchestrator:
                 if target_agent in sovereign_map and not (target_agent == "ml_model_builder_agent" and isinstance(task.payload, dict) and task.payload.get("force_legacy_automl")):
                     target_agent = sovereign_map[target_agent]
             
-            # [ULTRON SHIELD] Block nested standalone sub-orchestrator recursion (>1 depth)
+            # [SVEL SHIELD] Block nested standalone sub-orchestrator recursion (>1 depth)
             if target_agent == "research_agent" and getattr(self, "recursion_depth", 0) > 1:
-                logger.warning(f" [ULTRON SHIELD] Blocking deeply nested `research_agent` call to prevent infinite recursion loop.")
+                logger.warning(f" [SVEL SHIELD] Blocking deeply nested `research_agent` call to prevent infinite recursion loop.")
                 return {"status": "skipped_recursive", "error": "Blocked recursive research_agent call."}
 
             # [TITAN V142.0] DOMAIN-AGNOSTIC DEEP READING
@@ -3639,7 +3639,7 @@ class DeepResearchOrchestrator:
                     if isinstance(score_result, tuple):
                        score_obj = score_result[0]
                     
-                    # [NUCLEAR PENALTY] ULTRON V12: Purge mediocrity.
+                    # [NUCLEAR PENALTY] SVEL V12: Purge mediocrity.
                     # Raise threshold from 0.05 (hallucination) to 0.35 (noise/mediocrity)
                     overall_score = getattr(score_obj, "overall_score", 0.0) if hasattr(score_obj, "overall_score") else 0.0
                     
@@ -3846,7 +3846,7 @@ Return ONLY valid JSON:
                              if hasattr(self, 'discovery_session') and self.discovery_session:
                                  self.discovery_session.record_adversarial_score(existing_fals.get("robustness_score", 0.0))
                              
-                             # ULTRON UPGRADE: Semantic Feedback Loop
+                             # SVEL UPGRADE: Semantic Feedback Loop
                              semantic_audit = existing_fals.get("semantic_audit", {})
                              semantic_verdict = semantic_audit.get("verdict", "CLEAN")
                              
@@ -4051,7 +4051,7 @@ Return ONLY valid JSON:
                         # BRUTAL TRUTH Logic (PCD Pillar 2 Upgrade)
                         if delta <= -1.0:
                             # Immediate KILL
-                            logger.info(f"  ULTRON KILL SWITCH: Hypothesis {h_id} actively REFUTED by World Model.")
+                            logger.info(f"  SVEL KILL SWITCH: Hypothesis {h_id} actively REFUTED by World Model.")
                             self.hypothesis_tracker.mark_refuted(h_id, {"reason": bu.get("reason"), "source": "WorldModel.BrutalTruth"})
                             continue
                             
@@ -4256,7 +4256,7 @@ Return ONLY valid JSON:
 
 
         # AUTO-GENERATE REPORT
-        # ULTRON GATE: Only generate report if deep work is complete (>90% time or converged)
+        # SVEL GATE: Only generate report if deep work is complete (>90% time or converged)
         elapsed_ratio = self.session.get_elapsed_hours() / self.session.max_runtime_hours
         is_converged = self.session.status in [ResearchState.COMPLETED, ResearchState.CONVERGING]
         
@@ -4391,7 +4391,7 @@ Return ONLY valid JSON:
                         res = res["result"]
                     
                     if isinstance(res, dict):
-                        # PROJECT ULTRON: Enforce experimental fidelity
+                        # PROJECT SVEL: Enforce experimental fidelity
                         # Ensure we don't drop 'code', 'viz_cell_code', or 'scientific_report'
                         item = res.copy()
                         if "text" not in item:
@@ -4406,7 +4406,7 @@ Return ONLY valid JSON:
                         # Fallback for simple results
                         curr_findings.append({"summary": str(res), "text": str(res)})
                 
-                # [ULTRON BRIDGE] Physically inject the full World Model findings
+                # [SVEL BRIDGE] Physically inject the full World Model findings
                 # Pull all persistent facts from SQLite memory
                 all_facts = []
                 if self.world_model:
@@ -4435,7 +4435,7 @@ Return ONLY valid JSON:
                 if report_agent:
                     logger.info(" Direct invocation of report_composer_agent...")
                     
-                    # ULTRON INJECTION: Connect World Model to Report Composer
+                    # SVEL INJECTION: Connect World Model to Report Composer
                     if self.world_model:
                         report_agent.world_model = self.world_model
                         logger.info(" [CONNECTION] World Model injected into Report Composer for internal data access.")
@@ -4485,7 +4485,7 @@ Return ONLY valid JSON:
                                 h.to_dict() 
                                 for h in self.hypothesis_tracker.get_all()
                             ],
-                            # ULTRON: Pass full objects for Leaderboard Rendering
+                            # SVEL: Pass full objects for Leaderboard Rendering
                             "claim_leaderboard": sorted(
                                 [h.to_dict() for h in self.hypothesis_tracker.get_all() if getattr(h.state, 'name', str(h.state)) not in ["REFUTED", "ARCHIVED"] and h.to_dict().get('state') not in ["REFUTED", "ARCHIVED"]],
                                 key=lambda x: (x.get('survival_score') if x.get('survival_score') is not None else -1, x.get('confidence'), x.get('novelty_score') or 0),
@@ -4577,7 +4577,7 @@ Return ONLY valid JSON:
              
     async def _should_continue(self) -> bool:
         """
-        [ULTRON-TIER] Authoritative termination logic.
+        [SVEL-TIER] Authoritative termination logic.
         Checks: Time reservation, Hard Caps, Budget, Overmind, and Epistemic Convergence.
         """
         # 0. Satiety Finalization Complete
@@ -4606,7 +4606,7 @@ Return ONLY valid JSON:
 
         # 3. Temporal Authority: Runtime & Reservation
         elapsed = self.session.get_elapsed_hours()
-        # [ULTRON HARD CAP] If the time budget is physically gone, terminate immediately.
+        # [SVEL HARD CAP] If the time budget is physically gone, terminate immediately.
         if elapsed >= self.session.max_runtime_hours:
             logger.info(f"[HARD CAP] Session limit reached ({elapsed:.2f}h / {self.session.max_runtime_hours}h). PHYSICAL TERMINATION.")
             # Final synthesis — await properly before terminating
@@ -4734,7 +4734,7 @@ Return ONLY valid JSON:
             task_type = task.task_type
             task_desc = task.description
 
-        # [ULTRON GATE 3] Execution Enforcement: Physical Artifact Check
+        # [SVEL GATE 3] Execution Enforcement: Physical Artifact Check
         if "experiment" in str(task_type).lower():
             task_exp_dir = Path(f"experiments/{task_id}")
             new_files = []
@@ -4825,7 +4825,7 @@ Return ONLY valid JSON:
                         if initial_hash and final_hash:
                             self.execution_stats.complete_pulse(task_id, final_hash, result_data)
 
-                    # [ULTRON V68.9] Explicit Type Discipline
+                    # [SVEL V68.9] Explicit Type Discipline
 
                     # Only non-procedural tasks become 'Facts' in the World Model
                     commit_allowed = not (task.get("is_procedural", False) if isinstance(task, dict) else getattr(task, "is_procedural", False))
@@ -4895,7 +4895,7 @@ Return ONLY valid JSON:
         # ---------------------------------------------------------------- #
         if task_type == "experiment" or exp_code:
             try:
-                # [ULTRON V68.6] Type Discipline: Strip hypothesis from procedural tasks
+                # [SVEL V68.6] Type Discipline: Strip hypothesis from procedural tasks
                 is_pure_science = task_type in ["experiment", "analysis"]
                 display_hypothesis = (task_desc or task_id) if is_pure_science else "Procedural/Technical Infrastructure Task"
                 
@@ -4981,9 +4981,9 @@ Return ONLY valid JSON:
     async def _build_context(self) -> Dict[str, Any]:
         """
         Build a high-rigor, compressed context for agent execution.
-        [ULTRON COMPRESSION] Limits findings to the top 5 to prevent LLM overload.
+        [SVEL COMPRESSION] Limits findings to the top 5 to prevent LLM overload.
         """
-        # [ULTRON FIX: The Memory Bridge]
+        # [SVEL FIX: The Memory Bridge]
         # Instead of just the last 5 raw findings, we provide the Infinite Memory Snapshot
         # plus the absolute latest 3 raw findings for immediate tactical context.
         collected_findings = [str(f.get("result", ""))[:5000] for f in self.session.findings[-3:]]
@@ -5073,7 +5073,7 @@ Return ONLY valid JSON:
             "elapsed_hours": self.session.get_elapsed_hours(),
             "research_question": self.research_question,  # Explicit topic locking
             "started_at": self.session.started_at, # TEMPORAL INHERITANCE
-            "local_data_catalog": self.session.local_data_catalog, # ULTRON DATA TETHERING
+            "local_data_catalog": self.session.local_data_catalog, # SVEL DATA TETHERING
             "PRIMARY_EVIDENCE": self.session.local_data_catalog,
             "EVIDENCE_INSTRUCTION": "If a local file exists, it is the Supreme Source of Truth. All hypotheses must be derived from or tested against these specific files.",
             # DYNAMIC TOOL INJECTION
@@ -5096,7 +5096,7 @@ Return ONLY valid JSON:
                     context["nexus_recall"] = recall_text
                     logger.info(f"Injected Scoped Nexus Recall ({len(recall_text)} chars)")
         
-        # ULTRON INJECTION: Strategic Battle Plan
+        # SVEL INJECTION: Strategic Battle Plan
         if hasattr(self.session, 'battle_plan') and self.session.battle_plan:
             context["strategic_context"] = self.session.battle_plan.get("injected_context", "")
             logger.info(" [STRATEGY] Strategic Battle Plan injected into planning context.")
@@ -5108,7 +5108,7 @@ Return ONLY valid JSON:
 
     async def _inject_mind_body_lock(self, context: Dict[str, Any]) -> Dict[str, Any]:
         """
-        ULTRON ARCHITECTURE: MIND/BODY LOCK
+        SVEL ARCHITECTURE: MIND/BODY LOCK
         Force-injects component-specific T1 Meta-Skills via SEMANTIC TITAN SELECTION.
         """
         if not self.expert_system:
@@ -5280,7 +5280,7 @@ Return ONLY valid JSON:
         artifacts = getattr(self.session, 'artifacts', []) or []
         visualizations = getattr(self.session, 'visualizations', []) or []
     
-        # ULTRON UPGRADE: Claim Leaderboard
+        # SVEL UPGRADE: Claim Leaderboard
         # Sort by Survival Score (Robustness) -> Confidence -> Novelty
         leaderboard = sorted(
             hypotheses, 

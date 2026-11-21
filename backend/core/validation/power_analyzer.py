@@ -1,5 +1,5 @@
 """
-ULTRON Power Analysis Module - PhD-Level Statistical Rigor
+SVEL Power Analysis Module - PhD-Level Statistical Rigor
 ===========================================================
 Enhanced with sequential testing, non-inferiority, and adaptive designs.
 Calculates required sample sizes and statistical power for experiments.

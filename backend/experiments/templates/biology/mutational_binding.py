@@ -1,5 +1,5 @@
 """
-ULTRON BIOLOGY DOMAIN: BIOPHYSICAL MUTATIONAL & STRUCTURAL TEMPLATES
+SVEL BIOLOGY DOMAIN: BIOPHYSICAL MUTATIONAL & STRUCTURAL TEMPLATES
 =====================================================================
 PhD-level biophysical analysis for protein interfaces, binding affinity (ddG),
 thermodynamic stability, and crystallographic contact networks.
@@ -24,7 +24,7 @@ from backend.experiments.models import (
     ResourceRequirements,
 )
 
-logger = logging.getLogger("ultron.experiments.templates.biology")
+logger = logging.getLogger("svel.experiments.templates.biology")
 
 
 @register_template
@@ -40,7 +40,7 @@ class BiophysicalMutationalBindingTemplate(DataAnalysisTemplate):
             name="biophysical_mutational_binding",
             experiment_type=ExperimentType.DATA_ANALYSIS,
             domain="biology",
-            title="Biophysical Mutational & Binding Affinity Analysis (ULTRON-APEX)",
+            title="Biophysical Mutational & Binding Affinity Analysis (SVEL-APEX)",
             description=(
                 "Empirical biophysical mutational analysis evaluating binding free energy "
                 "changes (ddG), thermodynamic parameters (Kd, deltaH, deltaS), and "

@@ -180,7 +180,7 @@ class AiCoderBackend:
     ) -> VizResult:
 
         if isinstance(data, list):
-            # Attempt to extract from deep nested structures common in ULTRON findings
+            # Attempt to extract from deep nested structures common in SVEL findings
             extracted = []
             for item in data:
                 if isinstance(item, dict):
@@ -390,7 +390,7 @@ Return only valid executable Python code. The output MUST look like a stunning, 
 
             # Controlled execution with unique temp CSV to prevent concurrent race conditions
             import tempfile
-            fd, csv_path = tempfile.mkstemp(prefix="ultron_viz_", suffix=".csv")
+            fd, csv_path = tempfile.mkstemp(prefix="svel_viz_", suffix=".csv")
             os.close(fd)
             try:
                 df.to_csv(csv_path, index=False)

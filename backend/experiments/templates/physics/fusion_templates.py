@@ -1,5 +1,5 @@
 """
-ULTRON-APEX PLASMA FUSION TEMPLATE v1.0
+SVEL-APEX PLASMA FUSION TEMPLATE v1.0
 =======================================
 High-fidelity simulation template for fusion plasma research.
 Wraps the grounded FusionPlasmaKernel.
@@ -11,7 +11,7 @@ from backend.experiments.models import ExperimentProtocol, ProtocolStep, Experim
 from backend.experiments.templates import register_template
 
 @register_template
-class UltronApexFusionTemplate(SimulationTemplate):
+class SVELApexFusionTemplate(SimulationTemplate):
     """
     Template for Inertial Confinement Fusion (ICF) and Aneutronic p-B experiments.
     """

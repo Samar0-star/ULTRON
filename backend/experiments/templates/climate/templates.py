@@ -1,5 +1,5 @@
 """
-ULTRON-APEX CLIMATE FALSIFICATION ENGINE v4.0 — REAL SCIENCE EDITION
+SVEL-APEX CLIMATE FALSIFICATION ENGINE v4.0 — REAL SCIENCE EDITION
 =====================================================================
 Purpose:
 - Rigorous climate hypothesis falsification grounded in published methods
@@ -862,7 +862,7 @@ def _print_report(r: Dict):
         return f"{v:.{decimals}f}{unit}" if v is not None else "BLOCKED"
 
     print("\n" + "="*65)
-    print("  ULTRON CLIMATE FALSIFICATION REPORT")
+    print("  SVEL CLIMATE FALSIFICATION REPORT")
     print("="*65)
     print(f"  VERDICT:              {r['verdict']}")
     print(f"  Hypothesis ID:        {r['hypothesis_id']}")
@@ -888,9 +888,9 @@ def _print_report(r: Dict):
 # ─────────────────────────────────────────────────────────────────────────────
 
 @register_template
-class UltronApexClimateTemplate(SimulationTemplate):
+class SVELApexClimateTemplate(SimulationTemplate):
     """
-    ULTRON-APEX CLIMATE FALSIFICATION ENGINE — REAL SCIENCE EDITION
+    SVEL-APEX CLIMATE FALSIFICATION ENGINE — REAL SCIENCE EDITION
 
     Every number is calculated, not printed.
     Every threshold cites a published paper.
@@ -948,7 +948,7 @@ class UltronApexClimateTemplate(SimulationTemplate):
         end_year     = params.custom_variables.get("end_year", 2023)
 
         return ExperimentProtocol(
-            title=f"ULTRON CLIMATE FALSIFICATION :: {params.hypothesis_id}",
+            title=f"SVEL CLIMATE FALSIFICATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.SIMULATION,
             domain="climate",

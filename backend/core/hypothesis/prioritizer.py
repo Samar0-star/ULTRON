@@ -1,5 +1,5 @@
 """
-Hypothesis Prioritizer for ULTRON Deep Mode
+Hypothesis Prioritizer for SVEL Deep Mode
 =============================================
 
 Ranks hypotheses using multi-criteria scoring:

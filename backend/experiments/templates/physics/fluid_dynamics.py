@@ -1,5 +1,5 @@
 """
-ULTRON-APEX FLUID DYNAMICS VALIDATION ENGINE v3.1
+SVEL-APEX FLUID DYNAMICS VALIDATION ENGINE v3.1
 ==================================================
 Purpose:
 - Rigorous aerodynamic and hydrodynamic hypothesis validation
@@ -45,9 +45,9 @@ class FlowRegimeClass(Enum):
 
 
 @register_template
-class UltronApexFluidDynamicsTemplate(SimulationTemplate):
+class SVELApexFluidDynamicsTemplate(SimulationTemplate):
     """
-    ULTRON-APEX FLUID DYNAMICS VALIDATION ENGINE (REAL IMPLEMENTATION)
+    SVEL-APEX FLUID DYNAMICS VALIDATION ENGINE (REAL IMPLEMENTATION)
     
     This template generates executable Python code that performs rigorous
     physics-based auditing of CFD results or experimental data.
@@ -92,7 +92,7 @@ class UltronApexFluidDynamicsTemplate(SimulationTemplate):
         return True
 
     # ------------------------------------------------------------------
-    # ULTRON-APEX FLUID VALIDATION PROTOCOL
+    # SVEL-APEX FLUID VALIDATION PROTOCOL
     # ------------------------------------------------------------------
     def generate_protocol(
         self,
@@ -104,7 +104,7 @@ class UltronApexFluidDynamicsTemplate(SimulationTemplate):
         data_path = params.data_paths.get('flow_field', 'data.csv') 
         
         return ExperimentProtocol(
-            title=f"ULTRON-APEX FLUID VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX FLUID VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.SIMULATION,
             domain="physics",
@@ -573,7 +573,7 @@ else:
 
     def _gen_verdict_code(self) -> str:
         return '''
-print("\\n=== ULTRON FLUID DYNAMICS TERMINATION AUDIT ===")
+print("\\n=== SVEL FLUID DYNAMICS TERMINATION AUDIT ===")
 passed_checks = 0
 total_checks = 0
 

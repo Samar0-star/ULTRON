@@ -1,5 +1,5 @@
 """
-ULTRON SURGICAL SKILL LOADER (SOVEREIGN EDITION V3)
+SVEL SURGICAL SKILL LOADER (SOVEREIGN EDITION V3)
 ==================================================
 1. Deterministic Bundles (Agent-specific)
 2. Keyword Overrides (Scientific triggers)
@@ -240,8 +240,8 @@ class Skill:
         # Relaxed limit of up to 10 subfiles per skill to prevent token bloat
         return deduped[:10]
 
-class UltronExpertSystem:
-    """Surgical knowledge injection system for ULTRON agents."""
+class SVELExpertSystem:
+    """Surgical knowledge injection system for SVEL agents."""
 
     SKILL_BUNDLES = {
         "meta_cognitive": ["scientific-critical-thinking", "scientific-brainstorming", "strategy-optimization", "peer-review", "scholar-evaluation"],
@@ -270,7 +270,7 @@ class UltronExpertSystem:
         self.skills_cache: Dict[str, Skill] = {}
         self.meta_skills: Dict[str, Skill] = {}
         self._discover_skills()
-        logger.info(f"UltronExpertSystem: Sovereign Loader ready with {len(self.skills_cache)} skills.")
+        logger.info(f"SVELExpertSystem: Sovereign Loader ready with {len(self.skills_cache)} skills.")
 
     async def inject_functional_skills(self, prompt: str, query: str = "", max_skills: int = 3, domain: str = "general", include_examples: bool = False) -> str:
         """
@@ -397,7 +397,7 @@ class UltronExpertSystem:
 
     def get_tool_catalog(self, domain: str = "other") -> str:
         """Concise catalog for LLM Sovereign selection."""
-        catalog = "### ULTRON SCIENTIFIC TOOL CATALOG\n"
+        catalog = "### SVEL SCIENTIFIC TOOL CATALOG\n"
         for name, skill in self.skills_cache.items():
             if is_skill_blocked_for_domain(name, domain):
                 continue
@@ -620,7 +620,7 @@ Do not add any other prose.
 Review the following research objective/task:
 {query}
 
-Review the available ULTRON scientific skills:
+Review the available SVEL scientific skills:
 {catalog}
 
 Task: Choose up to {max_skills} most critical skills to fulfill the objective.
@@ -755,8 +755,8 @@ Do not add any other prose.
         return found
 
 _expert_system_instance = None
-def get_expert_system() -> UltronExpertSystem:
+def get_expert_system() -> SVELExpertSystem:
     global _expert_system_instance
     if _expert_system_instance is None:
-        _expert_system_instance = UltronExpertSystem()
+        _expert_system_instance = SVELExpertSystem()
     return _expert_system_instance

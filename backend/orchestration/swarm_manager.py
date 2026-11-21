@@ -289,7 +289,7 @@ class SwarmManager:
             getattr(task, "domain", None)
             or (payload.get("domain") if isinstance(payload, dict) else None)
             or (meta.get("domain") if isinstance(meta, dict) else None)
-            or os.environ.get("ULTRON_DOMAIN", "general")
+            or os.environ.get("SVEL_DOMAIN", "general")
         )
         
         if on_event:
@@ -420,7 +420,7 @@ class SwarmManager:
                         getattr(task, "domain", None)
                         or (payload.get("domain") if isinstance(payload, dict) else None)
                         or (meta.get("domain") if isinstance(meta, dict) else None)
-                        or os.environ.get("ULTRON_DOMAIN", "general")
+                        or os.environ.get("SVEL_DOMAIN", "general")
                     )
                     if not payload.get("text") and payload.get("scientific_seeds"):
                         seeds = payload.get("scientific_seeds")

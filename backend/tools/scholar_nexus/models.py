@@ -27,7 +27,7 @@ class ScholarAuthor:
 class ScholarPaper:
     """
     Standardized scientific paper model for Avon's Nexus.
-    Surpasses Ultron by tracking graph-specific metrics like citation velocity.
+    Surpasses SVEL by tracking graph-specific metrics like citation velocity.
     """
     id: str = ""
     source: ScholarSource = ScholarSource.INTERNAL
@@ -44,7 +44,7 @@ class ScholarPaper:
     year: Optional[int] = None
     publication_date: Optional[datetime] = None
 
-    # Research stats (superior to Ultron)
+    # Research stats (superior to SVEL)
     citation_count: int = 0
     influential_citations: int = 0
     citation_velocity: float = 0.0  # Citations per year since pub

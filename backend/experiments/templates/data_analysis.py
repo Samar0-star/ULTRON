@@ -1,5 +1,5 @@
 """
-ULTRON DATA ANALYSIS TEMPLATES
+SVEL DATA ANALYSIS TEMPLATES
 ==============================
 Rigorous statistical frameworks for empirical validation.
 All analyses require physical data loading and proper assumption testing.
@@ -37,7 +37,7 @@ class TTestComparisonTemplate(TemplateBase):
             name="t_test_comparison",
             experiment_type=ExperimentType.DATA_ANALYSIS,
             domain="general",
-            title="Rigorous Group Comparison (ULTRON-APEX)",
+            title="Rigorous Group Comparison (SVEL-APEX)",
             description="Compare means with mandatory assumption checking (Normality/Levene) and effect size calculation.",
             suitable_for=["Two-group comparisons", "Mean difference testing", "Treatment vs control"],
             requirements=["scipy", "pandas", "numpy", "statsmodels"],
@@ -139,7 +139,7 @@ class CorrelationAnalysisTemplate(TemplateBase):
             name="correlation_analysis",
             experiment_type=ExperimentType.DATA_ANALYSIS,
             domain="general",
-            title="Robust Correlation Analysis (ULTRON-APEX)",
+            title="Robust Correlation Analysis (SVEL-APEX)",
             description="Analyze relationship strength using Pearson, Spearman, or Kendall based on data distribution.",
             suitable_for=["Relationship testing", "Predictive relationships"],
             requirements=["scipy", "pandas", "numpy"],
@@ -204,7 +204,7 @@ class RegressionAnalysisTemplate(TemplateBase):
             name="regression_analysis",
             experiment_type=ExperimentType.DATA_ANALYSIS,
             domain="general",
-            title="Diagnostic Regression Analysis (ULTRON-APEX)",
+            title="Diagnostic Regression Analysis (SVEL-APEX)",
             description="Predict outcome variable using OLS with mandatory diagnostic checks (VIF, Durbin-Watson, Breusch-Pagan).",
             suitable_for=["Prediction tasks", "Causal modeling", "Multivariate analysis"],
             requirements=["statsmodels", "pandas", "numpy", "scipy"],

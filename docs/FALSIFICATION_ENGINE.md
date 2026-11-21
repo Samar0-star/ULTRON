@@ -2,7 +2,7 @@
 
 A core failure mode in AI-driven science is **confirmation bias**: language models prompted to find a discovery will hallucinate positive evidence to satisfy the user's prompt. 
 
-ULTRON enforces strict **Popperian Falsification**: a hypothesis is never accepted simply because an LLM claims it works; it must actively survive rigorous mathematical, empirical, and adversarial destruction attacks.
+SVEL enforces strict **Popperian Falsification**: a hypothesis is never accepted simply because an LLM claims it works; it must actively survive rigorous mathematical, empirical, and adversarial destruction attacks.
 
 ---
 
@@ -15,7 +15,7 @@ In real autonomous experiments, this fails consistently:
 * When presented with contradictory data, models hallucinate statistical workarounds rather than refuting their own premise.
 * Prompt-based guardrails leak tokens and degrade after multiple iterations.
 
-**ULTRON's Solution**: Zero-token external mathematical falsification. Hypotheses are subjected to external code verification and adversarial red-teaming where the attacking agent is explicitly rewarded for killing the hypothesis.
+**SVEL's Solution**: Zero-token external mathematical falsification. Hypotheses are subjected to external code verification and adversarial red-teaming where the attacking agent is explicitly rewarded for killing the hypothesis.
 
 ---
 

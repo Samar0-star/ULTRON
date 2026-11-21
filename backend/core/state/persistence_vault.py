@@ -65,7 +65,7 @@ class PersistenceVault:
         latest_tmp = checkpoint_dir / "latest.json.tmp"
         
         try:
-            # [ULTRON BEAST FIX] Atomic Write Pattern
+            # [SVEL BEAST FIX] Atomic Write Pattern
             # 1. Write to specific cycle .tmp
             with open(checkpoint_tmp, "w") as f:
                 json.dump(state, f, indent=2, default=str)

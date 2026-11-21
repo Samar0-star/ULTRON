@@ -17,8 +17,8 @@ A mode (m,n) is stable if and only if:
 - **Singular Surfaces**: Occur where F·B = 0 (rational surfaces q = m/n).
 - **Matching Condition**: The stability index Δ' is derived from the jump in the derivative across these singular surfaces.
 
-## ULTRON Implementation Logic
-When calculating stability for a specific shot (e.g. DIII-D 123456), ULTRON must:
+## SVEL Implementation Logic
+When calculating stability for a specific shot (e.g. DIII-D 123456), SVEL must:
 1. Identify all rational surfaces q=m/n in the pedestal.
 2. Integrate the Newcomb ODE between surfaces.
 3. Count nodes to determine if the Peeling-Ballooning limit is exceeded.

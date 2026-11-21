@@ -1,6 +1,6 @@
 from __future__ import annotations
 """
-Ultra-upgraded LLM Manager for ULTRON
+Ultra-upgraded LLM Manager for SVEL
 Strict 3-Provider Architecture (Google, OpenAI, Anthropic).
 Late-2026 Frontier Models.
 """
@@ -17,7 +17,7 @@ from typing import Optional, Dict, Any, Generator, List, Tuple
 import logging
 from tenacity import retry, wait_exponential, stop_after_attempt, retry_if_not_exception_type
 
-logger = logging.getLogger("ultron.llm_manager")
+logger = logging.getLogger("svel.llm_manager")
 
 class GlobalQuotaExceededError(Exception):
     pass
@@ -43,10 +43,10 @@ except Exception:
     pass
 
 # --- Embedding Model (single source of truth for all SentenceTransformer usage) ---
-# Override via ULTRON_EMBEDDING_MODEL env var to swap in a different model with zero code changes.
-EMBEDDING_MODEL = os.getenv("ULTRON_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
-# Embedding output dimension — must match EMBEDDING_MODEL. Override via ULTRON_EMBEDDING_DIM.
-EMBEDDING_DIM = int(os.getenv("ULTRON_EMBEDDING_DIM", "384"))
+# Override via SVEL_EMBEDDING_MODEL env var to swap in a different model with zero code changes.
+EMBEDDING_MODEL = os.getenv("SVEL_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+# Embedding output dimension — must match EMBEDDING_MODEL. Override via SVEL_EMBEDDING_DIM.
+EMBEDDING_DIM = int(os.getenv("SVEL_EMBEDDING_DIM", "384"))
 
 # =============================================================================
 # CAPACITY MANAGEMENT STUBS (Preserving imports & usage)
@@ -225,7 +225,7 @@ def get_model_with_fallback(task: str) -> tuple:
 # =============================================================================
 # UN-CHOKED FRONTIER MODEL CAPACITIES (1M+ TOKEN CEILING & AUTO-SURVIVAL)
 # =============================================================================
-DEFAULT_FRONTIER_MAX_TOKENS = int(os.getenv("ULTRON_MAX_OUTPUT_TOKENS", "65536"))
+DEFAULT_FRONTIER_MAX_TOKENS = int(os.getenv("SVEL_MAX_OUTPUT_TOKENS", "65536"))
 
 MODEL_MAX_OUTPUT_TOKENS = {
     # Google Gemini 4 Carbon / Argon / Gemini Frontier
@@ -362,7 +362,7 @@ def sanitize_payload(provider: str, model: str, payload: Dict[str, Any], thinkin
     if sanitized.get("temperature") is None:
         sanitized.pop("temperature", None)
 
-    omit_cap = os.getenv("ULTRON_OMIT_MAX_TOKENS", "false").lower() == "true"
+    omit_cap = os.getenv("SVEL_OMIT_MAX_TOKENS", "false").lower() == "true"
 
     if provider == "openai":
         tok = sanitized.pop("max_tokens", None)

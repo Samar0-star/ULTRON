@@ -64,7 +64,7 @@ class KnowledgeGraph:
         self.uri = uri or NEO4J_URI
         self.user = user or NEO4J_USER
         self.password = password or NEO4J_PASSWORD
-        self.session_id = session_id or os.environ.get("ULTRON_SESSION_ID", "default_session")
+        self.session_id = session_id or os.environ.get("SVEL_SESSION_ID", "default_session")
         
         self._driver = None
         self._available = False
@@ -159,10 +159,10 @@ class KnowledgeGraph:
                 logger.warning(f"Docker check failed: {e}. Defaulting to SQLite mode.")
                 return
 
-            # Check if container is running (using ultron-neo4j name)
-            # Use 'ultron-neo4j' or just look for port 7687 mapping? 
+            # Check if container is running (using svel-neo4j name)
+            # Use 'svel-neo4j' or just look for port 7687 mapping? 
             # Sticking to container name is safer.
-            container_name = os.getenv("NEO4J_CONTAINER_NAME", "ultron-neo4j")
+            container_name = os.getenv("NEO4J_CONTAINER_NAME", "svel-neo4j")
             
             result = subprocess.run(
                 ["docker", "ps", "--filter", f"name={container_name}", "--format", "{{.Names}}"],
@@ -404,7 +404,7 @@ class KnowledgeGraph:
         """
         Find papers in the citation chain.
         """
-        # [ULTRON BEAST FIX] Strict Type Casting to prevent Cypher Injection
+        # [SVEL BEAST FIX] Strict Type Casting to prevent Cypher Injection
         # Depth must be physically validated before string interpolation.
         try:
             safe_depth = int(max_depth)
@@ -630,7 +630,7 @@ class KnowledgeGraph:
             return False
     
     # =========================================================================
-    # METHOD SEMANTICS (Ported from Ultron)
+    # METHOD SEMANTICS (Ported from SVEL)
     # =========================================================================
 
     def add_method(
@@ -696,7 +696,7 @@ class KnowledgeGraph:
     # =========================================================================
     
     # =========================================================================
-    # Ultron-STYLE STRICT ENTITIES (BEAST MODE UPGRADE)
+    # SVEL-STYLE STRICT ENTITIES (BEAST MODE UPGRADE)
     # =========================================================================
 
     def create_paper(
@@ -820,7 +820,7 @@ class KnowledgeGraph:
             session.run(query, name=name, description=description, category=category)
 
     # =========================================================================
-    # ULTRON GENERIC ENTITIES (LEGACY SUPPORT)
+    # SVEL GENERIC ENTITIES (LEGACY SUPPORT)
     # =========================================================================
     
     def add_hypothesis(
@@ -1324,7 +1324,7 @@ _kg_instances: Dict[str, KnowledgeGraph] = {}
 def get_knowledge_graph(session_id: Optional[str] = None) -> KnowledgeGraph:
     """Get or create the session-scoped KnowledgeGraph instance."""
     global _kg_instances
-    current_session = session_id or os.environ.get("ULTRON_SESSION_ID", "default_session")
+    current_session = session_id or os.environ.get("SVEL_SESSION_ID", "default_session")
     if current_session not in _kg_instances:
         _kg_instances[current_session] = KnowledgeGraph(session_id=current_session)
     return _kg_instances[current_session]

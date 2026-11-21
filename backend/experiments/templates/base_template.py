@@ -1,5 +1,5 @@
 """
-ULTRON EXPERIMENT TEMPLATE BASE
+SVEL EXPERIMENT TEMPLATE BASE
 ===============================
 Provides base class for templates that do not use the high-level base.py architecture.
 Used primarily by specialized ML and Physics kernels.

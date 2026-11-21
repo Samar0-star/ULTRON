@@ -1,6 +1,6 @@
 # backend/execution/execution_statistics.py
 """
-ULTRON Execution Statistics (V168.0)
+SVEL Execution Statistics (V168.0)
 ====================================
 Tracks gradient flow, loss trajectories, and physical proof-of-work metrics.
 Provides Ph.D. level forensic telemetry for model surgery and training pulses.
@@ -14,7 +14,7 @@ from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
 
-logger = logging.getLogger("ultron.execution_statistics")
+logger = logging.getLogger("svel.execution_statistics")
 
 @dataclass
 class ExecutionPulse:

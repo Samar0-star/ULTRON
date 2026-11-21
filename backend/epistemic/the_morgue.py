@@ -1,7 +1,7 @@
 """
 The Morgue: Graveyard of Refuted Hypotheses
 ===========================================
-Part of ULTRON Epistemic Governance & Red-Team Verification.
+Part of SVEL Epistemic Governance & Red-Team Verification.
 
 "Those who cannot remember the dead are condemned to repeat their experiments."
 

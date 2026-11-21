@@ -1,6 +1,6 @@
 # backend/memory/vectorstore.py
 """
-ULTRON Vector Store - Mission Isolation Edition
+SVEL Vector Store - Mission Isolation Edition
 ===============================================
 Isolated FAISS vector store for a single research mission.
 Forces local embeddings to ensure absolute data privacy and zero API dependency.
@@ -21,12 +21,12 @@ try:
 except ImportError:
     faiss = None
 
-logger = logging.getLogger("ultron.vectorstore")
+logger = logging.getLogger("svel.vectorstore")
 
 # Configuration
 VECTOR_DIR = Path("data/vector_memory")
 # Embedding model — pulled from llm_manager (the single source of truth).
-# Override via ULTRON_EMBEDDING_MODEL env var.
+# Override via SVEL_EMBEDDING_MODEL env var.
 from backend.llm_manager import EMBEDDING_MODEL, EMBEDDING_DIM as _EMBEDDING_DIM
 
 class VectorStore:
@@ -37,11 +37,11 @@ class VectorStore:
 
     def __init__(self, session_id: Optional[str] = None):
         # Align with global session if provided
-        self.session_id = session_id or os.environ.get("ULTRON_SESSION_ID", "local_run")
+        self.session_id = session_id or os.environ.get("SVEL_SESSION_ID", "local_run")
         self.persist_path = VECTOR_DIR / "missions" / self.session_id
         self.persist_path.mkdir(parents=True, exist_ok=True)
         
-        self.dim = _EMBEDDING_DIM  # Sourced from llm_manager / ULTRON_EMBEDDING_DIM env var
+        self.dim = _EMBEDDING_DIM  # Sourced from llm_manager / SVEL_EMBEDDING_DIM env var
 
         # Initialize Local Embedding Model via shared singleton (caches offline failure to prevent redundant HF Hub stalls)
         self._model = None
@@ -185,13 +185,13 @@ class VectorStore:
         """Compatibility adapter for LangChain / QA engine similarity search."""
         return self.query(query=query, top_k=k)
 
-# Singleton logic for the compute node (session-aware — refreshes when ULTRON_SESSION_ID changes)
+# Singleton logic for the compute node (session-aware — refreshes when SVEL_SESSION_ID changes)
 _vs_instance: Optional[VectorStore] = None
 _vs_session_id: Optional[str] = None
 
 def get_vectorstore() -> VectorStore:
     global _vs_instance, _vs_session_id
-    current_session = os.environ.get("ULTRON_SESSION_ID", "local_run")
+    current_session = os.environ.get("SVEL_SESSION_ID", "local_run")
     if _vs_instance is None or _vs_session_id != current_session:
         _vs_instance = VectorStore(session_id=current_session)
         _vs_session_id = current_session

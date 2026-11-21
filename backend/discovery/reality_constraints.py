@@ -132,7 +132,7 @@ async def _neural_feasibility_check(assumption: str, llm_manager) -> Tuple[bool,
     """High-rigor feasibility audit using the scientific brain."""
     import json
     prompt = f"""
-    ### ULTRON REALITY TRIBUNAL
+    ### SVEL REALITY TRIBUNAL
     MISSION: Audit the following scientific assumption for first-principles physical validity.
     
     ASSUMPTION: "{assumption}"

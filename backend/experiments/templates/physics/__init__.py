@@ -1,6 +1,6 @@
-from .advanced_propulsion import UltronApexPropulsionTemplate
-from .fluid_dynamics import UltronApexFluidDynamicsTemplate
-from .fusion_templates import UltronApexFusionTemplate
+from .advanced_propulsion import SVELApexPropulsionTemplate
+from .fluid_dynamics import SVELApexFluidDynamicsTemplate
+from .fusion_templates import SVELApexFusionTemplate
 from .additional_templates import (
     StatisticalMechanicsTemplate,
     AstrophysicsSpectralTemplate,
@@ -9,9 +9,9 @@ from .additional_templates import (
 )
 
 __all__ = [
-    "UltronApexPropulsionTemplate",
-    "UltronApexFluidDynamicsTemplate",
-    "UltronApexFusionTemplate",
+    "SVELApexPropulsionTemplate",
+    "SVELApexFluidDynamicsTemplate",
+    "SVELApexFusionTemplate",
     "StatisticalMechanicsTemplate",
     "AstrophysicsSpectralTemplate",
     "ParticleCollisionTemplate",

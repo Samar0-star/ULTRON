@@ -1,5 +1,5 @@
 """
-ULTRON Ph.D.-TIER FALSIFICATION BASE
+SVEL Ph.D.-TIER FALSIFICATION BASE
 ====================================
 Standard base classes for all high-fidelity scientific kernels.
 Ensures structural traceability and mathematical rigor across domains.

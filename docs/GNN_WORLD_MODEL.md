@@ -1,12 +1,12 @@
 # Graph Neural Network World Model & Causal Graph
 
-Language models process scientific literature as linear text tokens, obscuring non-linear, cross-disciplinary connections. ULTRON couples frontier language models with a persistent **Causal World Model** and **Graph Neural Network (GNN) Intuition Oracle**.
+Language models process scientific literature as linear text tokens, obscuring non-linear, cross-disciplinary connections. SVEL couples frontier language models with a persistent **Causal World Model** and **Graph Neural Network (GNN) Intuition Oracle**.
 
 ---
 
 ## 1. World Model Architecture
 
-The World Model acts as the persistent cognitive substrate of ULTRON across multi-day campaigns:
+The World Model acts as the persistent cognitive substrate of SVEL across multi-day campaigns:
 
 * **Storage Substrate**: SQLite Write-Ahead Logging (WAL) database enabling high-throughput concurrent reads and writes from multiple worker agents.
 * **Causal Directed Acyclic Graph (DAG)**:
@@ -17,7 +17,7 @@ The World Model acts as the persistent cognitive substrate of ULTRON across mult
 
 ## 2. The GNN Intuition Oracle
 
-To generate non-obvious hypotheses, ULTRON utilizes a Graph Convolutional Network / Graph Isomorphism Network (GCN / GIN):
+To generate non-obvious hypotheses, SVEL utilizes a Graph Convolutional Network / Graph Isomorphism Network (GCN / GIN):
 
 1. **Topology Embedding**: Literature facts and experimental results are embedded into a unified heterogeneous graph topology.
 2. **Link Prediction**: The GNN performs link prediction between disparate clusters (e.g., connecting a solid-state electrolyte crystal phase with a protein docking electrostatic interface).

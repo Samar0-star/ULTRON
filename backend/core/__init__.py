@@ -1,5 +1,5 @@
 """
-ULTRON BEAST Core Components
+SVEL BEAST Core Components
 =============================
 
 Core infrastructure for GODZILLA-tier autonomous research:

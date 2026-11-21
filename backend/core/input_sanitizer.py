@@ -1,7 +1,7 @@
 """
 Input Sanitization - Prompt Injection Defense
 ==============================================
-Part of Ultron's Security Layer.
+Part of SVEL's Security Layer.
 
 Protects against prompt injection attacks by:
 1. Detecting and neutralizing injection patterns

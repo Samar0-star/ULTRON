@@ -4,7 +4,7 @@ Clinical Trial Analysis Template
 PhD-level clinical trial design and analysis.
 Supports RCT analysis, meta-analysis, and adaptive trial designs.
 
-Part of ULTRON's Medicine Domain Templates.
+Part of SVEL's Medicine Domain Templates.
 """
 
 from typing import List, Dict, Any
@@ -164,7 +164,7 @@ import pandas as pd
 import logging
 import os
 
-logger = logging.getLogger("ultron.clinical")
+logger = logging.getLogger("svel.clinical")
 
 # === Load Real Trial Data — NO SYNTHETIC FALLBACK ===
 if not os.path.exists("{data_path}"):

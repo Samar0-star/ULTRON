@@ -4,7 +4,7 @@
 **Parent skill:** MHD_SKILL_v5.md (inherit all label conventions, tier logic, geometry gate)
 **Reading contract:** Every empirical threshold is labeled `[HEURISTIC: <provenance>]`.
 Every governing equation is labeled `[LAW]`. Definitions and structural conventions
-carry no label. ULTRON must propagate these labels into every hypothesis it generates.
+carry no label. SVEL must propagate these labels into every hypothesis it generates.
 
 ---
 
@@ -12,7 +12,7 @@ carry no label. ULTRON must propagate these labels into every hypothesis it gene
 
 ### What the original skill got wrong — do not repeat these errors
 
-The skill this replaces contained five categories of error that ULTRON must never reproduce:
+The skill this replaces contained five categories of error that SVEL must never reproduce:
 
 1. **Peeling-ballooning boundary treated as two independent scalar thresholds.**
    `if alpha > alpha_crit: BALLOONING_UNSTABLE` is wrong physics. The peeling-ballooning
@@ -73,7 +73,7 @@ j_∥,ped   = peak parallel current density in the pedestal [A/m²]
 
 **The L-H transition itself is not covered by this skill.** The power threshold P_LH
 and the mechanism of the transition (likely related to E×B shear suppression of
-turbulence, but not settled) are a separate physics domain. ULTRON must not
+turbulence, but not settled) are a separate physics domain. SVEL must not
 conflate the existence of H-mode with the stability of the pedestal within H-mode.
 
 ### 1.2 Bootstrap Current in the Pedestal
@@ -123,7 +123,7 @@ Region C (intermediate):    Coupled peeling-ballooning (n = 5–20); the "nose"
 ```
 
 The boundary between stable and unstable in this plane can only be computed
-numerically for a given equilibrium. ULTRON must not substitute scalar thresholds
+numerically for a given equilibrium. SVEL must not substitute scalar thresholds
 for this computation.
 
 ### 2.2 Governing Physics
@@ -175,7 +175,7 @@ The n = 5–25 range, where peeling-ballooning is most dangerous, requires
 full toroidal geometry to capture the mode structure correctly.
 ```
 
-### 2.4 Stability Diagram Construction — Step-by-Step for ULTRON
+### 2.4 Stability Diagram Construction — Step-by-Step for SVEL
 
 ```python
 from typing import NamedTuple, List, Optional
@@ -323,7 +323,7 @@ VALIDITY DOMAIN AND KNOWN FAILURES (mandatory reading before use):
   (e) ELM-free regimes: EPED is explicitly a model for ELMy H-mode. It does not
       apply to QH-mode, I-mode, EDA H-mode, or RMP-suppressed pedestals.
 
-ULTRON must not apply the Δ_ped = 0.076√β_pol formula outside the deuterium ELMy
+SVEL must not apply the Δ_ped = 0.076√β_pol formula outside the deuterium ELMy
 H-mode regime without declaring which validated extension is being used.
 ```
 
@@ -403,7 +403,7 @@ def eped1_prediction(B_T: float, I_p: float, R_0: float, a: float,
 
         # Convert pedestal width to physical units for profile integration
         # delta_ped is in ψ_N; convert to meters requires flux surface geometry
-        # (simplified here as linear mapping — ULTRON must use actual geometry)
+        # (simplified here as linear mapping — SVEL must use actual geometry)
         delta_ped_phys_m = delta_ped * a  # APPROXIMATION; valid only for circular cross-section
 
         # Pressure from gradient × width (trapezoidal approximation)
@@ -456,7 +456,7 @@ condition for ELM suppression. It ignores:
 - **3D equilibrium response:** RMPs produce a 3D equilibrium distortion, including
   changes to the pressure and current profiles at the edge.
 
-ULTRON must not conclude "ELM suppression" from the vacuum resonance condition alone.
+SVEL must not conclude "ELM suppression" from the vacuum resonance condition alone.
 
 ### 4.2 Vacuum Resonance Condition
 
@@ -721,7 +721,7 @@ substantial uncertainty.
 
 ## SECTION 5: PEDESTAL PROFILE MEASUREMENTS AND DATA REQUIREMENTS
 
-### 5.1 What Diagnostics ULTRON Needs — and What Each Measures
+### 5.1 What Diagnostics SVEL Needs — and What Each Measures
 
 All pedestal stability analysis is only as good as the input profiles.
 The following diagnostics are required for a complete pedestal characterization:
@@ -757,7 +757,7 @@ bootstrap current profiles.
 
 ### 5.2 Profile Uncertainty Propagation
 
-ULTRON must propagate diagnostic measurement uncertainty into stability outputs.
+SVEL must propagate diagnostic measurement uncertainty into stability outputs.
 
 ```python
 import numpy as np
@@ -797,7 +797,7 @@ def pedestal_uncertainty_propagation(T_e_mean: np.ndarray,
         dp_dpsi_peak = np.min(dp_dpsi)  # most negative = steepest gradient
 
         # α at pedestal top (approximate; needs actual B, q, R from equilibrium)
-        # Placeholder: alpha ~ |dp/dψ| × q²R²/B² — ULTRON fills from equilibrium
+        # Placeholder: alpha ~ |dp/dψ| × q²R²/B² — SVEL fills from equilibrium
         results['alpha'].append(abs(dp_dpsi_peak))
 
         # Bootstrap current (Sauter, simplified — j_bs ∝ dp/dψ × f_t)
@@ -827,7 +827,7 @@ def pedestal_uncertainty_propagation(T_e_mean: np.ndarray,
 
 ## SECTION 6: KNOWN FAILURE MODES OF THIS SKILL
 
-ULTRON must escalate rather than proceed when any of the following apply:
+SVEL must escalate rather than proceed when any of the following apply:
 
 | Condition | Why this skill fails | Required action |
 |---|---|---|
@@ -844,7 +844,7 @@ ULTRON must escalate rather than proceed when any of the following apply:
 
 ## SECTION 7: HYPOTHESIS SCHEMA FOR PEDESTAL PHYSICS
 
-Every pedestal hypothesis generated by ULTRON must conform to this structure,
+Every pedestal hypothesis generated by SVEL must conform to this structure,
 inheriting all mandatory fields from MHD_SKILL_v5 `MHDHypothesis` and adding:
 
 ```python

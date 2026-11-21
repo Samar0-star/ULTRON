@@ -21,23 +21,23 @@ class ScientificDefaults:
     # [TITAN V211.0] SOVEREIGN STATISTICAL MANIFOLD
     # Physically abolished magic numbers. Every threshold is now calibrated
     # via the environment manifold or falls back to a Ph.D. baseline.
-    ALPHA_SIGNIFICANCE = float(os.getenv("ULTRON_ALPHA", "0.05"))
-    BETA_POWER = float(os.getenv("ULTRON_BETA", "0.80"))
-    CONFIDENCE_LEVEL = float(os.getenv("ULTRON_CONFIDENCE", "0.70"))
+    ALPHA_SIGNIFICANCE = float(os.getenv("SVEL_ALPHA", "0.05"))
+    BETA_POWER = float(os.getenv("SVEL_BETA", "0.80"))
+    CONFIDENCE_LEVEL = float(os.getenv("SVEL_CONFIDENCE", "0.70"))
     EFFECT_SIZE_SMALL = 0.20
     EFFECT_SIZE_MEDIUM = 0.50
     EFFECT_SIZE_LARGE = 0.80
 
     # [TITAN V211.0] SOVEREIGN DISCOVERY MANIFOLD
-    NOVELTY_THRESHOLD = float(os.getenv("ULTRON_MIN_NOVELTY", "0.15"))
-    TESTABILITY_THRESHOLD = float(os.getenv("ULTRON_MIN_TESTABILITY", "0.50"))
-    MIN_RIGOR_FLOOR = float(os.getenv("ULTRON_MIN_RIGOR", "0.70"))
+    NOVELTY_THRESHOLD = float(os.getenv("SVEL_MIN_NOVELTY", "0.15"))
+    TESTABILITY_THRESHOLD = float(os.getenv("SVEL_MIN_TESTABILITY", "0.50"))
+    MIN_RIGOR_FLOOR = float(os.getenv("SVEL_MIN_RIGOR", "0.70"))
     
     # Epistemic Convergence (from convergence_engine.py)
-    EPISTEMIC_VELOCITY_MIN = float(os.getenv("ULTRON_VELOCITY_MIN", "0.05"))
-    SATURATION_THRESHOLD = float(os.getenv("ULTRON_SATURATION_THRESHOLD", "0.85"))
-    STAGNATION_CYCLES = int(os.getenv("ULTRON_STAGNATION_CYCLES", "3"))
-    DISCOVERY_RATE_MIN = float(os.getenv("ULTRON_DISCOVERY_RATE_MIN", "0.1"))
+    EPISTEMIC_VELOCITY_MIN = float(os.getenv("SVEL_VELOCITY_MIN", "0.05"))
+    SATURATION_THRESHOLD = float(os.getenv("SVEL_SATURATION_THRESHOLD", "0.85"))
+    STAGNATION_CYCLES = int(os.getenv("SVEL_STAGNATION_CYCLES", "3"))
+    DISCOVERY_RATE_MIN = float(os.getenv("SVEL_DISCOVERY_RATE_MIN", "0.1"))
     STRUCTURAL_RIGOR = 0.80
     RESILIENT_RIGOR = 0.50
     ESCAPED_RIGOR = 0.20

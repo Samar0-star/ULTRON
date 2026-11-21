@@ -1,5 +1,5 @@
 """
-ULTRON-APEX MACHINE LEARNING TEMPLATE v1.0
+SVEL-APEX MACHINE LEARNING TEMPLATE v1.0
 ==========================================
 High-fidelity validation template for ML research.
 """
@@ -10,7 +10,7 @@ from backend.experiments.templates import register_template
 from backend.experiments.models import ExperimentProtocol, ProtocolStep, ExperimentType, Variable
 
 @register_template
-class UltronApexMLTemplate(MLTemplate):
+class SVELApexMLTemplate(MLTemplate):
     """
     Template for rigorous ML model verification and architecture audits.
     """

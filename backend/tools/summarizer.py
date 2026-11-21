@@ -19,7 +19,7 @@ from typing import Optional, Callable, Dict, Any, List
 import asyncio
 from backend.llm_manager import run_llm, run_llm_async
 
-logger = logging.getLogger("ultron.summarizer")
+logger = logging.getLogger("svel.summarizer")
 logger.setLevel(os.getenv("SUMMARIZER_LOG_LEVEL", "INFO"))
 if not logger.handlers:
     ch = logging.StreamHandler()

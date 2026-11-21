@@ -1,2 +1,2 @@
-# ULTRON Experiments Module
+# SVEL Experiments Module
 # PhD-Level Research Templates for Autonomous Discovery

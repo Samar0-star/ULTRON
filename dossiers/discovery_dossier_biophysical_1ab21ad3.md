@@ -1,6 +1,6 @@
 # Epistemic Discovery Dossier: Autonomous biophysical discovery mission: Cross-analyze the 3D atomic interface of SARS-CoV-2 RBD bound to human ACE2 (6M0J PDB) with deep mutational scanning profiles (Starr 2020). Discover novel high-affinity, stabilizing interface mutations and epistemic structural coupling mechanisms that optimize binding energy while maintaining folding expression.
 
-**Autonomous System**: ULTRON Autonomous AI Scientist (2026 Engine)  
+**Autonomous System**: SVEL Autonomous AI Scientist (2026 Engine)  
 **Mission Identifier**: `1ab21ad3`  
 **Target Domain**: `biophysics`  
 **Sovereign Baseline LLM**: `z-ai/glm-5.3-flash (NVIDIA NIM)`  
@@ -13,7 +13,7 @@
 
 ## 1. Executive Mission Provenance & Hardware Envelope
 
-This document constitutes the formal scientific discovery dossier compiled autonomously by ULTRON. All claims are evaluated under strict Popperian falsification standards, eliminating narrative prose in favor of mathematical framing, boundary condition stress tests, and cryptographic verification.
+This document constitutes the formal scientific discovery dossier compiled autonomously by SVEL. All claims are evaluated under strict Popperian falsification standards, eliminating narrative prose in favor of mathematical framing, boundary condition stress tests, and cryptographic verification.
 
 | Hardware & Architectural Layer | Operational Specification | Integrity Status |
 | :--- | :--- | :---: |
@@ -233,7 +233,7 @@ Every empirical claim in this dossier is mapped directly to executable cells wit
 
 ```
 MISSION_ID           : 1ab21ad3
-SOVEREIGN_ENGINE     : ULTRON AI Scientist (2026 Engine)
+SOVEREIGN_ENGINE     : SVEL AI Scientist (2026 Engine)
 BASELINE_LLM         : z-ai/glm-5.3-flash (NVIDIA NIM)
 SURVIVOR_TIER        : TIER_STRUCTURAL
 FALSIFICATION_STATUS : STRICT_POPPERIAN_AUDIT_PASSED

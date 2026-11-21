@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Live NVIDIA NIM Manager & Orchestrator Runner for ULTRON AI Scientist
+Live NVIDIA NIM Manager & Orchestrator Runner for SVEL AI Scientist
 Uses strictly NVIDIA NIM API with z-ai/glm-5.3-flash (or z-ai/glm-5.3).
 Provides rate-limiting, reasoning-token extraction, and failure auditing.
 """
@@ -26,7 +26,7 @@ if str(ROOT_DIR) not in sys.path:
 import dotenv
 dotenv.load_dotenv(ROOT_DIR / "backend" / ".env")
 
-logger = logging.getLogger("ultron.nvidia_live")
+logger = logging.getLogger("svel.nvidia_live")
 
 def get_nvidia_keys() -> List[str]:
     keys: List[str] = []
@@ -220,13 +220,13 @@ class NvidiaNIMManager:
         # Format system & user messages
         if is_json:
             system_content = (
-                "You are ULTRON Autonomous AI Scientist operating as a mathematical formalization kernel. "
+                "You are SVEL Autonomous AI Scientist operating as a mathematical formalization kernel. "
                 "You must output strictly valid, parseable JSON ONLY conforming to the requested schema. "
                 "Think concisely and emit the valid JSON schema directly without lengthy preambles."
             )
         else:
             system_content = kwargs.get("system_prompt") or (
-                "You are ULTRON Autonomous AI Scientist operating as a sovereign computational researcher. "
+                "You are SVEL Autonomous AI Scientist operating as a sovereign computational researcher. "
                 "Perform exhaustive, first-principles mathematical and empirical reasoning without artificial token or length constraints. "
                 "Output the complete executable Python script or scientific derivation in the final output block. Never use emojis."
             )

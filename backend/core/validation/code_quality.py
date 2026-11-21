@@ -1,5 +1,5 @@
 """
-ULTRON Code Quality Validator - Runtime Bug Prevention
+SVEL Code Quality Validator - Runtime Bug Prevention
 =====================================================
 Pre-execution validation to catch common LLM coding errors.
 """

@@ -107,7 +107,7 @@ class TieredCache:
                 s = re.sub(r' at 0x[0-9a-fA-F]+', '', s)
                 return s
 
-        session_id = os.environ.get("ULTRON_SESSION_ID", "")
+        session_id = os.environ.get("SVEL_SESSION_ID", "")
         sanitized_components = _sanitize(components)
         key_data = f"{session_id}_{topic or ''}_{query}_{json.dumps(sanitized_components, sort_keys=True, default=str)}_llm_manager_{config.temperature}"
         return hashlib.sha256(key_data.encode()).hexdigest()
@@ -192,7 +192,7 @@ You are NOT a hype machine. You are a truth-seeker.
 - Unsubstantiated "Winners" or "Losers" (Use "Dominant" vs "Obsolescent")
 - Propaganda-style overconfidence ("Undeniably", "Perfect", "Infinite")
 - APOLOGIES ("I'm sorry", "I cannot provide", "I apologize", "Unfortunately")
-- INTERNAL BRANDING ("WorldModel", "Ultron", "Avon-1", "Swarm Manager")
+- INTERNAL BRANDING ("WorldModel", "SVEL", "Avon-1", "Swarm Manager")
 
 
 
@@ -339,8 +339,8 @@ FORMAT: {format}
         template = base_templates.get(mode, base_templates[WritingMode.ULTRA_BEAST])
         components_text = GodzillaPromptEngine._format_components(components)
         
-        session_id = os.environ.get("ULTRON_SESSION_ID", "").lower()
-        domain = os.environ.get("ULTRON_DOMAIN", "").lower()
+        session_id = os.environ.get("SVEL_SESSION_ID", "").lower()
+        domain = os.environ.get("SVEL_DOMAIN", "").lower()
         q = query.lower()
         
         # Explicitly protect natural sciences from being flagged as ML
@@ -582,7 +582,7 @@ class EpistemicEnforcementAgency:
     BINARY_VERDICTS = r'(?i)\b(winner|loser|champion|king|worst|killed)\b'
     
     # Internal Branding & Meta-Leakage (Anti-Trash)
-    INTERNAL_LEAKAGE = r'(?i)\b(WorldModel|World Model|Ultron|Avon-1|Agent-\d+|Swarm Manager|Cycle\s*\d+)\b'
+    INTERNAL_LEAKAGE = r'(?i)\b(WorldModel|World Model|SVEL|Avon-1|Agent-\d+|Swarm Manager|Cycle\s*\d+)\b'
     
     # Topic Drift Detector
     def _check_topic_alignment(self, text: str, topic: Optional[str]) -> List[str]:
@@ -1152,7 +1152,7 @@ class GodzillaWriterAgent:
         # 1. Scrub Internal Branding without injecting legacy AVON-1 branding
         text = re.sub(r'(?i)WorldModel', 'Empirical Synthesis', text)
         text = re.sub(r'(?i)World Model', 'Empirical Synthesis', text)
-        text = re.sub(r'(?i)Ultron', 'This study', text)
+        text = re.sub(r'(?i)SVEL', 'This study', text)
         text = re.sub(r'(?i)AVON-1', 'This study', text)
         
         # 2. Scrub Procedural Leakage

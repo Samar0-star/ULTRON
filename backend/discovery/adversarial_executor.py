@@ -73,7 +73,7 @@ class AdversarialExecutor:
         # --- NEW: DOMAIN-SPECIFIC ANNIHILATION GATEWAY ---
         try:
             import os
-            use_llm_flag = os.environ.get("ULTRON_OFFLINE_TESTS", "0") != "1"
+            use_llm_flag = os.environ.get("SVEL_OFFLINE_TESTS", "0") != "1"
             logger.info(f" Consulting Scientific Gateway for: {claim_statement[:50]}...")
             templates = find_applicable_templates(claim_statement, use_llm=use_llm_flag)
             if templates:

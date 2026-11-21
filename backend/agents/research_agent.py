@@ -100,7 +100,7 @@ class ResearchAgent:
             or inner_ctx.get("orchestrator") == "DeepResearch"
             or context.get("session_id")
             or inner_ctx.get("session_id")
-            or os.environ.get("ULTRON_RUNNING_ORCHESTRATOR") == "1"
+            or os.environ.get("SVEL_RUNNING_ORCHESTRATOR") == "1"
             or raw_text
             or physical_docs
             or components
@@ -211,9 +211,9 @@ class ResearchAgent:
             combined_corpus = f"{combined_corpus}\n\n{multimodal_ctx}"[:120000]
 
         llm = self._get_llm()
-        if llm and os.environ.get("ULTRON_OFFLINE_TESTS", "0") != "1":
+        if llm and os.environ.get("SVEL_OFFLINE_TESTS", "0") != "1":
             prompt = (
-                "You are ULTRON's Sovereign Scientific Research Engine.\n"
+                "You are SVEL's Sovereign Scientific Research Engine.\n"
                 "Analyze the following primary documents and experimental/literature evidence for the research query.\n"
                 "Extract concrete quantitative findings, empirical metrics, methodological constraints, and citations.\n\n"
                 f"RESEARCH QUERY: {query or 'Synthesize primary scientific findings'}\n\n"
@@ -339,14 +339,14 @@ class ResearchAgent:
             master_session = (
                 context.get("session_id")
                 or inner_ctx.get("session_id")
-                or os.environ.get("ULTRON_SESSION_ID")
+                or os.environ.get("SVEL_SESSION_ID")
                 or str(uuid.uuid4())[:8]
             )
             mission_domain = (
                 payload.get("domain")
                 or context.get("DOMAIN")
                 or inner_ctx.get("DOMAIN")
-                or os.environ.get("ULTRON_DOMAIN")
+                or os.environ.get("SVEL_DOMAIN")
                 or "biology"
             )
 

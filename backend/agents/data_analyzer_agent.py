@@ -115,7 +115,7 @@ class DataAnalyzerAgent:
         # Physically abolished hardcoded p-values.
         from backend.discovery.constants import ScientificDefaults
         self.SIG_THRESHOLD = ScientificDefaults.ALPHA_SIGNIFICANCE
-        self.EFFECT_THRESHOLD = float(os.getenv("ULTRON_MIN_EFFECT", "0.3"))
+        self.EFFECT_THRESHOLD = float(os.getenv("SVEL_MIN_EFFECT", "0.3"))
         self.sandbox = GodModeSandbox()
         self.expert_system = get_expert_system()
         
@@ -355,7 +355,7 @@ class DataAnalyzerAgent:
                 status["ready"] = True
                 
         # Also check dynamic targets based on session environment
-        session_id = os.environ.get("ULTRON_SESSION_ID", "").lower()
+        session_id = os.environ.get("SVEL_SESSION_ID", "").lower()
         if "cifar" in session_id:
             for d in ["cifar-100-python", "cifar100", "data/cifar100"]:
                 if os.path.exists(d):
@@ -384,8 +384,8 @@ class DataAnalyzerAgent:
         distribution = "\n".join([f"- {v.name}: CV={v.coefficient_of_variation:.2f}, missing={v.missing_pct:.1f}%" for v in variables[:5]])
 
         import re
-        session_id = os.environ.get("ULTRON_SESSION_ID", "").lower()
-        domain = (domain or os.environ.get("ULTRON_DOMAIN", "")).lower()
+        session_id = os.environ.get("SVEL_SESSION_ID", "").lower()
+        domain = (domain or os.environ.get("SVEL_DOMAIN", "")).lower()
         hyp_low = hypothesis.lower()
         
         # Explicitly protect natural sciences from being flagged as ML

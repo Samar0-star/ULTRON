@@ -1,5 +1,5 @@
 """
-Circuit Breaker for ULTRON Orchestration
+Circuit Breaker for SVEL Orchestration
 ========================================
 Graceful degradation and fault tolerance for multi-day autonomous research sessions.
 

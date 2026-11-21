@@ -3,7 +3,7 @@
 Deep Paper Reader for Autonomous Research Cycles
 =================================================
 Reads FULL PAPER CONTENT from academic sources (not just snippets).
-Designed for 12-24 hour research runs to match Ultron-level paper reading.
+Designed for 12-24 hour research runs to match SVEL-level paper reading.
 
 Capabilities:
 - arXiv: Full PDF extraction (up to 20 pages)

@@ -72,7 +72,7 @@ class SingularityEngine:
         """
         The Hydra Logic: Split a failed task into 2-3 simpler tasks.
         """
-        # [ULTRON BEAST FIX] Kill the Hydra Death Spiral
+        # [SVEL BEAST FIX] Kill the Hydra Death Spiral
         if depth > 3:
             logger.error(f" [HYDRA] Max recursion depth (3) reached for task {failed_task.id}. Aborting fractalization.")
             return []

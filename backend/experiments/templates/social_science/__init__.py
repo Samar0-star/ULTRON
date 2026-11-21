@@ -1,3 +1,3 @@
-from .templates import UltronApexSocialScienceTemplate
+from .templates import SVELApexSocialScienceTemplate
 
-__all__ = ["UltronApexSocialScienceTemplate"]
+__all__ = ["SVELApexSocialScienceTemplate"]

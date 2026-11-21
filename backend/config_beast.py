@@ -150,7 +150,7 @@ class ResearchConfig(BaseSettings):
 
     enable_skill_rag: bool = Field(
         default=True,
-        description="Enable Ultron-style Skill RAG (Tutorial Mode) for experiments.",
+        description="Enable SVEL-style Skill RAG (Tutorial Mode) for experiments.",
         env="ENABLE_SKILL_RAG"
     )
     
@@ -171,7 +171,7 @@ class ResearchConfig(BaseSettings):
         ge=0.0000001,
         le=0.2,
         description="The 'Skepticism Dial' (p-value threshold). Lower = Harder Science.",
-        env="ULTRON_ALPHA"
+        env="SVEL_ALPHA"
     )
 
     uncertainty_level: float = Field(
@@ -179,7 +179,7 @@ class ResearchConfig(BaseSettings):
         ge=0.5,
         le=0.999,
         description="Confidence level for reported intervals (e.g., 0.95 = 95% CI).",
-        env="ULTRON_CONFIDENCE_LEVEL"
+        env="SVEL_CONFIDENCE_LEVEL"
     )
 
     model_config = SettingsConfigDict(

@@ -589,7 +589,7 @@ class RedTeamAgent:
     def generate_edge_cases(self, claim: str, num_cases: int = 5) -> Dict[str, Any]:
         """
         Generate adversarial edge-case scenarios that could break a claim.
-        Forces ULTRON to specify the BOUNDARIES of truth.
+        Forces SVEL to specify the BOUNDARIES of truth.
         
         Args:
             claim: The claim to stress-test.
@@ -656,8 +656,8 @@ class RedTeamAgent:
         """
         import os
         import re
-        session_id = os.environ.get("ULTRON_SESSION_ID", "").lower()
-        domain = os.environ.get("ULTRON_DOMAIN", "").lower()
+        session_id = os.environ.get("SVEL_SESSION_ID", "").lower()
+        domain = os.environ.get("SVEL_DOMAIN", "").lower()
         c_low = claim.lower()
         
         # Explicitly protect natural sciences from being flagged as ML
@@ -678,7 +678,7 @@ class RedTeamAgent:
             # Domain-agnostic skeptic: derives focus from session context
             # so the red-team works correctly for physics, chemistry, biology, social science, etc.
             "name": "The Domain Scientist",
-            "focus": os.environ.get("ULTRON_DOMAIN", "General Science"),
+            "focus": os.environ.get("SVEL_DOMAIN", "General Science"),
             "question": "Are the domain-specific assumptions justified? Are there hidden confounders, violated physical laws, or overlooked baseline comparisons specific to this field?"
         }
         

@@ -1,5 +1,5 @@
 """
-ULTRON-APEX OMNIVERSAL REGIME VALIDATION ENGINE
+SVEL-APEX OMNIVERSAL REGIME VALIDATION ENGINE
 ===============================================
 Purpose:
 - Systematically evaluate propulsion paradigms across multiple physics regimes
@@ -54,9 +54,9 @@ class FalsificationMode(Enum):
 
 
 @register_template
-class UltronApexPropulsionTemplate(SimulationTemplate):
+class SVELApexPropulsionTemplate(SimulationTemplate):
     """
-    ULTRON-APEX: OMNIVERSAL PROPULSION REGIME VALIDATOR
+    SVEL-APEX: OMNIVERSAL PROPULSION REGIME VALIDATOR
 
     This template does not synthesize engine performance.
     This template does NOT validate ideas.
@@ -85,7 +85,7 @@ class UltronApexPropulsionTemplate(SimulationTemplate):
 
     def __init__(self):
         super().__init__(
-            name="ultron_godzilla_infinity_propulsion",
+            name="svel_godzilla_infinity_propulsion",
             domain="omniversal_physics",
             title="Omniversal Propulsion Regime Validation",
             description=(
@@ -253,7 +253,7 @@ class UltronApexPropulsionTemplate(SimulationTemplate):
         """
 
         return ExperimentProtocol(
-            title=f"ULTRON-APEX REGIME VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX REGIME VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.SIMULATION,
             domain="omniversal_physics",
@@ -1061,7 +1061,7 @@ class UltronApexPropulsionTemplate(SimulationTemplate):
                     ),
                     expected_output=(
                         "\n"
-                        "ULTRON-APEX FINAL VERDICT\n"
+                        "SVEL-APEX FINAL VERDICT\n"
                         "\n\n"
                         "STATUS: [KILLED / SURVIVED / CONDITIONAL]\n\n"
                         "[Detailed findings for each protocol]\n\n"

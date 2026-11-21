@@ -45,7 +45,7 @@ class ScholarS2(BaseScholarClient):
         }
         
         headers = {
-            "User-Agent": "UltronResearchBot/2.0 (ULTRON_CORE_MISSION Swarm; contact: admin@ultron.ai)"
+            "User-Agent": "SVELResearchBot/2.0 (SVEL_CORE_MISSION Swarm; contact: admin@svel.ai)"
         }
         if api_key:
             headers["x-api-key"] = api_key

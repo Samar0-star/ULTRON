@@ -1,5 +1,5 @@
 """
-ULTRON-APEX PRECISION MEDICINE & CLINICAL VALIDATION v2.0
+SVEL-APEX PRECISION MEDICINE & CLINICAL VALIDATION v2.0
 ==========================================================
 Purpose:
 - Rigorous medical hypothesis validation grounded in observed evidence
@@ -39,9 +39,9 @@ class MedFalsificationMode(Enum):
     ECOLOGICAL_FALLACY = "scale_error"         # Group result doesn't apply to individuals
 
 @register_template
-class UltronApexMedicineTemplate(SimulationTemplate):
+class SVELApexMedicineTemplate(SimulationTemplate):
     """
-    ULTRON-APEX PRECISION MEDICINE & CLINICAL ANNIHILATOR
+    SVEL-APEX PRECISION MEDICINE & CLINICAL ANNIHILATOR
     
     This engine does NOT:
     - Accept p-values from small RCTs as "proof" of general efficacy
@@ -107,7 +107,7 @@ class UltronApexMedicineTemplate(SimulationTemplate):
 
     def generate_protocol(self, params: TemplateCustomizationParams) -> ExperimentProtocol:
         return ExperimentProtocol(
-            title=f"ULTRON-APEX MEDICAL VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX MEDICAL VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.SIMULATION,
             domain="medicine",

@@ -173,7 +173,7 @@ def find_applicable_templates(hypothesis: Any, top_k: int = 3, use_llm: bool = T
 
     prompt = f"""
 +------------------------------------------------------------------------------+
-|  ULTRON-APEX METHODOLOGY SELECTOR                                            |
+|  SVEL-APEX METHODOLOGY SELECTOR                                            |
 +------------------------------------------------------------------------------+
 
 You are the SUPREME SCIENTIFIC ORCHESTRATOR. 
@@ -237,7 +237,7 @@ SUITABLE FOR: {', '.join(t.suitable_for)}
 
     return f"""
 +------------------------------------------------------------------------------+
-|  ULTRON TEMPLATE JUDGE (RELENTLESS DISCOVERY MODE)                           |
+|  SVEL TEMPLATE JUDGE (RELENTLESS DISCOVERY MODE)                           |
 +------------------------------------------------------------------------------+
 
 You are an ELITE SCIENTIFIC ADJUDICATOR. Your task is to select the SINGLE BEST scientific experiment template for the given hypothesis.

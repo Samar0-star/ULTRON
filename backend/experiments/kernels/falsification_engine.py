@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-ULTRON ADVERSARIAL FALSIFICATION ENGINE
+SVEL ADVERSARIAL FALSIFICATION ENGINE
 ========================================
 "It is not enough to confirm a theory. You must try to destroy it."
                                              Karl Popper, 1959
@@ -45,7 +45,7 @@ from enum import Enum
 from abc import ABC, abstractmethod
 from backend.llm_manager import run_llm_async, HYPOTHESIS_VALIDATION_MODEL
 
-logger = logging.getLogger("ultron.falsification")
+logger = logging.getLogger("svel.falsification")
 
 
 # 
@@ -1433,7 +1433,7 @@ class SemanticCritic:
                 "criticism": "Semantic audit skipped: No LLM Manager available in kernel."
             }
         
-        prompt = f"""You are the **LEAD RED TEAM SCIENTIST** for Ultron Research AI.
+        prompt = f"""You are the **LEAD RED TEAM SCIENTIST** for SVEL Research AI.
 
 Your mission: **DESTROY** the following hypothesis based on the experimental evidence provided.
 Look for conceptual flaws, logical leaps, and alternative explanations that the math might miss.
@@ -1493,7 +1493,7 @@ RETURN JSON:
 
 class FalsificationEngine:
     """
-    ULTRON ADVERSARIAL FALSIFICATION ENGINE
+    SVEL ADVERSARIAL FALSIFICATION ENGINE
 
     Entry point. Orchestrates all attack modules against a hypothesis.
 

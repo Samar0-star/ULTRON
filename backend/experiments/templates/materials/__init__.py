@@ -1,3 +1,3 @@
-from .superconductivity import UltronApexMaterialsTemplate
+from .superconductivity import SVELApexMaterialsTemplate
 
-__all__ = ["UltronApexMaterialsTemplate"]
+__all__ = ["SVELApexMaterialsTemplate"]

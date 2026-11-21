@@ -1,5 +1,5 @@
 """
-ULTRON Data Loader
+SVEL Data Loader
 ==================
 Purpose:
 - Unified interface for ingesting scientific data.
@@ -18,7 +18,7 @@ import numpy as np
 from typing import Any, Dict, Optional, Union, List
 from pathlib import Path
 
-logger = logging.getLogger("ultron.core.data_loader")
+logger = logging.getLogger("svel.core.data_loader")
 
 
 class DataLoader:
@@ -27,7 +27,7 @@ class DataLoader:
     """
     
     def __init__(self, base_path: Optional[str] = None):
-        self.base_path = Path(base_path) if base_path else Path(os.getenv("ULTRON_DATA_ROOT", "./data"))
+        self.base_path = Path(base_path) if base_path else Path(os.getenv("SVEL_DATA_ROOT", "./data"))
 
     def resolve_path(self, uri: str) -> Path:
         """

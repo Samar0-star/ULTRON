@@ -204,7 +204,7 @@ class SQLiteResultStore(BaseResultStore):
             self.conn.execute("CREATE TABLE IF NOT EXISTS kv (key TEXT PRIMARY KEY, value TEXT)")
 
     def _resolve_key(self, key: str) -> str:
-        mission_id = os.getenv("ULTRON_SESSION_ID") or os.getenv("ULTRON_MISSION_ID")
+        mission_id = os.getenv("SVEL_SESSION_ID") or os.getenv("SVEL_MISSION_ID")
         if mission_id and not key.startswith(f"{mission_id}:") and not key.startswith("global:"):
             return f"{mission_id}:{key}"
         return key

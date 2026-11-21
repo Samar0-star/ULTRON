@@ -1,8 +1,8 @@
-# ULTRON Master System Architecture: 9-Tier Autonomous AI Scientist
+# SVEL Master System Architecture: 9-Tier Autonomous AI Scientist
 
-ULTRON is an 82,016-line autonomous synthetic research organism built across 219 Python files, engineered to conduct continuous 12 to 72-hour closed-loop discovery campaigns without human intervention.
+SVEL is an 82,016-line autonomous synthetic research organism built across 219 Python files, engineered to conduct continuous 12 to 72-hour closed-loop discovery campaigns without human intervention.
 
-Rather than acting as a standard conversational wrapper around Large Language Models, ULTRON acts as an autonomous operating system for science. It connects symbolic computation (physics kernels, stoichiometric engines, statistics) with semantic reasoning (LLMs) inside a multi-tier **deterministic verification cage**.
+Rather than acting as a standard conversational wrapper around Large Language Models, SVEL acts as an autonomous operating system for science. It connects symbolic computation (physics kernels, stoichiometric engines, statistics) with semantic reasoning (LLMs) inside a multi-tier **deterministic verification cage**.
 
 ---
 
@@ -64,7 +64,7 @@ flowchart TD
     subgraph S7["7. CLEANROOM EXPERIMENT SANDBOX (sandbox.py & experiment_agent.py)"]
         G1["AST NameVisitor & Scope Sanitizer\nStatic AST Tree Validation"]
         G2["Igor Code Audit\nEnforces Real Statistical Packages"]
-        G3["Cryptographic Weight PoW (UltronRigorMonitor)\nSHA-256 PyTorch Model Weight Divergence"]
+        G3["Cryptographic Weight PoW (SVELRigorMonitor)\nSHA-256 PyTorch Model Weight Divergence"]
         G4["CorrelationChecker & Physical Matrix Validation"]
         G1 --> G2 --> G3 --> G4
     end
@@ -103,7 +103,7 @@ flowchart TD
 
 ```
 =======================================================================================================================
-                                          ULTRON COMPLETE SYSTEM SCHEMATIC
+                                          SVEL COMPLETE SYSTEM SCHEMATIC
 =======================================================================================================================
 
  [ SCIENTIFIC RESEARCH OBJECTIVE / EXPERIMENTAL BENCHMARK ]
@@ -173,7 +173,7 @@ flowchart TD
  │ 7. CLEANROOM EXPERIMENT SANDBOX (`sandbox.py`, `experiment_agent.py`)           │   │         │
  │  ├── AST NameVisitor: Static syntax tree parsing, scope checking & call security│   │         │
  │  ├── Igor Code Audit: Enforces PhD-level statistical packages and cross-val     │   │         │
- │  ├── Cryptographic Weight PoW (UltronRigorMonitor): SHA-256 model weight hash   │   │         │
+ │  ├── Cryptographic Weight PoW (SVELRigorMonitor): SHA-256 model weight hash   │   │         │
  │  ├── CorrelationChecker: Empirical validation against physical dataset matrices │   │         │
  │  └── Automated ML Builder Forge: 6-Modality CrossAttention GSTM fusion          │   │         │
  └─────────┬───────────────────────────────────────────────────────────────────────┘   │         │
@@ -245,7 +245,7 @@ flowchart TD
 * **How it works**: 
   * **AST NameVisitor**: Inspects raw Abstract Syntax Trees before execution to catch undefined variables, scope leaks, and dangerous system calls.
   * **Igor Code Audit**: Enforces PhD-grade statistical code (mandating `statsmodels`, bootstrap intervals, and cross-validation).
-  * **UltronRigorMonitor**: Cryptographic Proof-of-Work that hashes PyTorch model weights ($\text{SHA-256}(\mathbf{W})$) before and after training. If weights don't diverge past a physical threshold, it proves the LLM faked the training loop and rejects the run.
+  * **SVELRigorMonitor**: Cryptographic Proof-of-Work that hashes PyTorch model weights ($\text{SHA-256}(\mathbf{W})$) before and after training. If weights don't diverge past a physical threshold, it proves the LLM faked the training loop and rejects the run.
   * **CorrelationChecker**: Grounds calculations in real physical data matrices.
 
 ### 8. Epistemic Regulation & Consensus Tribunal

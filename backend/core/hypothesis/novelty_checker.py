@@ -251,7 +251,7 @@ Rules:
 
         # [TITAN V240.0] EPISTEMIC BINDING
         # Physically save the novelty finding to the World Model.
-        if self.world_model and os.environ.get("ULTRON_LOG_NOVELTY_FACTS", "false").lower() == "true":
+        if self.world_model and os.environ.get("SVEL_LOG_NOVELTY_FACTS", "false").lower() == "true":
             try:
                 import hashlib
                 fact_id = hashlib.sha256(f"novelty_{hypothesis.id}".encode()).hexdigest()[:16]

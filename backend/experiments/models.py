@@ -1,8 +1,8 @@
 """
-ULTRON Experiment Models
+SVEL Experiment Models
 ========================
 Data models for experiment protocols, steps, and validation.
-Ported and enhanced from Ultron.
+Ported and enhanced from SVEL.
 """
 
 from dataclasses import dataclass, field

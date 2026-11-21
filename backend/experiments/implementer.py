@@ -1,5 +1,5 @@
 """
-ULTRON Ph.D. EXPERIMENT IMPLEMENTER (TITAN V71.0)
+SVEL Ph.D. EXPERIMENT IMPLEMENTER (TITAN V71.0)
 =================================================
 The "Computational Scientist" of the discovery pipeline.
 Translates structured JSON protocols into high-fidelity Python code.

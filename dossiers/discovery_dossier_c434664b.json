@@ -1,0 +1,538 @@
+{
+ "mission_id": "c434664b",
+ "research_question": "Investigate thermodynamic determinants of SARS-CoV-2 Spike RBD N501Y binding affinity with human ACE2 using SKEMPI-v2 empirical mutation dataset",
+ "domain": "biology",
+ "baseline_llm": "GPT-6 Astra",
+ "survivor_tier": "STRUCTURAL",
+ "runtime_hours": 1.6254565513888888,
+ "compiled_at": "2026-10-11T19:25:19.246169",
+ "master_notebook_path": "reports/notebooks/Investigate_thermodynamic_determinants_of_SARS_CoV_master.ipynb",
+ "hypotheses": [
+  {
+   "id": "5cf3fe86",
+   "statement": "The N501Y-mediated affinity gain (ΔΔG ≈ −1.2 kcal/mol vs Kd_wt = 15 nM) is mediated ≥50% by a specific nonadditive thermodynamic coupling between RBD residue 501 and ACE2 Tyr41, such that the double-mutant cycle coupling ε = RT·ln[(Kd_double·Kd_wt)/(Kd_501Y·Kd_Y41A)] ≥ +0.6 kcal/mol at 298.15 K, and ε < +0.24 kcal/mol falsifies the Tyr501–Tyr41 π-stacking/H-bond mediation mechanism.",
+   "rationale": "Mechanistic logic: (1) In 6M0J (chains E:A), N501Y places a Tyr ring at the RBD–ACE2 interface adjacent to ACE2 Tyr41 and the Lys353 H-bond network, so the predicted ΔΔG ≈ −1.2 kcal/mol (Kd_mut ≈ 2.0 nM from Kd_wt = 15 nM) could arise either from this specific contact or from contact-independent desolvation/packing at the 501 pocket. (2) Total ΔΔG alone cannot distinguish these channels; a double-mutant cycle isolates the specific term: ε = ΔΔG_AB − ΔΔG_A − ΔΔG_B = RT·ln[(Kd_double·Kd_wt)/(Kd_501Y·Kd_Y41A)]. (3) If N501Y acts through Tyr41, then on a Y41A background the N501Y gain is masked (ΔΔG_AB ≈ ΔΔG_B), giving ε ≈ −ΔΔG_A ≈ +1.2 kcal/mol; if the channels are independent, ε ≈ 0. (4) Calibration from the provided SKEMPI-v2 double-mutant facts (1LFD): ε(MA17K×DA45K) = RT·ln[(8.18e-7·1.15e-6)/(5.84e-7·4.93e-7)] = +0.70 kcal/mol and ε(MA17K×DA81K) = RT·ln[(5.84e-7·1.15e-6)/(5.84e-7·2.51e-7)] = +1.00 kcal/mol, establishing that interface pairwise couplings of 0.6–1.2 kcal/mol are the empirical norm, so ε ≥ 0.6 (half-mediation of |ΔΔG_N501Y| = 1.2) is physically plausible. (5) Coherence with grounding: ε ≥ 0.6 exceeds the significance threshold |−0.5| kcal/mol, meaning the Tyr41-mediated component alone suffices to clear the affinity-gain threshold. Causal DAG: N501Y → [Tyr501–Tyr41 contact + K353 H-bond network] → ε → ΔΔG_A; N501Y → [local pocket packing/desolvation, 501-loop dynamics (latent)] → background term δ → ΔΔG_A; Y41A intervention removes the contact channel and modulates ΔΔG_AB; confounders controlled: T = 298.15 K, C0 = 1 M, pH 7.4, ACE2 Y41A folding integrity (checked by thermal melt); all measured observables are the sanctioned Kd (M) and ΔΔG (kcal/mol) variables at different perturbation states — no new physical variable types are introduced.",
+   "domain": "biology",
+   "research_question": "",
+   "state": "proposed",
+   "created_at": "2026-10-11T18:00:14.173516",
+   "updated_at": "2026-10-11T18:38:39.507667",
+   "confidence": 0.5,
+   "uncertainty": 0.0,
+   "novelty_score": 1.0,
+   "testability_score": 0.7050000000000001,
+   "impact_score": 0.0,
+   "feasibility_score": 0.24999999999999997,
+   "priority_score": 0.6035,
+   "survival_score": null,
+   "source_agent": "unknown",
+   "parent_hypothesis_id": null,
+   "experiment_ids": [],
+   "evidence": [],
+   "tags": [],
+   "metadata": {
+    "experiment_run": true,
+    "experiment_failed": true
+   },
+   "variables": [
+    {
+     "symbol": "ddG",
+     "name": "mutation binding free energy change ΔΔG = RT·ln(Kd_mut/Kd_wt)",
+     "unit": "kcal/mol",
+     "role": "dependent",
+     "empirical_range": "−0.90 to +2.01 kcal/mol across provided SKEMPI-v2 facts; N501Y predicted −1.2 (range −1.36 to −0.79 from Kd_mut 1.5–4 nM vs Kd_wt 15 nM)"
+    },
+    {
+     "symbol": "Kd_wt",
+     "name": "wild-type RBD–ACE2 dissociation constant",
+     "unit": "M",
+     "role": "independent",
+     "empirical_range": "1.5e-8 M (Wuhan-Hu-1 RBD–hACE2 baseline); 1.62e-8 to 1.15e-6 M across provided SKEMPI facts"
+    },
+    {
+     "symbol": "Kd_501Y",
+     "name": "dissociation constant of N501Y mutant complex",
+     "unit": "M",
+     "role": "mediator",
+     "empirical_range": "1.5e-9 to 4e-9 M (predicted); point estimate 2.0e-9 M from ΔΔG = −1.2 kcal/mol"
+    },
+    {
+     "symbol": "Kd_Y41A",
+     "name": "dissociation constant of ACE2 Y41A mutant complex",
+     "unit": "M",
+     "role": "mediator",
+     "empirical_range": "2e-7 to 1e-6 M (hot-spot prior ΔΔG_B = +1.5 to +3 kcal/mol)"
+    },
+    {
+     "symbol": "Kd_double",
+     "name": "dissociation constant of N501Y + Y41A double-mutant complex",
+     "unit": "M",
+     "role": "dependent",
+     "empirical_range": "1.6e-7 to 4.4e-7 M under hypothesis; 5.8e-8 M under null"
+    },
+    {
+     "symbol": "epsilon",
+     "name": "double-mutant cycle coupling free energy between RBD 501 and ACE2 Tyr41",
+     "unit": "kcal/mol",
+     "role": "dependent",
+     "empirical_range": "0.70–1.00 kcal/mol (calibrated from provided 1LFD SKEMPI double-mutant cycles MA17K×DA45K and MA17K×DA81K); 0 under independence null"
+    },
+    {
+     "symbol": "T",
+     "name": "absolute temperature",
+     "unit": "K",
+     "role": "confounding",
+     "empirical_range": "298.15 K (fixed)"
+    },
+    {
+     "symbol": "R",
+     "name": "gas constant",
+     "unit": "kcal·mol⁻¹·K⁻¹",
+     "role": "confounding",
+     "empirical_range": "1.987e-3 (fixed)"
+    },
+    {
+     "symbol": "C0",
+     "name": "standard state concentration",
+     "unit": "M",
+     "role": "confounding",
+     "empirical_range": "1 (fixed)"
+    }
+   ],
+   "parameters": [
+    {
+     "symbol": "epsilon",
+     "value_guess": 0.9,
+     "unit": "kcal/mol",
+     "justification": "Provided SKEMPI-v2 double-mutant cycles yield ε = +0.70 kcal/mol (MA17K×DA45K) and +1.00 kcal/mol (MA17K×DA81K); interface pairwise couplings of 0.6–1.2 kcal/mol are the empirical norm, and half-mediation of |ΔΔG_N501Y| = 1.2 kcal/mol gives 0.6"
+    },
+    {
+     "symbol": "ddG_Y41A",
+     "value_guess": 2.0,
+     "unit": "kcal/mol",
+     "justification": "ACE2 Tyr41 is a binding hot-spot contacting the RBD 501 region in 6M0J; alanine perturbation of tyrosine hot-spots typically costs +1.5 to +3 kcal/mol"
+    },
+    {
+     "symbol": "RT",
+     "value_guess": 0.5925,
+     "unit": "kcal/mol",
+     "justification": "R·T = 1.987e-3 kcal·mol⁻¹·K⁻¹ × 298.15 K at the defined standard condition"
+    }
+   ],
+   "constraints": [
+    {
+     "equation": "Kd_wt > 0",
+     "variables": [
+      "Kd_wt"
+     ],
+     "type": "physical",
+     "description": "Dissociation constants are strictly positive thermodynamic quantities."
+    },
+    {
+     "equation": "Kd_501Y > 0",
+     "variables": [
+      "Kd_501Y"
+     ],
+     "type": "physical",
+     "description": "The N501Y mutant dissociation constant must be positive."
+    },
+    {
+     "equation": "Kd_Y41A > 0",
+     "variables": [
+      "Kd_Y41A"
+     ],
+     "type": "physical",
+     "description": "The ACE2 Y41A mutant dissociation constant must be positive."
+    },
+    {
+     "equation": "Kd_double > 0",
+     "variables": [
+      "Kd_double"
+     ],
+     "type": "physical",
+     "description": "The double-mutant dissociation constant must be positive."
+    },
+    {
+     "equation": "ddG = R*T*log(Kd_501Y/Kd_wt)",
+     "variables": [
+      "ddG",
+      "R",
+      "T",
+      "Kd_501Y",
+      "Kd_wt"
+     ],
+     "type": "mathematical",
+     "description": "Thermodynamic identity linking the single-mutant free energy change to the ratio of dissociation constants at standard state C0 = 1 M."
+    },
+    {
+     "equation": "ddG < 0",
+     "variables": [
+      "ddG"
+     ],
+     "type": "empirical",
+     "description": "N501Y is an affinity-gaining mutation: the predicted ΔΔG of −1.2 kcal/mol (range −1.36 to −0.79) must remain negative."
+    },
+    {
+     "equation": "epsilon > 0.6",
+     "variables": [
+      "epsilon"
+     ],
+     "type": "empirical",
+     "description": "Specific Tyr41-mediated coupling must account for at least 50% of the |ΔΔG_N501Y| = 1.2 kcal/mol gain, consistent with calibrated SKEMPI couplings of 0.70–1.00 kcal/mol."
+    },
+    {
+     "equation": "epsilon < 1.2",
+     "variables": [
+      "epsilon"
+     ],
+     "type": "empirical",
+     "description": "The pairwise coupling cannot exceed the total N501Y affinity gain of 1.2 kcal/mol, since a residual background desolvation/packing term contributes positively."
+    },
+    {
+     "equation": "Kd_double > Kd_501Y",
+     "variables": [
+      "Kd_double",
+      "Kd_501Y"
+     ],
+     "type": "empirical",
+     "description": "Under Tyr41 mediation, removing Tyr41 masks the N501Y gain, so the double mutant binds more weakly than the N501Y single mutant (Kd_double ≥ 1.6e-7 M vs Kd_501Y ≈ 2.0e-9 M)."
+    },
+    {
+     "equation": "T = 298.15",
+     "variables": [
+      "T"
+     ],
+     "type": "boundary",
+     "description": "All measurements are fixed at the defined standard temperature of 298.15 K so that RT = 0.5925 kcal/mol."
+    }
+   ],
+   "predictions": [
+    {
+     "condition": "SPR measurement of all four double-mutant cycle arms (wt RBD–wt ACE2, RBD N501Y, ACE2 Y41A, RBD N501Y + ACE2 Y41A) on the 6M0J E:A interface at T = 298.15 K, pH 7.4, C0 = 1 M, triplicate, with ACE2 Y41A folding verified by thermal melt",
+     "outcome": "epsilon = RT·ln[(Kd_double·Kd_wt)/(Kd_501Y·Kd_Y41A)] reaches at least +0.6 kcal/mol (point estimate ~0.9 kcal/mol), with propagated SE ≤ 0.1 kcal/mol",
+     "baseline": 0.0,
+     "baseline_unit": "kcal/mol",
+     "threshold": 0.24,
+     "threshold_unit": "kcal/mol",
+     "direction": "increase"
+    },
+    {
+     "condition": "Same SPR setup at T = 298.15 K, pH 7.4, with Kd_501Y ≈ 2.0e-9 M and Kd_Y41A ≈ 4.4e-7 M measured in the same buffer",
+     "outcome": "Kd_double falls between 1.6e-7 and 4.4e-7 M, i.e., the double mutant is no better than Y41A alone within factor ~2 (N501Y gain masked on the Y41A background)",
+     "baseline": 5.8e-08,
+     "baseline_unit": "M",
+     "threshold": 1.6e-07,
+     "threshold_unit": "M",
+     "direction": "increase"
+    },
+    {
+     "condition": "SPR measurement of RBD N501Y vs wt ACE2 at T = 298.15 K, pH 7.4, C0 = 1 M, referenced to Kd_wt = 1.5e-8 M",
+     "outcome": "ddG_N501Y lies between −1.36 and −0.79 kcal/mol (point estimate −1.2 kcal/mol, Kd_501Y ≈ 2.0e-9 M)",
+     "baseline": 0.0,
+     "baseline_unit": "kcal/mol",
+     "threshold": 0.5,
+     "threshold_unit": "kcal/mol",
+     "direction": "decrease"
+    },
+    {
+     "condition": "SPR measurement of wt RBD vs ACE2 Y41A at T = 298.15 K, pH 7.4, C0 = 1 M, with Y41A folding integrity confirmed by thermal melt",
+     "outcome": "Kd_Y41A lies between 2e-7 and 1e-6 M, corresponding to hot-spot perturbation ddG_Y41A of +1.5 to +3 kcal/mol (point estimate +2.0 kcal/mol)",
+     "baseline": 1.5e-08,
+     "baseline_unit": "M",
+     "threshold": 2e-07,
+     "threshold_unit": "M",
+     "direction": "increase"
+    }
+   ],
+   "functional_form": "epsilon = R*T*ln((Kd_double*Kd_wt)/(Kd_501Y*Kd_Y41A))",
+   "is_active": true,
+   "has_evidence": false,
+   "age_hours": 1.42,
+   "is_formally_complete": true,
+   "is_tested": false,
+   "test_verdict": "UNTESTED"
+  },
+  {
+   "id": "97c4e28a",
+   "statement": "GNN Hypothesis: A structural interaction between 'The N501Y-mediated affinity gain (ΔΔG ≈ −1.2 kcal/mol vs Kd_wt = 15 nM) is mediated ≥50% by a specific nonadditive thermodynamic coupling between RBD residue 501 and ACE2 Tyr41, such that the double-mutant cycle coupling ε = RT·ln[(Kd_double·Kd_wt)/(Kd_501Y·Kd_Y41A)] ≥ +0.6 kcal/mol at 298.15 K, and ε < +0.24 kcal/mol falsifies the Tyr501–Tyr41 π-stacking/H-bond mediation mechanism.' and 'fact_f870132af96b' is predicted by the knowledge graph (uncertainty σ=0.000).",
+   "rationale": "[STOCHASTIC HUNCH/GCN] Grounding: unverified. Structural projection: 1.000. Uncertainty (σ): 0.000. Physical grounding via Laboratory is MANDATORY.",
+   "domain": "biology",
+   "research_question": "",
+   "state": "proposed",
+   "created_at": "2026-10-11T18:00:14.721370",
+   "updated_at": "2026-10-11T18:00:14.721374",
+   "confidence": 0.42499962002038955,
+   "uncertainty": 9.999999747378752e-05,
+   "novelty_score": 0.1867571473121643,
+   "testability_score": 0.6000000000000001,
+   "impact_score": 0.0,
+   "feasibility_score": 0.7000000000000001,
+   "priority_score": 0.49168928682804114,
+   "survival_score": null,
+   "source_agent": "GNN_Intuition",
+   "parent_hypothesis_id": null,
+   "experiment_ids": [],
+   "evidence": [],
+   "tags": [],
+   "metadata": {},
+   "variables": [
+    {
+     "name": "The N501Y-mediated affinity gain (ΔΔG ≈ −1.2 kcal/mol vs Kd_wt = 15 nM) is mediated ≥50% by a specific nonadditive thermodynamic coupling between RBD residue 501 and ACE2 Tyr41, such that the double-mutant cycle coupling ε = RT·ln[(Kd_double·Kd_wt)/(Kd_501Y·Kd_Y41A)] ≥ +0.6 kcal/mol at 298.15 K, and ε < +0.24 kcal/mol falsifies the Tyr501–Tyr41 π-stacking/H-bond mediation mechanism.",
+     "symbol": "X",
+     "unit": "counts",
+     "type": "independent"
+    },
+    {
+     "name": "fact_f870132af96b",
+     "symbol": "Y",
+     "unit": "counts",
+     "type": "dependent"
+    }
+   ],
+   "parameters": [],
+   "constraints": [
+    {
+     "equation": "k > 0",
+     "variables": [
+      "k"
+     ],
+     "type": "boundary",
+     "description": "Positive structural interaction coefficient"
+    },
+    {
+     "equation": "X >= 0",
+     "variables": [
+      "X"
+     ],
+     "type": "physical",
+     "description": "Non-negative node interaction metric"
+    },
+    {
+     "equation": "Y >= 0",
+     "variables": [
+      "Y"
+     ],
+     "type": "physical",
+     "description": "Non-negative node interaction metric"
+    }
+   ],
+   "predictions": [
+    {
+     "condition": "Measurement of 'The N501Y-mediated affinity gain (ΔΔG ≈ −1.2 kcal/mol vs Kd_wt = 15 nM) is mediated ≥50% by a specific nonadditive thermodynamic coupling between RBD residue 501 and ACE2 Tyr41, such that the double-mutant cycle coupling ε = RT·ln[(Kd_double·Kd_wt)/(Kd_501Y·Kd_Y41A)] ≥ +0.6 kcal/mol at 298.15 K, and ε < +0.24 kcal/mol falsifies the Tyr501–Tyr41 π-stacking/H-bond mediation mechanism.' and 'fact_f870132af96b'",
+     "outcome": "Correlation |r| > 0.4",
+     "baseline": 0.0,
+     "threshold": 0.4,
+     "direction": "any"
+    }
+   ],
+   "functional_form": "Y = k * X",
+   "is_active": true,
+   "has_evidence": false,
+   "age_hours": 1.42,
+   "is_formally_complete": true,
+   "is_tested": false,
+   "test_verdict": "UNTESTED"
+  },
+  {
+   "id": "c87dc266",
+   "statement": "GNN Hypothesis: A structural interaction between 'pubmed_38442025' and 'pubmed_36384919' is predicted by the knowledge graph (uncertainty σ=0.000).",
+   "rationale": "[STOCHASTIC HUNCH/GCN] Grounding: unverified. Structural projection: 1.000. Uncertainty (σ): 0.000. Physical grounding via Laboratory is MANDATORY.",
+   "domain": "biology",
+   "research_question": "",
+   "state": "proposed",
+   "created_at": "2026-10-11T18:00:54.836946",
+   "updated_at": "2026-10-11T18:00:54.836950",
+   "confidence": 0.42489287108182905,
+   "uncertainty": 9.999999747378752e-05,
+   "novelty_score": 0.45220476388931274,
+   "testability_score": 0.6000000000000001,
+   "impact_score": 0.0,
+   "feasibility_score": 0.7000000000000001,
+   "priority_score": 0.5580511909723282,
+   "survival_score": null,
+   "source_agent": "GNN_Intuition",
+   "parent_hypothesis_id": null,
+   "experiment_ids": [],
+   "evidence": [],
+   "tags": [],
+   "metadata": {},
+   "variables": [
+    {
+     "name": "pubmed_38442025",
+     "symbol": "X",
+     "unit": "counts",
+     "type": "independent"
+    },
+    {
+     "name": "pubmed_36384919",
+     "symbol": "Y",
+     "unit": "counts",
+     "type": "dependent"
+    }
+   ],
+   "parameters": [],
+   "constraints": [
+    {
+     "equation": "k > 0",
+     "variables": [
+      "k"
+     ],
+     "type": "boundary",
+     "description": "Positive structural interaction coefficient"
+    },
+    {
+     "equation": "X >= 0",
+     "variables": [
+      "X"
+     ],
+     "type": "physical",
+     "description": "Non-negative node interaction metric"
+    },
+    {
+     "equation": "Y >= 0",
+     "variables": [
+      "Y"
+     ],
+     "type": "physical",
+     "description": "Non-negative node interaction metric"
+    }
+   ],
+   "predictions": [
+    {
+     "condition": "Measurement of 'pubmed_38442025' and 'pubmed_36384919'",
+     "outcome": "Correlation |r| > 0.4",
+     "baseline": 0.0,
+     "threshold": 0.4,
+     "direction": "any"
+    }
+   ],
+   "functional_form": "Y = k * X",
+   "is_active": true,
+   "has_evidence": false,
+   "age_hours": 1.41,
+   "is_formally_complete": true,
+   "is_tested": false,
+   "test_verdict": "UNTESTED"
+  },
+  {
+   "id": "9c612871",
+   "statement": "GNN Hypothesis: A structural interaction between 'novelty_check' and 'fact_4840f029f7a3' is predicted by the knowledge graph (uncertainty σ=0.001).",
+   "rationale": "[STOCHASTIC HUNCH/GCN] Grounding: unverified. Structural projection: 1.000. Uncertainty (σ): 0.001. Physical grounding via Laboratory is MANDATORY.",
+   "domain": "biology",
+   "research_question": "",
+   "state": "proposed",
+   "created_at": "2026-10-11T18:40:08.548315",
+   "updated_at": "2026-10-11T18:40:08.548316",
+   "confidence": 0.42490485310554504,
+   "uncertainty": 0.001150420168414712,
+   "novelty_score": 0.21695858240127563,
+   "testability_score": null,
+   "impact_score": null,
+   "feasibility_score": null,
+   "priority_score": null,
+   "survival_score": null,
+   "source_agent": "GNN_Intuition",
+   "parent_hypothesis_id": null,
+   "experiment_ids": [],
+   "evidence": [],
+   "tags": [],
+   "metadata": {},
+   "variables": [
+    {
+     "name": "novelty_check",
+     "symbol": "X",
+     "unit": "counts",
+     "type": "independent"
+    },
+    {
+     "name": "fact_4840f029f7a3",
+     "symbol": "Y",
+     "unit": "counts",
+     "type": "dependent"
+    }
+   ],
+   "parameters": [],
+   "constraints": [
+    {
+     "equation": "k > 0",
+     "variables": [
+      "k"
+     ],
+     "type": "boundary",
+     "description": "Positive structural interaction coefficient"
+    },
+    {
+     "equation": "X >= 0",
+     "variables": [
+      "X"
+     ],
+     "type": "physical",
+     "description": "Non-negative node interaction metric"
+    },
+    {
+     "equation": "Y >= 0",
+     "variables": [
+      "Y"
+     ],
+     "type": "physical",
+     "description": "Non-negative node interaction metric"
+    }
+   ],
+   "predictions": [
+    {
+     "condition": "Measurement of 'novelty_check' and 'fact_4840f029f7a3'",
+     "outcome": "Correlation |r| > 0.4",
+     "baseline": 0.0,
+     "threshold": 0.4,
+     "direction": "any"
+    }
+   ],
+   "functional_form": "Y = k * X",
+   "is_active": true,
+   "has_evidence": false,
+   "age_hours": 0.75,
+   "is_formally_complete": true,
+   "is_tested": false,
+   "test_verdict": "UNTESTED"
+  }
+ ],
+ "experiments": [],
+ "gnn_oracle": {
+  "nodes": 15200,
+  "edges": 48300,
+  "auc": 0.915
+ },
+ "tribunal": {},
+ "world_model_facts_count": 0,
+ "adversarial_attacks_count": 0,
+ "claim_to_cell_mapping": [
+  {
+   "claim_id": "5cf3fe86",
+   "cell_range": [
+    3,
+    8
+   ]
+  },
+  {
+   "claim_id": "97c4e28a",
+   "cell_range": [
+    9,
+    14
+   ]
+  },
+  {
+   "claim_id": "c87dc266",
+   "cell_range": [
+    15,
+    20
+   ]
+  },
+  {
+   "claim_id": "9c612871",
+   "cell_range": [
+    21,
+    26
+   ]
+  }
+ ]
+}

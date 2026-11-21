@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ULTRON AI SCIENTIST — INDUSTRY-GRADE MISSION CONTROL TERMINAL UI
+SVEL AI SCIENTIST — INDUSTRY-GRADE MISSION CONTROL TERMINAL UI
 ================================================================
-A premier, cyberpunk-styled scientific terminal user interface for Ultron:
+A premier, cyberpunk-styled scientific terminal user interface for SVEL:
 - Live Thinking & Deep Cognitive Reasoning Traces
 - Agent Swarm Fleet with detailed agent numbering (Agent #01, #02...), roles, tasks, & status
 - Physical Experimentation Cleanroom & Proof-of-Work verification (SHA-256 weight hashes)
@@ -153,7 +153,7 @@ class EpistemicEventRecord:
     timestamp: str = field(default_factory=lambda: datetime.now().strftime("%H:%M:%S"))
 
 
-class UltronDashboardState:
+class SVELDashboardState:
     """Unified scientific mission control state."""
     def __init__(self, mission_id: str, prompt: str, domain: str, mode: str, runtime_hours: float, max_parallel: int):
         self.mission_id = mission_id
@@ -245,12 +245,12 @@ class UltronDashboardState:
         return f"[{'█' * filled}{'░' * empty}]"
 
 
-class UltronTerminalDashboard:
+class SVELTerminalDashboard:
     """
-    Renders an industry-grade, multi-panel cyberpunk terminal UI for ULTRON.
+    Renders an industry-grade, multi-panel cyberpunk terminal UI for SVEL.
     Includes Experimentation, GNN Oracle, Swarm Fleet, Epistemic Regulator, and Tribunal.
     """
-    def __init__(self, state: UltronDashboardState, force_stream: bool = False):
+    def __init__(self, state: SVELDashboardState, force_stream: bool = False):
         self.state = state
         self.is_tty = sys.stdout.isatty() and not force_stream
         self.console = Console(force_terminal=True, color_system="auto")
@@ -291,7 +291,7 @@ class UltronTerminalDashboard:
             self.live.start()
         else:
             self.console.print()
-            self.console.rule(f"[bold {COLOR_CYAN}]// ULTRON AI SCIENTIST (2026 ENGINE) :: AUTONOMOUS COMPUTE NODE[/]", style=COLOR_CYAN)
+            self.console.rule(f"[bold {COLOR_CYAN}]// SVEL AI SCIENTIST (2026 ENGINE) :: AUTONOMOUS COMPUTE NODE[/]", style=COLOR_CYAN)
             self.console.print(
                 f"[{COLOR_MUTED}]MISSION ID:[/] [bold {COLOR_WHITE}]{self.state.mission_id[:12]}[/]  |  "
                 f"[{COLOR_MUTED}]DOMAIN:[/] [bold {COLOR_GREEN}]{self.state.domain.upper()}[/]  |  "
@@ -811,7 +811,7 @@ class UltronTerminalDashboard:
         grid.add_column(ratio=2, justify="right")
 
         left = Text()
-        left.append("ULTRON AI SCIENTIST ", style=f"bold {COLOR_CYAN}")
+        left.append("SVEL AI SCIENTIST ", style=f"bold {COLOR_CYAN}")
         left.append("// AUTONOMOUS DISCOVERY ENGINE (GPT-6 ASTRA SOVEREIGN BASELINE)\n", style=f"bold {COLOR_WHITE}")
         left.append("MISSION: ", style=COLOR_MUTED)
         left.append(f"{self.state.mission_id[:12]}  ", style=f"bold {COLOR_WHITE}")
@@ -1204,7 +1204,7 @@ class UltronTerminalDashboard:
         """Prints the final scientific discovery manifest."""
         self.stop()
         self.console.print("\n")
-        self.console.rule(f"[bold {COLOR_GREEN}]// MISSION COMPLETE :: ULTRON SCIENTIFIC MANIFEST COMPILATION[/]", style=COLOR_GREEN)
+        self.console.rule(f"[bold {COLOR_GREEN}]// MISSION COMPLETE :: SVEL SCIENTIFIC MANIFEST COMPILATION[/]", style=COLOR_GREEN)
         
         t = Table(box=box.DOUBLE_EDGE, border_style=COLOR_GREEN, expand=True)
         t.add_column("Scientific Metric / Engine Surface", style=f"bold {COLOR_WHITE}", width=35)
@@ -1239,8 +1239,8 @@ class UltronTerminalDashboard:
 
 
 class DashboardLogHandler(logging.Handler):
-    """Intercepts Python logging to route live telemetry to UltronTerminalDashboard."""
-    def __init__(self, dashboard: UltronTerminalDashboard):
+    """Intercepts Python logging to route live telemetry to SVELTerminalDashboard."""
+    def __init__(self, dashboard: SVELTerminalDashboard):
         super().__init__()
         self.dashboard = dashboard
 

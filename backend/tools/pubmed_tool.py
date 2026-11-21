@@ -171,11 +171,11 @@ def _parse_article(article_elem) -> Optional[Dict[str, Any]]:
         pmid_elem = medline.find(".//PMID")
         pmid = pmid_elem.text if pmid_elem is not None else None
         
-        # Extract title (ULTRON BEAST FIX: Preserve nested tags)
+        # Extract title (SVEL BEAST FIX: Preserve nested tags)
         title_elem = article.find(".//ArticleTitle")
         title = "".join(title_elem.itertext()) if title_elem is not None else "Unknown Title"
         
-        # Extract abstract (ULTRON BEAST FIX: Preserve nested tags)
+        # Extract abstract (SVEL BEAST FIX: Preserve nested tags)
         abstract_parts = []
         for abs_text in article.findall(".//AbstractText"):
             label = abs_text.get("Label", "")

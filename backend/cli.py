@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ULTRON AI SCIENTIST — PURE HEADLESS COMPUTE ENGINE & TERMINAL UI
+SVEL AI SCIENTIST — PURE HEADLESS COMPUTE ENGINE & TERMINAL UI
 ================================================================
 The primary command-line interface for autonomous scientific research.
 Features:
@@ -31,15 +31,15 @@ from backend.central_router_beast import get_router
 from backend.llm_manager import LLMManager
 from backend.core.events.event_bus import events
 from backend.ui.terminal_dashboard import (
-    UltronDashboardState,
-    UltronTerminalDashboard,
+    SVELDashboardState,
+    SVELTerminalDashboard,
     DashboardLogHandler
 )
 
-logger = logging.getLogger("ultron_cli")
+logger = logging.getLogger("svel_cli")
 
 
-def setup_cli_logging(dashboard: UltronTerminalDashboard, log_file: Optional[str] = None):
+def setup_cli_logging(dashboard: SVELTerminalDashboard, log_file: Optional[str] = None):
     """Configures logging to route through the dashboard while optionally saving to file."""
     root_logger = logging.getLogger()
     root_logger.setLevel(logging.INFO)
@@ -75,7 +75,7 @@ async def run_mission(
     mission_id = resume_id or str(uuid.uuid4())
     
     # Initialize Dashboard State & UI
-    state = UltronDashboardState(
+    state = SVELDashboardState(
         mission_id=mission_id,
         prompt=prompt,
         domain=domain,
@@ -84,7 +84,7 @@ async def run_mission(
         max_parallel=workers
     )
     state.max_cycles = cycles
-    dashboard = UltronTerminalDashboard(state, force_stream=stream_mode)
+    dashboard = SVELTerminalDashboard(state, force_stream=stream_mode)
 
     # Setup Logging Bridge
     setup_cli_logging(dashboard, log_file)
@@ -408,7 +408,7 @@ async def run_mission(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="ULTRON AI Scientist (2026 Engine) — Autonomous Headless Discovery Compute Node",
+        description="SVEL AI Scientist (2026 Engine) — Autonomous Headless Discovery Compute Node",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

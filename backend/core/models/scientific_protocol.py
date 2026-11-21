@@ -1,6 +1,6 @@
 # backend/core/models/scientific_protocol.py
 """
-ULTRON Scientific Protocol Models
+SVEL Scientific Protocol Models
 ==================================
 Pydantic models for the DiscoveryArtifact schema used by the Sovereign
 experiment designer and related pipeline components.

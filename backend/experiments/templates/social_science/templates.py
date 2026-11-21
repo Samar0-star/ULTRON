@@ -1,5 +1,5 @@
 """
-ULTRON-APEX SOCIAL SCIENCE & BEHAVIORAL VALIDATION v3.0
+SVEL-APEX SOCIAL SCIENCE & BEHAVIORAL VALIDATION v3.0
 =======================================================
 Purpose:
 - Rigorous social science hypothesis validation
@@ -29,9 +29,9 @@ logger = logging.getLogger(__name__)
 
 
 @register_template
-class UltronApexSocialScienceTemplate(DataAnalysisTemplate):
+class SVELApexSocialScienceTemplate(DataAnalysisTemplate):
     """
-    ULTRON-APEX SOCIAL SCIENCE VALIDATION ENGINE
+    SVEL-APEX SOCIAL SCIENCE VALIDATION ENGINE
     
     This engine does NOT:
     - Accept underpowered studies
@@ -118,7 +118,7 @@ class UltronApexSocialScienceTemplate(DataAnalysisTemplate):
         return True
 
     # ------------------------------------------------------------------
-    # ULTRON-APEX SOCIAL SCIENCE VALIDATION PROTOCOL
+    # SVEL-APEX SOCIAL SCIENCE VALIDATION PROTOCOL
     # ------------------------------------------------------------------
     def generate_protocol(
         self,
@@ -136,7 +136,7 @@ class UltronApexSocialScienceTemplate(DataAnalysisTemplate):
         """
         
         return ExperimentProtocol(
-            title=f"ULTRON-APEX SOCIAL VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX SOCIAL VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.DATA_ANALYSIS,
             domain="social_science",

@@ -59,7 +59,7 @@ def search_arxiv(
     try:
         # Keep parentheses if they are balanced to allow logical grouping (e.g. AND / OR)
         if query.count('(') == query.count(')'):
-            # [ULTRON BEAST FIX] Preserve ArXiv Range Brackets [ ]
+            # [SVEL BEAST FIX] Preserve ArXiv Range Brackets [ ]
             safe_query = re.sub(r'[^a-zA-Z0-9\s\-\.\:\"\'\*\+\(\)\[\]]', '', query)
         else:
             safe_query = re.sub(r'[^a-zA-Z0-9\s\-\.\:\"\'\*\+\[\]]', '', query)

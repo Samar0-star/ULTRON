@@ -1,5 +1,5 @@
 """
-Base experiment interface for ULTRON.
+Base experiment interface for SVEL.
 All experiments MUST subclass BaseExperiment and implement the run() method.
 The system provides the environment; the experiment only provides the logic.
 """

@@ -10,7 +10,7 @@ autonomous research. It goes far beyond simple thresholds by implementing:
 4. Cost-per-discovery optimization
 5. Gdel-style provability limits (knows when a question is unanswerable)
 
-Part of Ultron's Advanced Research Architecture.
+Part of SVEL's Advanced Research Architecture.
 """
 
 import logging
@@ -261,7 +261,7 @@ class ConvergenceReport:
 
 class EpistemicConvergenceEngine:
     """
-    Advanced convergence detection system for Ultron research.
+    Advanced convergence detection system for SVEL research.
     
     This engine monitors research progress and determines when to stop
     based on multiple sophisticated criteria:
@@ -675,7 +675,7 @@ class EpistemicConvergenceEngine:
         # [TITAN V211.0] SOVEREIGN CONVERGENCE GATE
         # Physically derive the answer threshold from environment manifold.
         confidence = self.metrics.answer_confidence
-        threshold = float(os.getenv("ULTRON_CONVERGENCE_FLOOR", "0.85"))
+        threshold = float(os.getenv("SVEL_CONVERGENCE_FLOOR", "0.85"))
         
         should_stop = confidence >= threshold and self.metrics.best_answer is not None
         

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Knowledge Synthesizer - ULTRON's GODZILLA-TIER Infinite Context Engine
+Knowledge Synthesizer - SVEL's GODZILLA-TIER Infinite Context Engine
 ========================================================================
 
 BEAST-TIER UPGRADE:
@@ -81,7 +81,7 @@ class SynthesizedBlock:
 
 class KnowledgeSynthesizer:
     """
-    GODZILLA-TIER Knowledge Synthesizer for ULTRON.
+    GODZILLA-TIER Knowledge Synthesizer for SVEL.
     
     Features:
     - 3-TIER COMPRESSION: Task (50:1)  Cycle (20:1)  Mission (10:1)
@@ -318,7 +318,7 @@ class KnowledgeSynthesizer:
         goal: str
     ) -> str:
         """Use LLM to enhance cycle synthesis."""
-        if os.environ.get("ULTRON_OFFLINE_TESTS", "0") == "1":
+        if os.environ.get("SVEL_OFFLINE_TESTS", "0") == "1":
             return base_content
 
         prompt = f"""Synthesize the following research cycle into a dense executive summary.
@@ -376,7 +376,7 @@ OUTPUT (DENSE, PRECISE, NO FLUFF):"""
         merged_stats = {**existing_stats, **new_stats}
         self._statistics_cache.update(merged_stats)
         
-        if not self.llm_manager or os.environ.get("ULTRON_OFFLINE_TESTS", "0") == "1":
+        if not self.llm_manager or os.environ.get("SVEL_OFFLINE_TESTS", "0") == "1":
             # Rule-based merge
             return f"{session_snapshot}\n\n---\n\n{new_insight}"
         

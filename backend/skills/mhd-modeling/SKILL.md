@@ -11,7 +11,7 @@
 **Reading contract:** Every empirical threshold in this document is explicitly labeled
 `[HEURISTIC: <provenance>]`. Every governing equation is labeled `[LAW]`.
 Anything not so labeled is a definition or a structural convention.
-ULTRON must propagate these labels downstream into every hypothesis it generates.
+SVEL must propagate these labels downstream into every hypothesis it generates.
 
 ---
 
@@ -20,7 +20,7 @@ ULTRON must propagate these labels downstream into every hypothesis it generates
 ### On the hierarchy of MHD approximations
 
 MHD is a moment-closure of the Boltzmann equation. Every MHD model is an approximation
-valid only within a defined parameter regime. ULTRON must identify that regime before
+valid only within a defined parameter regime. SVEL must identify that regime before
 invoking any equation or threshold in this document.
 
 **The approximation hierarchy (coarsest → finest):**
@@ -37,7 +37,7 @@ Non-axisymmetric (stellarator, RFP with 3D fields) → 3D equilibrium (VMEC, HIN
 
 **This distinction is not negotiable.** Stellarators are, in general, not axisymmetric.
 The Grad-Shafranov equation cannot be used for stellarator equilibria.
-ULTRON must invoke VMEC or equivalent 3D solvers for any non-axisymmetric geometry.
+SVEL must invoke VMEC or equivalent 3D solvers for any non-axisymmetric geometry.
 
 ### On the separation of physics from numerics
 
@@ -60,7 +60,7 @@ for purely numerical reasons must be:
   - λ_mfp ≪ L (collisional: mean free path much shorter than gradient scale)
   - η → 0 (resistivity negligible on the timescale of interest)
 
-When any condition is violated, ideal MHD must be upgraded. ULTRON must check all
+When any condition is violated, ideal MHD must be upgraded. SVEL must check all
 four conditions before proceeding and flag which, if any, are marginal.
 
 **Ideal MHD system (conservation form, SI, no approximations beyond the four above):**
@@ -110,7 +110,7 @@ a physical effect.
 
 The Hall term sign is a recurrent source of errors because it depends on how the
 electric field E and current J are defined and which charge carrier is taken as
-positive. The correct form is derived here explicitly so that ULTRON cannot
+positive. The correct form is derived here explicitly so that SVEL cannot
 import a sign convention without tracing it to this derivation.
 
 Start from the two-fluid momentum equation for electrons (massless limit, m_e → 0):
@@ -150,7 +150,7 @@ Faraday's law ∂B/∂t = −∇×E then gives:
 The version `+J×B/(n_e e)` inside the curl that appeared in v3.0 was wrong.
 It corresponds to defining current as J = e n_e (u_e − u_i), i.e., with
 electrons as the positive carrier — an uncommon convention that must be
-declared explicitly if used. ULTRON must use the form above (electrons
+declared explicitly if used. SVEL must use the form above (electrons
 negative, standard SI convention) unless a hypothesis explicitly declares
 an alternative sign convention and justifies it.
 
@@ -187,7 +187,7 @@ This term matters when ρ_i/L_⊥ ~ O(0.05) or larger.
 
 This is a constraint on initial conditions that is preserved by the ideal induction
 equation in the continuous limit. Discrete schemes do NOT automatically preserve it.
-ULTRON must select and enforce a divergence-control strategy (Section 4.2).
+SVEL must select and enforce a divergence-control strategy (Section 4.2).
 
 ---
 
@@ -233,7 +233,7 @@ labeled by ψ, and dl is the poloidal arc length element.
 **Important:** This is a contour integral on a specific flux surface. It is NOT equal
 to rB_φ/(RB_pol) except in the circular cross-section, low-β, large-aspect-ratio
 limit. Using the approximate form for shaped, high-β plasmas will produce errors that
-are not small. ULTRON must always compute q by numerical integration around flux
+are not small. SVEL must always compute q by numerical integration around flux
 surface contours, not by the simplified formula.
 
 ### 2.3 Equilibrium Validation — What to Check
@@ -412,7 +412,7 @@ def fetch_diiid_efit(shot: int, time_s: float, tree: str = 'EFIT01') -> dict:
 
 ## SECTION 3: DIMENSIONLESS PARAMETERS AND REGIME IDENTIFICATION
 
-ULTRON must compute the following parameters and report them before any stability
+SVEL must compute the following parameters and report them before any stability
 analysis. Parameters are grouped as laws (definitions from first principles) and
 heuristics (regime boundaries that are context-dependent).
 
@@ -533,7 +533,7 @@ axis (ξ_r → r^m near axis) has a zero (node) between r = 0 and r = a before
 reaching the plasma boundary.
 
 This is a statement about the sign change of ξ_r, not about the magnitude.
-ULTRON must integrate the Newcomb ODE numerically for each (m,n) of interest.
+SVEL must integrate the Newcomb ODE numerically for each (m,n) of interest.
 Analytic approximations (Δ' estimates from profile shape alone) are valid only for
 simple current profiles and should not be used for quantitative stability boundaries.
 
@@ -565,7 +565,7 @@ The first-stability boundary (the conventional H-mode pedestal limit) and the
 second-stability region (high-α, high-ŝ or reversed-shear region) must both be
 mapped. The existence of a second stability region is geometry-dependent.
 
-**ULTRON must** solve this eigenvalue problem numerically at each flux surface of
+**SVEL must** solve this eigenvalue problem numerically at each flux surface of
 interest. The stability boundary in (ŝ, α) space must be computed, not assumed
 to follow a simple algebraic formula.
 
@@ -767,7 +767,7 @@ elliptic solve at every timestep — computationally expensive.
 method: it adds source terms proportional to ∇·B to the momentum and induction
 equations so that monopoles are advected with the flow rather than amplified.
 It does NOT solve a Poisson equation and is NOT the same as elliptic projection.
-ULTRON must not conflate these methods.
+SVEL must not conflate these methods.
 
 ```python
 def check_divergence_error(B, dx):
@@ -802,7 +802,7 @@ def check_divergence_error(B, dx):
 
 ## SECTION 6: HYPOTHESIS GENERATION — STRUCTURAL REQUIREMENTS
 
-Every MHD stability hypothesis produced by ULTRON must conform to this schema.
+Every MHD stability hypothesis produced by SVEL must conform to this schema.
 Partial completion is not accepted.
 
 ```python
@@ -825,7 +825,7 @@ class GeometryType(str, Enum):
 class MHDHypothesis:
     """
     Structured MHD hypothesis. All fields are required.
-    Hypotheses with None in required fields will be rejected by ULTRON validator.
+    Hypotheses with None in required fields will be rejected by SVEL validator.
     """
 
     # ── Identification ──
@@ -900,7 +900,7 @@ class MHDHypothesis:
 
     # ── Heuristics used (required declaration) ──
     heuristics_applied : List[str]  # Every empirical threshold used, with its provenance
-                                     # This forces ULTRON to distinguish laws from heuristics
+                                     # This forces SVEL to distinguish laws from heuristics
 
     def validate_schema(self) -> List[str]:
         """Returns list of schema violations; empty list = valid."""
@@ -964,7 +964,7 @@ class MHDHypothesis:
 
 ## SECTION 7: EXTERNAL CODE INTERFACES
 
-ULTRON should not re-implement physics that is handled by validated community codes.
+SVEL should not re-implement physics that is handled by validated community codes.
 The following hierarchy applies. Note that code interfaces are machine-specific;
 input/output formats must be verified against the current version of each code.
 
@@ -982,7 +982,7 @@ input/output formats must be verified against the current version of each code.
 
 ## SECTION 8: KNOWN FAILURE MODES OF THIS SKILL
 
-ULTRON must flag the following conditions and escalate rather than proceed:
+SVEL must flag the following conditions and escalate rather than proceed:
 
 | Condition | Why this skill fails | Required action |
 |---|---|---|

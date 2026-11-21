@@ -1,5 +1,5 @@
 """
-ULTRON-APEX MACHINE LEARNING & ARCHITECTURE VALIDATION
+SVEL-APEX MACHINE LEARNING & ARCHITECTURE VALIDATION
 ======================================================
 Purpose:
 - Rigorous ML hypothesis falsification
@@ -34,9 +34,9 @@ logger = logging.getLogger(__name__)
 
 
 @register_template
-class UltronApexMLTemplate(MLTemplate):
+class SVELApexMLTemplate(MLTemplate):
     """
-    ULTRON-APEX ML ARCHITECTURE VALIDATOR
+    SVEL-APEX ML ARCHITECTURE VALIDATOR
     
     This engine does NOT:
     - Accept "it works on my machine"
@@ -130,7 +130,7 @@ class UltronApexMLTemplate(MLTemplate):
         return True
 
     # ------------------------------------------------------------------
-    # ULTRON-APEX ARCHITECTURE VALIDATION PROTOCOL
+    # SVEL-APEX ARCHITECTURE VALIDATION PROTOCOL
     # ------------------------------------------------------------------
     def generate_protocol(
         self,
@@ -150,7 +150,7 @@ class UltronApexMLTemplate(MLTemplate):
         """
         
         return ExperimentProtocol(
-            title=f"ULTRON-APEX ML VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX ML VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.MACHINE_LEARNING,
             domain="machine_learning",

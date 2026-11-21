@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Statistical Grounding Validator - ULTRON Ultra-Upgrade
+Statistical Grounding Validator - SVEL Ultra-Upgrade
 =======================================================
 
 3-LAYER ULTRA-VALIDATION for near-perfect false positive prevention:
@@ -29,7 +29,7 @@ APPROVAL REQUIRES: Pass ALL 3 layers
 Target: 99%+ accuracy through layered validation.
 
 
-Author: ULTRON Team
+Author: SVEL Team
 """
 
 import logging
@@ -143,7 +143,7 @@ class StatisticalGroundingValidator:
     """
     Validates findings against null models using permutation testing.
     
-    This is the ULTRON implementation that prevents the "sycophancy loop"
+    This is the SVEL implementation that prevents the "sycophancy loop"
     where LLM-based validation approves spurious correlations.
     
     Usage:
@@ -176,7 +176,7 @@ class StatisticalGroundingValidator:
     
     def __init__(
         self,
-        n_permutations: int = int(os.getenv("ULTRON_PERMUTATIONS", "1000")),
+        n_permutations: int = int(os.getenv("SVEL_PERMUTATIONS", "1000")),
         alpha: float = None,
         random_seed: Optional[int] = None,
         persistence_threshold: float = 0.95  # [RIGOR] FLAW 30 FIX: 95% threshold for noise detection

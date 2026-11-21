@@ -1,9 +1,9 @@
 """
-ULTRON Terminal User Interface Package
+SVEL Terminal User Interface Package
 """
 from backend.ui.terminal_dashboard import (
-    UltronTerminalDashboard,
-    UltronDashboardState,
+    SVELTerminalDashboard,
+    SVELDashboardState,
     AgentRecord,
     HypothesisRecord,
     ExperimentRecord,
@@ -14,8 +14,8 @@ from backend.ui.terminal_dashboard import (
 )
 
 __all__ = [
-    "UltronTerminalDashboard",
-    "UltronDashboardState",
+    "SVELTerminalDashboard",
+    "SVELDashboardState",
     "AgentRecord",
     "HypothesisRecord",
     "ExperimentRecord",

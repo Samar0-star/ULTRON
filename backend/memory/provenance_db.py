@@ -1,6 +1,6 @@
 # backend/memory/provenance_db.py
 """
-ULTRON Provenance Database - Isolated Compute Edition
+SVEL Provenance Database - Isolated Compute Edition
 =====================================================
 Tracks full execution provenance for a single mission run.
 SQLite-based for absolute portability and isolation.
@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Optional
 from datetime import datetime
 from pathlib import Path
 
-logger = logging.getLogger("ultron.provenance_db")
+logger = logging.getLogger("svel.provenance_db")
 
 # In isolated mission mode, the DB path is aligned with the session
 PROVENANCE_DIR = Path("data/provenance")
@@ -26,7 +26,7 @@ class ProvenanceDB:
     """
 
     def __init__(self, session_id: Optional[str] = None):
-        self.session_id = session_id or os.environ.get("ULTRON_SESSION_ID", "local_run")
+        self.session_id = session_id or os.environ.get("SVEL_SESSION_ID", "local_run")
         self.db_path = PROVENANCE_DIR / f"provenance_{self.session_id}.db"
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -135,7 +135,7 @@ _db_instance: Optional[ProvenanceDB] = None
 
 def get_provenance_db() -> ProvenanceDB:
     global _db_instance
-    current_session = os.environ.get("ULTRON_SESSION_ID", "local_run")
+    current_session = os.environ.get("SVEL_SESSION_ID", "local_run")
     if _db_instance is not None and _db_instance.session_id != current_session:
         try:
             _db_instance.close()

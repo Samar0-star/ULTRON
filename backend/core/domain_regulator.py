@@ -1,5 +1,5 @@
 """
-ULTRON NEURAL DOMAIN REGULATOR
+SVEL NEURAL DOMAIN REGULATOR
 ==============================
 Unified system for scientific domain detection and enforcement.
 Replaces all hard-coded domain checks with dynamic neural inference.
@@ -144,7 +144,7 @@ class DomainRegulator:
             valid_domains.append("other")
 
         prompt = f"""
-    ULTRON DOMAIN JUDGE (GODZILLA RIGOR)
+    SVEL DOMAIN JUDGE (GODZILLA RIGOR)
     ====================================
     Identify the scientific domains relevant to this research text.
 
@@ -210,7 +210,7 @@ class DomainRegulator:
         from backend.llm_manager import TASK_ROUTING_MODEL, llm_manager
         
         prompt = f"""
-        ULTRON SCIENTIFIC PROFILER
+        SVEL SCIENTIFIC PROFILER
         Extract the top 5 most specific scientific tags/sub-domains for the following research mission.
         Context: {text[:1500]}
         

@@ -247,11 +247,11 @@ class AutomatedAlgorithmZoo:
             "SGD": SGDClassifier(max_iter=1000, random_state=42),
             
             # Speed tier: MEDIUM (n_jobs=1 by default on macOS to prevent loky/OpenMP fork deadlock after PyTorch init)
-            "RandomForest": RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("ULTRON_SKLEARN_N_JOBS", "1"))),
-            "ExtraTrees": ExtraTreesClassifier(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("ULTRON_SKLEARN_N_JOBS", "1"))),
+            "RandomForest": RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("SVEL_SKLEARN_N_JOBS", "1"))),
+            "ExtraTrees": ExtraTreesClassifier(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("SVEL_SKLEARN_N_JOBS", "1"))),
             "GradientBoosting": GradientBoostingClassifier(n_estimators=100, max_depth=5, random_state=42),
             "AdaBoost": AdaBoostClassifier(n_estimators=50, random_state=42),
-            "Bagging": BaggingClassifier(n_estimators=50, random_state=42, n_jobs=int(os.getenv("ULTRON_SKLEARN_N_JOBS", "1"))),
+            "Bagging": BaggingClassifier(n_estimators=50, random_state=42, n_jobs=int(os.getenv("SVEL_SKLEARN_N_JOBS", "1"))),
         }
         
         if include_slow:
@@ -296,11 +296,11 @@ class AutomatedAlgorithmZoo:
             "SGD": SGDRegressor(max_iter=1000, random_state=42),
             
             # Speed tier: MEDIUM (n_jobs=1 by default on macOS to prevent loky/OpenMP fork deadlock after PyTorch init)
-            "RandomForest": RandomForestRegressor(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("ULTRON_SKLEARN_N_JOBS", "1"))),
-            "ExtraTrees": ExtraTreesRegressor(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("ULTRON_SKLEARN_N_JOBS", "1"))),
+            "RandomForest": RandomForestRegressor(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("SVEL_SKLEARN_N_JOBS", "1"))),
+            "ExtraTrees": ExtraTreesRegressor(n_estimators=100, max_depth=15, random_state=42, n_jobs=int(os.getenv("SVEL_SKLEARN_N_JOBS", "1"))),
             "GradientBoosting": GradientBoostingRegressor(n_estimators=100, max_depth=5, random_state=42),
             "AdaBoost": AdaBoostRegressor(n_estimators=50, random_state=42),
-            "Bagging": BaggingRegressor(n_estimators=50, random_state=42, n_jobs=int(os.getenv("ULTRON_SKLEARN_N_JOBS", "1"))),
+            "Bagging": BaggingRegressor(n_estimators=50, random_state=42, n_jobs=int(os.getenv("SVEL_SKLEARN_N_JOBS", "1"))),
         }
         
         if include_slow:
@@ -1402,7 +1402,7 @@ if _HAVE_TORCH:
             self.optimizer = torch.optim.AdamW(model.parameters(), lr=0.0007, weight_decay=0.01)
             self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.optimizer, T_max=40)
             
-            # [ULTRON NUCLEAR FIX] No Outlier Lobotomy
+            # [SVEL NUCLEAR FIX] No Outlier Lobotomy
             self.criterion = AdaptiveRobustLoss(alpha=1.0)
             
             self.best_val_loss = float('inf')
@@ -1919,7 +1919,7 @@ class AutomatedMLBuilder:
     
     def save_model(self, path: str):
         """
-        [ULTRON NUCLEAR FIX] Secure Model Saving
+        [SVEL NUCLEAR FIX] Secure Model Saving
         Writes both a framework-specific model and a safe JSON metadata file.
         """
         if self.best_model is None and not hasattr(self, 'model'):
@@ -1949,7 +1949,7 @@ class AutomatedMLBuilder:
     @staticmethod
     def load_model(path: str) -> 'AutomatedMLBuilder':
         """
-        [ULTRON NUCLEAR FIX] Secure Model Loading
+        [SVEL NUCLEAR FIX] Secure Model Loading
         Abolished dangerous joblib/pickle loading of untrusted model dictionaries.
         """
         import json

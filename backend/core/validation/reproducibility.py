@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Reproducibility Manager - ULTRON Ultra-Upgrade
+Reproducibility Manager - SVEL Ultra-Upgrade
 ===============================================
 
 Handles environment snapshots, seed management, and deterministic re-runs.
 Ensures that a finding can be independently verified by replaying the 
 exact conditions.
 
-Ported and enhanced from Ultron Safety Pillar.
+Ported and enhanced from SVEL Safety Pillar.
 """
 
 import os

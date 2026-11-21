@@ -197,7 +197,7 @@ class RestrictedSubprocessProvider(SandboxProvider):
     NUCLEAR_PREAMBLE = """
 import sys
 import os
-import builtins as _ultron_builtins
+import builtins as _svel_builtins
 
 # [TITAN V72.6] Transparent Network Block & Filesystem Containment
 def block_network(*args, **kwargs): raise RuntimeError("GodMode Sandbox: Network access forbidden.")
@@ -212,7 +212,7 @@ except Exception as e: print(f"[SANDBOX ESCAPE ATTEMPTED] Network block failed: 
 os.system = block_network
 os.popen = block_network
 
-_orig_open = _ultron_builtins.open
+_orig_open = _svel_builtins.open
 _allowed_write_root = os.path.realpath(os.getcwd())
 
 def _guarded_open(file, mode='r', *args, **kwargs):
@@ -227,7 +227,7 @@ def _guarded_open(file, mode='r', *args, **kwargs):
             pass
     return _orig_open(file, mode, *args, **kwargs)
 
-_ultron_builtins.open = _guarded_open
+_svel_builtins.open = _guarded_open
 """
 
     def run(self, code: str, timeout: int = 300, profile: str = "general", extra_env: Optional[Dict[str, str]] = None) -> SandboxResult:
@@ -248,7 +248,7 @@ _ultron_builtins.open = _guarded_open
             tmp.write(full_code)
             tmp_path = tmp.name
 
-        # 3. [ULTRON GPU CLUSTER UPGRADE] Strict Environment Whitelist with GPU Acceleration Support
+        # 3. [SVEL GPU CLUSTER UPGRADE] Strict Environment Whitelist with GPU Acceleration Support
         whitelist = {
             "PATH", "PYTHONPATH", "LANG", "LC_ALL", "LC_CTYPE", "HOME", "USER",
             # NVIDIA CUDA Acceleration

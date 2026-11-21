@@ -1,8 +1,8 @@
 """
-ULTRON Template Base Class
+SVEL Template Base Class
 ==========================
 Base class for all PhD-level experiment templates.
-Enhanced with ULTRON-specific features.
+Enhanced with SVEL-specific features.
 """
 
 from abc import ABC, abstractmethod
@@ -21,7 +21,7 @@ from backend.experiments.models import (
     ResourceRequirements
 )
 
-logger = logging.getLogger("ultron.experiments.templates")
+logger = logging.getLogger("svel.experiments.templates")
 
 
 @dataclass

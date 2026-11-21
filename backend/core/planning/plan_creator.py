@@ -1,5 +1,5 @@
 """
-Plan Creator for ULTRON
+Plan Creator for SVEL
 ===================================
 
 Generates strategic research plans with exploration/exploitation balance.
@@ -495,7 +495,7 @@ class PlanCreator:
                     logger.info(f" [PLANNER] Autonomous Domain Recognition: {mission_domain.upper()}")
                 except: mission_domain = "general"
 
-            use_llm_flag = bool(self.llm_manager is not None and os.environ.get("ULTRON_OFFLINE_TESTS", "0") != "1")
+            use_llm_flag = bool(self.llm_manager is not None and os.environ.get("SVEL_OFFLINE_TESTS", "0") != "1")
             if use_llm_flag:
                 applicable_templates = find_applicable_templates(
                     DummyHypothesis(research_objective), 
@@ -659,7 +659,7 @@ Return ONLY valid JSON:
                     logger.info(f" [PLANNER] Autonomous Domain Recognition: {mission_domain.upper()}")
                 except: mission_domain = "general"
 
-            use_llm_flag = bool(self.llm_manager is not None and os.environ.get("ULTRON_OFFLINE_TESTS", "0") != "1")
+            use_llm_flag = bool(self.llm_manager is not None and os.environ.get("SVEL_OFFLINE_TESTS", "0") != "1")
             if use_llm_flag:
                 applicable_templates = find_applicable_templates(
                     DummyHypothesis(research_objective), 

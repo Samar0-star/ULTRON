@@ -1,6 +1,6 @@
 # backend/memory/memory_manager.py
 """
-ULTRON Memory Manager - Headless Edition
+SVEL Memory Manager - Headless Edition
 ========================================
 Unified API for mission-local short-term and long-term memory.
 Designed for isolated, single-tenant compute nodes.
@@ -16,7 +16,7 @@ from datetime import datetime
 from backend.memory.vectorstore import get_vectorstore
 from backend.memory.provenance_db import get_provenance_db
 
-logger = logging.getLogger("ultron.memory_manager")
+logger = logging.getLogger("svel.memory_manager")
 
 # Configuration
 SHORT_TERM_MAX_ITEMS = int(os.getenv("SHORT_TERM_MAX_ITEMS", "100"))
@@ -30,7 +30,7 @@ class MemoryManager:
 
     def __init__(self):
         # Store current session ID to detect switches
-        self.session_id = os.environ.get("ULTRON_SESSION_ID", "local_run")
+        self.session_id = os.environ.get("SVEL_SESSION_ID", "local_run")
 
         # Short-term memory (mission-local)
         self.short_term: deque = deque(maxlen=SHORT_TERM_MAX_ITEMS)
@@ -128,7 +128,7 @@ _instance: Optional[MemoryManager] = None
 
 def get_memory_manager() -> MemoryManager:
     global _instance
-    current_session = os.environ.get("ULTRON_SESSION_ID", "local_run")
+    current_session = os.environ.get("SVEL_SESSION_ID", "local_run")
     if _instance is not None and getattr(_instance, "session_id", None) != current_session:
         logger.info(f"Session ID changed from {getattr(_instance, 'session_id', None)} to {current_session}. Reinitializing MemoryManager.")
         _instance = None

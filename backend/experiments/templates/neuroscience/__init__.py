@@ -1,4 +1,4 @@
-from .templates import UltronApexNeuroscienceTemplate
-from .brain_computer_interface import UltronApexBCITemplate
+from .templates import SVELApexNeuroscienceTemplate
+from .brain_computer_interface import SVELApexBCITemplate
 
-__all__ = ["UltronApexNeuroscienceTemplate", "UltronApexBCITemplate"]
+__all__ = ["SVELApexNeuroscienceTemplate", "SVELApexBCITemplate"]

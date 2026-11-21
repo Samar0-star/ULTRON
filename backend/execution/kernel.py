@@ -1,5 +1,5 @@
 """
-ULTRON DISCOVERY KERNEL (TITAN V65.0)
+SVEL DISCOVERY KERNEL (TITAN V65.0)
 =====================================
 A static, pre-verified scientific kernel. 
 The LLM provides the mission parameters; the Kernel provides the Ph.D. grade execution.

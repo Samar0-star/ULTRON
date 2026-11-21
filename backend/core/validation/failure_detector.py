@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Failure Detector - ULTRON Ultra-Upgrade
+Failure Detector - SVEL Ultra-Upgrade
 ========================================
 
 Detects linguistic and logical failure modes in research findings:
@@ -8,7 +8,7 @@ Detects linguistic and logical failure modes in research findings:
 2. Invented Metrics - Metrics don't exist in data or standards
 3. Rabbit Hole - Research drifted from original question
 
-Ported and enhanced from Ultron Metascience Pillar.
+Ported and enhanced from SVEL Metascience Pillar.
 """
 
 import re
@@ -48,7 +48,7 @@ class FailureDetectionResult:
 
 class FailureDetector:
     """
-    Failure Detector for ULTRON.
+    Failure Detector for SVEL.
     
     Audits the 'interpretation' and 'summary' of a finding against its 'statistics'
     to ensure the AI isn't hallucinating significance or metrics.

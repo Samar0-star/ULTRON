@@ -101,7 +101,7 @@ class BeastEventBus:
         try:
             from backend.core.state.persistence_vault import vault
             session_id = payload.get("session_id", "system")
-            # [ULTRON BEAST FIX] Prevent Event Loop Strangulation
+            # [SVEL BEAST FIX] Prevent Event Loop Strangulation
             loop = asyncio.get_running_loop()
             loop.run_in_executor(None, vault.log_action, session_id, source, event_type, payload)
         except Exception as e:

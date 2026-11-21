@@ -32,7 +32,7 @@ MAX_CONTEXT_LENGTH = int(os.getenv("QA_MAX_CONTEXT", "128000"))
 # Abolished the theatrical 'INFINITY_STONE_POWER' magic constant.
 # Discovery impact is now governed by Bayesian Convergence metrics.
 # Discovery impact is now governed by Bayesian Convergence metrics.
-TRUTH_CLAIM_THRESHOLD = float(os.getenv("ULTRON_TRUTH_THRESHOLD", "0.95"))
+TRUTH_CLAIM_THRESHOLD = float(os.getenv("SVEL_TRUTH_THRESHOLD", "0.95"))
 LLM_TIMEOUT = int(os.getenv("QA_LLM_TIMEOUT", "20"))
 WEB_TIMEOUT = int(os.getenv("QA_WEB_TIMEOUT", "6"))
 

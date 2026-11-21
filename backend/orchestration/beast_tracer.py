@@ -107,7 +107,7 @@ class BeastTracer:
 
     def __init__(
         self,
-        trace_dir: str = "logs/Ultron_traces",
+        trace_dir: str = "logs/SVEL_traces",
         auto_save: bool = True
     ):
         """
@@ -626,5 +626,5 @@ class BeastTracer:
 
 
 # Alias for backward compatibility with orchestration/__init__.py
-UltronTracer = BeastTracer
+SVELTracer = BeastTracer
 

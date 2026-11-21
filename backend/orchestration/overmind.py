@@ -359,7 +359,7 @@ Return ONLY valid JSON:
                 if conf < 0.8:
                     logger.warning(f"OVERMIND: Termination directive rejected due to low confidence ({conf:.2f} < 0.80). Defaulting action to 'continue'.")
                     directive["action"] = "continue"
-                elif os.environ.get("ULTRON_ALLOW_OVERMIND_TERMINATE", "false").lower() == "true":
+                elif os.environ.get("SVEL_ALLOW_OVERMIND_TERMINATE", "false").lower() == "true":
                     self.termination_requested = True
                     self.termination_reason = directive.get("rationale", "Overmind strategic termination")
                     logger.critical(f"OVERMIND TERMINATION REQUESTED: {self.termination_reason}")

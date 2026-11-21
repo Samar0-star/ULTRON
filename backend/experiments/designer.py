@@ -1,5 +1,5 @@
 """
-ULTRON Ph.D. EXPERIMENT DESIGNER (TITAN V63.4)
+SVEL Ph.D. EXPERIMENT DESIGNER (TITAN V63.4)
 ==============================================
 The "Protocol Architect" of the discovery pipeline.
 
@@ -312,7 +312,7 @@ Output ONLY the JSON object. No prose before or after.
 
         response = await self.llm_manager.run_async(
             full_prompt,
-            temperature=0.2, # [ULTRON_CORE] Deterministic Ph.D. rigor
+            temperature=0.2, # [SVEL_CORE] Deterministic Ph.D. rigor
             model=CODE_GENERATION_MODEL
         )
         

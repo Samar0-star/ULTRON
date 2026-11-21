@@ -1,5 +1,5 @@
 """
-ULTRON-APEX NEUROSCIENCE & BRAIN-COMPUTER INTERFACE VALIDATION v3.0
+SVEL-APEX NEUROSCIENCE & BRAIN-COMPUTER INTERFACE VALIDATION v3.0
 ====================================================================
 Purpose:
 - Rigorous neural hypothesis validation
@@ -29,9 +29,9 @@ logger = logging.getLogger(__name__)
 
 
 @register_template
-class UltronApexBCITemplate(DataAnalysisTemplate):
+class SVELApexBCITemplate(DataAnalysisTemplate):
     """
-    ULTRON-APEX NEURAL VALIDATION ENGINE
+    SVEL-APEX NEURAL VALIDATION ENGINE
     
     This engine does NOT:
     - Accept subject-specific overfitting as "generalization"
@@ -117,7 +117,7 @@ class UltronApexBCITemplate(DataAnalysisTemplate):
         return True
 
     # ------------------------------------------------------------------
-    # ULTRON-APEX NEURAL VALIDATION PROTOCOL
+    # SVEL-APEX NEURAL VALIDATION PROTOCOL
     # ------------------------------------------------------------------
     def generate_protocol(
         self,
@@ -138,7 +138,7 @@ class UltronApexBCITemplate(DataAnalysisTemplate):
         data_path = params.custom_variables.get("data_path", "raw_data.fif")
         
         return ExperimentProtocol(
-            title=f"ULTRON-APEX NEURAL VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX NEURAL VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.DATA_ANALYSIS,
             domain="neuroscience",

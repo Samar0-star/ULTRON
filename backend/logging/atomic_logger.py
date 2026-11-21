@@ -18,12 +18,12 @@ try:
 except ImportError:
     _HAS_RICH = False
 
-_ATOMIC_DEBUG = os.getenv("ULTRON_ATOMIC_DEBUG", "0") == "1"
+_ATOMIC_DEBUG = os.getenv("SVEL_ATOMIC_DEBUG", "0") == "1"
 
 class AtomicLogger:
     """
     Centralized interceptor for Hell-Level Atomic Debugging.
-    Only activates if ULTRON_ATOMIC_DEBUG=1.
+    Only activates if SVEL_ATOMIC_DEBUG=1.
     """
     
     @staticmethod

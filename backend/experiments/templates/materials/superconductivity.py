@@ -1,5 +1,5 @@
 """
-ULTRON-APEX MATERIALS VALIDATION ENGINE
+SVEL-APEX MATERIALS VALIDATION ENGINE
 =======================================
 Purpose:
 - Rigorous materials validation of superconductivity and stability claims
@@ -28,9 +28,9 @@ logger = logging.getLogger(__name__)
 
 
 @register_template
-class UltronApexMaterialsTemplate(SimulationTemplate):
+class SVELApexMaterialsTemplate(SimulationTemplate):
     """
-    ULTRON-APEX MATERIALS ANNIHILATOR (REAL IMPLEMENTATION)
+    SVEL-APEX MATERIALS ANNIHILATOR (REAL IMPLEMENTATION)
     
     This engine does not rely on fabricated values or placeholder results.
     It generates code that uses:
@@ -83,7 +83,7 @@ class UltronApexMaterialsTemplate(SimulationTemplate):
         cif_path = params.custom_variables.get("cif_path", "structure.cif")
 
         return ExperimentProtocol(
-            title=f"ULTRON-APEX LATTICE VALIDATION :: {params.hypothesis_id}",
+            title=f"SVEL-APEX LATTICE VALIDATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=ExperimentType.SIMULATION,
             domain="materials",
@@ -329,7 +329,7 @@ except Exception as e:
     def _gen_verdict_code(self) -> str:
         return '''
 # Final Verdict
-print("\\n=== ULTRON MATERIAL VALIDATION REPORT ===")
+print("\\n=== SVEL MATERIAL VALIDATION REPORT ===")
 status = "VALIDATED"
 reasons = []
 

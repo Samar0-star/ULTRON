@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-ULTRON Physics Kernels - PhD Level Rigor (UPGRADED)
+SVEL Physics Kernels - PhD Level Rigor (UPGRADED)
 ====================================================
 Verified numerical kernels for scientific experiments.
 
@@ -32,7 +32,7 @@ from dataclasses import dataclass, field
 from typing import Callable, Dict, List, Any, Tuple, Optional
 from enum import Enum
 
-logger = logging.getLogger("ultron.physics.kernels")
+logger = logging.getLogger("svel.physics.kernels")
 
 
 # 

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Discovery Scorer - ULTRON Ultra-Upgrade
+Discovery Scorer - SVEL Ultra-Upgrade
 =========================================
 
 10-Dimension quality scoring for scientific discoveries.
 Goes beyond binary pass/fail to provide multi-faceted assessment.
 
-ULTRON-Specific Dimensions:
+SVEL-Specific Dimensions:
 1. Novelty - Is this genuinely new?
 2. Rigor - Are methods scientifically sound?
 3. Reproducibility - Can it be replicated?
@@ -15,10 +15,10 @@ ULTRON-Specific Dimensions:
 6. Coherence - Fits existing knowledge?
 7. Testability - Can be falsified?
 8. Impact - Potential influence
-9. AdversarialSurvival - Passed Red Team? (ULTRON-ONLY)
-10. TemporalRobustness - Stable over cycles? (ULTRON-ONLY)
+9. AdversarialSurvival - Passed Red Team? (SVEL-ONLY)
+10. TemporalRobustness - Stable over cycles? (SVEL-ONLY)
 
-Author: ULTRON Team
+Author: SVEL Team
 """
 
 import logging
@@ -144,7 +144,7 @@ class DiscoveryScore:
 
 class DiscoveryScorer:
     """
-    10-Dimension discovery quality scorer for ULTRON.
+    10-Dimension discovery quality scorer for SVEL.
     
     Provides multi-faceted quality assessment that catches different
     failure modes through specialized dimension scoring.
@@ -169,8 +169,8 @@ class DiscoveryScorer:
         "coherence": 0.08,
         "testability": 0.08,
         "impact": 0.08,
-        "adversarial_survival": 0.08,  # ULTRON-specific
-        "temporal_robustness": 0.07    # ULTRON-specific
+        "adversarial_survival": 0.08,  # SVEL-specific
+        "temporal_robustness": 0.07    # SVEL-specific
     }
     
     # Approval thresholds
@@ -474,7 +474,7 @@ class DiscoveryScorer:
         if p_val is not None:
             try:
                 p = float(p_val)
-                # [ULTRON NUCLEAR FIX] Hard P-Value Rigor Gate (No Science Theater)
+                # [SVEL NUCLEAR FIX] Hard P-Value Rigor Gate (No Science Theater)
                 if p <= 0.05:
                     pass # Full credit
                 else:
@@ -939,7 +939,7 @@ class DiscoveryScorer:
         finding: Dict[str, Any],
         red_team_result: Optional[Dict[str, Any]]
     ) -> Tuple[float, DimensionScore]:
-        """Score adversarial survival - passed Red Team? (ULTRON-specific)"""
+        """Score adversarial survival - passed Red Team? (SVEL-specific)"""
         score = 0.5  # Default if no Red Team run
         rationale = "No Red Team review conducted."
         flags = []
@@ -998,7 +998,7 @@ class DiscoveryScorer:
         finding: Dict[str, Any],
         context: Dict[str, Any]
     ) -> Tuple[float, DimensionScore]:
-        """Score temporal robustness - stable over cycles? (ULTRON-specific)"""
+        """Score temporal robustness - stable over cycles? (SVEL-specific)"""
         score = 0.5  # Default for new findings
         rationale = "First observation of this finding."
         flags = []

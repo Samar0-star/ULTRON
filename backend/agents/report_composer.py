@@ -96,7 +96,7 @@ class ReportComposerAgent:
             try:
                 import os, uuid
                 from backend.core.world_model import WorldModel
-                active_session_id = os.environ.get("ULTRON_SESSION_ID") or str(uuid.uuid4())[:8]
+                active_session_id = os.environ.get("SVEL_SESSION_ID") or str(uuid.uuid4())[:8]
                 self.world_model = WorldModel(session_id=active_session_id)
                 logger.info(f" [CONNECTION] Physically bonded Report Composer to '{active_session_id}' manifold.")
             except Exception as _wm_err:
@@ -492,7 +492,7 @@ class ReportComposerAgent:
 
     def _plan_forensic_review(self, topic: str, ctx: Dict[str, Any]) -> List[ReportSection]:
         """
-        [LAW] ULTRON FORENSIC REVIEW (VERDICT MODE)
+        [LAW] SVEL FORENSIC REVIEW (VERDICT MODE)
         Focus: Falsification, Verdict, and Adjudication.
         """
         return [
@@ -555,7 +555,7 @@ class ReportComposerAgent:
 
     def _plan_exploration_report(self, topic: str, ctx: Dict[str, Any]) -> List[ReportSection]:
         """
-        [SCOUT] ULTRON SCOUT REPORT (TRUE DISCOVERY)
+        [SCOUT] SVEL SCOUT REPORT (TRUE DISCOVERY)
         Focus: Anomalies, Weak Signals, Speculation. NO VERDICT.
         """
         return [
@@ -567,7 +567,7 @@ class ReportComposerAgent:
 
     def _plan_raw_truth_report(self, topic: str, ctx: Dict[str, Any]) -> List[ReportSection]:
         """
-        [RAW TRUTH] ULTRON BRUTAL SCIENTIFIC AUDIT
+        [RAW TRUTH] SVEL BRUTAL SCIENTIFIC AUDIT
         No polish, no hiding, everything exposed - like a real lab notebook.
         """
         return [
@@ -583,7 +583,7 @@ class ReportComposerAgent:
 
     def _plan_unified_research(self, topic: str, ctx: Dict[str, Any]) -> List[ReportSection]:
         """
-        [UNIFIED] ULTRON CONSOLIDATED RESEARCH PLAN
+        [UNIFIED] SVEL CONSOLIDATED RESEARCH PLAN
         De-duplicated, distinct sections for Maximum Impact.
         """
         return [
@@ -660,7 +660,7 @@ class ReportComposerAgent:
         
         found_facts = []
         for term in query_terms:
-            # ULTRON ENHANCEMENT: Enable cross-session query to salvage fragmented research
+            # SVEL ENHANCEMENT: Enable cross-session query to salvage fragmented research
             facts = self.world_model.query(term, min_confidence=0.5, max_results=50, cross_session=True)
             found_facts.extend(facts)
         
@@ -1002,7 +1002,7 @@ class ReportComposerAgent:
         previous_concepts = [] # TRACKER: Prevent circular re-introductions
         harvested = ctx.get('harvested_visuals', {}) if ctx else {}
         
-        # ULTRON LENGTH TARGETS: 12-72 HOUR RUNS ONLY
+        # SVEL LENGTH TARGETS: 12-72 HOUR RUNS ONLY
         # ALL TIERS ARE GODZILLA-TIER DEPTH - only word count differs!
         runtime_hours = ctx.get("runtime_hours", 12.0) if ctx else 12.0
         is_discovery = mode in ["discovery", "discovery_research"]
@@ -2117,7 +2117,7 @@ Requirement: The prose MUST explicitly cite each claim using [C1], [C2], etc.
         # 2. Strip Process Leakage (Anti-Trash Fix without legacy AVON-1 branding)
         text = re.sub(r'(?i)WorldModel', 'Empirical Knowledge Base', text)
         text = re.sub(r'(?i)World Model', 'Empirical Knowledge Base', text)
-        text = re.sub(r'(?i)ULTRON', 'Autonomous Discovery Engine', text)
+        text = re.sub(r'(?i)SVEL', 'Autonomous Discovery Engine', text)
         text = re.sub(r'(?i)Cycle\s*\d+(\s*across\s*\d+\s*hypotheses)?', '', text)
         text = re.sub(r'(?i)Agent-\d+(\s*analysis)?', '', text)
         

@@ -1,6 +1,6 @@
 # backend/config.py
 """
-Centralized Configuration Management for Ultron Beast.
+Centralized Configuration Management for SVEL Beast.
 Type-safe settings with environment variable validation.
 """
 
@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     # Database & Persistence
     # ==========================================
     database_url: str = Field(
-        default="sqlite:///./data/ultron.db",
+        default="sqlite:///./data/svel.db",
         env="DATABASE_URL"
     )
     

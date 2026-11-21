@@ -1,5 +1,5 @@
 """
-ULTRON-APEX MOLECULAR FALSIFICATION ENGINE v4.0 — REAL SCIENCE EDITION
+SVEL-APEX MOLECULAR FALSIFICATION ENGINE v4.0 — REAL SCIENCE EDITION
 =======================================================================
 Purpose:
 - Execute genuine ligand-protein binding falsification
@@ -14,17 +14,17 @@ from backend.experiments.templates.base import SimulationTemplate, TemplateCusto
 from backend.experiments.templates import register_template
 from backend.experiments.models import ExperimentProtocol, ProtocolStep, ExperimentType, Variable, ResourceRequirements
 
-logger = logging.getLogger("ultron.experiments.templates.chemistry")
+logger = logging.getLogger("svel.experiments.templates.chemistry")
 
 @register_template
-class UltronApexChemistryTemplate(SimulationTemplate):
+class SVELApexChemistryTemplate(SimulationTemplate):
     """
     Rigorous template for molecular docking and binding-affinity validation.
     """
     
     def __init__(self):
         super().__init__(
-            name="ultron_apex_chemistry",
+            name="svel_apex_chemistry",
             experiment_type=ExperimentType.SIMULATION,
             domain="chemistry",
             title="Molecular Docking Validation",
@@ -176,7 +176,7 @@ result.update({{
         ]
 
         return ExperimentProtocol(
-            title=f"ULTRON MOLECULAR FALSIFICATION :: {params.hypothesis_id}",
+            title=f"SVEL MOLECULAR FALSIFICATION :: {params.hypothesis_id}",
             hypothesis_id=params.hypothesis_id,
             experiment_type=self.experiment_type,
             domain=self.domain,

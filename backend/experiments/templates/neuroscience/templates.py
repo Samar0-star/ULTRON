@@ -1,5 +1,5 @@
 """
-ULTRON-APEX NEUROSCIENCE VALIDATION ENGINE v2.0
+SVEL-APEX NEUROSCIENCE VALIDATION ENGINE v2.0
 =========================================
 Purpose:
 - Rigorous neuroscience hypothesis validation
@@ -41,9 +41,9 @@ class NeuroFalsificationMode(Enum):
     QUANTUM_DECOHERENCE = "q-brain_death"          # Coherence times are physically impossible
 
 @register_template
-class UltronApexNeuroscienceTemplate(SimulationTemplate):
+class SVELApexNeuroscienceTemplate(SimulationTemplate):
     """
-    ULTRON-APEX NEUROSCIENCE VALIDATION
+    SVEL-APEX NEUROSCIENCE VALIDATION
     
     This engine does NOT:
     - Accept "Regional Activation" as a biological explanation
@@ -58,7 +58,7 @@ class UltronApexNeuroscienceTemplate(SimulationTemplate):
 
     def __init__(self):
         super().__init__(
-            name="ultron_apex_neuroscience",
+            name="svel_apex_neuroscience",
             domain="neuroscience",
             title="Neuroscience Hypothesis Validation Engine",
             description=(
